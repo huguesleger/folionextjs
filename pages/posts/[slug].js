@@ -2,11 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { getPost, getSlugs } from "../../utils/wordpress";
-import dynamic from "next/dynamic";
-
-const Pixi = dynamic(() => import("../../components/Pixi"), {
-  ssr: false,
-});
 
 export default function PostPage({ post }) {
   return (
@@ -30,11 +25,6 @@ export default function PostPage({ post }) {
         <Link href="/">
           <a className="btn btn-primary">Back to Home</a>
         </Link>
-      </div>
-      <div className="container">
-        <div id="root">
-          <Pixi />
-        </div>
       </div>
     </>
   );
