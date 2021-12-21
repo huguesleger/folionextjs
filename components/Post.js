@@ -25,6 +25,7 @@ export default function Post({ post, featuredMedia }) {
             width={180}
             height={120}
             alt={featuredMedia["alt_text"]}
+            className="thumb"
           />
         </div>
         <div className="col-md-8">
