@@ -3,7 +3,7 @@ import "../styles/scss/main.scss";
 import React from "react";
 import Cursor from "../components/Cursor";
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Cursor />
@@ -12,6 +12,6 @@ function MyApp({ Component, pageProps }) {
       </Layout>
     </>
   );
-}
+};
 
 export default MyApp;

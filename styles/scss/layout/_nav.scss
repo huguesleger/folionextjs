@@ -1,7 +1,9 @@
 .header {
-  padding: 3rem 2rem 0;
-  height: 100px;
+  position: fixed;
+  left: 0;
   width: 100%;
+  padding: 3rem 1.25rem 0;
+  z-index: 99;
   .wrap-header {
     display: flex;
     justify-content: space-between;
@@ -74,5 +76,21 @@
         }
       }
     }
+  }
+}
+
+.main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  z-index: 1;
+  background-color: grey;
+  transform: translateY(-100%);
+  transition: transform 0.8s cubic-bezier(0.79, 0.01, 0.18, 1);
+  &.is-open {
+    transform: translateY(0);
   }
 }
