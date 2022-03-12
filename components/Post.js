@@ -22,8 +22,8 @@ export default function Post({ post, featuredMedia }) {
           </Link> */}
           <Image
             src={featuredMedia["media_details"].sizes.medium["source_url"]}
-            width={180}
-            height={120}
+            width={600}
+            height={400}
             alt={featuredMedia["alt_text"]}
             className="thumb"
           />

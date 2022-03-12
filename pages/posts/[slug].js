@@ -18,6 +18,9 @@ export default function PostPage({ post }) {
           height={120}
           layout="responsive"
         />
+        <div className="acf">
+          <p>{post.acf.titre}</p>
+        </div>
         <div
           className="card-text pb-5"
           dangerouslySetInnerHTML={{ __html: post.content.rendered }}
