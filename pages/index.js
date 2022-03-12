@@ -1,5 +1,5 @@
-import Post from "../components/Post";
-import { getPosts } from "../utils/wordpress";
+// import Post from "../components/Post";
+// import { getPosts } from "../utils/wordpress";
 
 const Home = ({ posts }) => {
   // const jsxPosts = posts.map((post) => {
