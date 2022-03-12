@@ -38,3 +38,19 @@
 //     </div>
 //   );
 // }
+
+const Post = () => {
+  // const jsxPosts = posts.map((post) => {
+  //   const featuredMedia = post["_embedded"]["wp:featuredmedia"][0];
+  //   return <Post post={post} featuredMedia={featuredMedia} key={post.id} />;
+  // });
+
+  return (
+    <div className="post">
+      <div>hello</div>
+      {/* <div className="post">{jsxPosts}</div> */}
+    </div>
+  );
+};
+
+export default Post;

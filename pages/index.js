@@ -1,7 +1,7 @@
 // import Post from "../components/Post";
 // import { getPosts } from "../utils/wordpress";
 
-const Home = ({ posts }) => {
+const Home = () => {
   // const jsxPosts = posts.map((post) => {
   //   const featuredMedia = post["_embedded"]["wp:featuredmedia"][0];
   //   return <Post post={post} featuredMedia={featuredMedia} key={post.id} />;
