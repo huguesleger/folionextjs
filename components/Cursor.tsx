@@ -24,7 +24,7 @@ const Cursor = () => {
           });
         },
       });
-      if (e.target.closest(cursorHoverElems)) {
+      if (e.target.closest(cursorHoverElems) as HTMLElement) {
         mouseIsHover = true;
       } else {
         mouseIsHover = false;
