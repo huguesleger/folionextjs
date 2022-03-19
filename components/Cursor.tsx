@@ -24,10 +24,10 @@ const Cursor = () => {
           });
         },
       });
-      if (!e.target.closest(cursorHoverElems)) {
-        mouseIsHover = false;
-      } else {
+      if (e.target.closest(cursorHoverElems) as Element) {
         mouseIsHover = true;
+      } else {
+        mouseIsHover = false;
       }
     });
   }, []);
