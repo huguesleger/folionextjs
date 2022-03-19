@@ -1,9 +1,9 @@
-import Nav from "./Nav";
+import Navbar from "./Nav";
 
 export default function Layout({ children }) {
   return (
     <>
-      <Nav />
+      <Navbar />
       <main>{children}</main>
     </>
   );
