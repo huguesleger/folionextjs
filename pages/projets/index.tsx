@@ -7,13 +7,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import "swiper/css";
 import React from "react";
+import { useState } from "react";
 
-// const ProjetPage: NextPage = (props) => {
-const ProjetPage: (props: {
-  projets: [GraphQLResponse.Projet];
-}) => JSX.Element = (props: { projets: [GraphQLResponse.Projet] }) => {
+const ProjetPage: NextPage = (props) => {
+  // const ProjetPage: (props: {
+  //   projets: [GraphQLResponse.Projet];
+  // }) => JSX.Element = (props: { projets: [GraphQLResponse.Projet] }) => {
   // @ts-ignore
-  // const projets: [GraphQLResponse.Projet] = props.projets;
+  const projets: [GraphQLResponse.Projet] = props.projets;
+  const [firstSwiper, setFirstSwiper] = useState(null);
 
   return (
     <>
@@ -26,8 +28,9 @@ const ProjetPage: (props: {
             loop={true}
             autoHeight={false}
             grabCursor={true}
+            onSwiper={setFirstSwiper}
           >
-            {props.projets.map((projet) => {
+            {projets.map((projet) => {
               return (
                 <SwiperSlide key={projet.slug}>
                   <Link href={"/projets/" + projet.slug}>
