@@ -208,7 +208,7 @@ const ProjetPage: NextPage = (props) => {
 
 export default ProjetPage;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = (await request(
     Query.QUERY_CARD_PROJETS
   )) as GraphQLResponse.AllProjets;
