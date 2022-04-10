@@ -1,5 +1,51 @@
 body {
   background-color: #fff;
-  font-family: "Poppins", sans-serif;
+  font-family: $font_poppins;
   line-height: 1.5;
+}
+
+#app {
+  // overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  // &.overflow-y {
+  //   overflow-y: scroll;
+  // }
+}
+
+.homepage {
+  height: 100vh;
+}
+
+.page-enter {
+  opacity: 0;
+}
+.page-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.bg-black {
+  background-color: #000;
+}
+.bg-dark-grey {
+  background-color: #181717;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.c-white {
+  color: #fff;
 }

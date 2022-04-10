@@ -14,16 +14,15 @@ const Filters = withFilters(Container, {
   displacement: filters.DisplacementFilter,
 });
 
+const img = document.querySelector(".thumb");
+const imgSrc = img.getAttribute("src");
+img.classList.add("d-none");
+
 function StageNoSSR() {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
-  const displacementSpriteRef = useRef();
+  const displacementSpriteRef = useRef(null);
   const [renderFilter, setRenderFilter] = useState(false);
-  const app = useApp();
-  // const img = document.querySelector(".thumb");
-  // const imgSrc = img.getAttribute("src");
-  // console.log(imgSrc);
-
   useEffect(() => {
     if (process.browser) {
       let type = "WebGL";
@@ -43,7 +42,6 @@ function StageNoSSR() {
     setY((y) => y + 2);
     requestAnimationFrame(animate);
   }
-
   return (
     <Container>
       <Sprite x={x} y={y} image="smoke.png" ref={displacementSpriteRef} />
@@ -53,7 +51,8 @@ function StageNoSSR() {
             construct: [displacementSpriteRef.current],
           }}
         >
-          <Sprite width={1025} height={574} image="water.jpeg" />
+          {/* <Sprite width={420} height={250} image="/images/img-intro.jpg" /> */}
+          <Sprite width={420} height={250} image={imgSrc} />
         </Filters>
       )}
     </Container>
@@ -62,7 +61,7 @@ function StageNoSSR() {
 
 const wrapped = () => {
   return (
-    <Stage width={500} height={574}>
+    <Stage width={420} height={250}>
       <StageNoSSR />
     </Stage>
   );

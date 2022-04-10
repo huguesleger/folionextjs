@@ -1,6 +1,13 @@
+@import "abstract/variables";
+
 @import "base/reset";
+@import "base/grid";
 @import "base/base";
+@import "base/animations";
 
 @import "layout/nav";
 
 @import "components/cursor";
+@import "components/loader";
+@import "components/intro";
+@import "components/projects";

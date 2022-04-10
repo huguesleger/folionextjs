@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-const Cursor = () => {
+export const Cursor = () => {
   const cursorCircle = useRef(null);
   const cursorHoverElems = "a, button, .btn-main";
   let mouseIsHover = false;
   useEffect(() => {
     if (cursorCircle.current == null || cursorCircle == null) return;
-    document.addEventListener("mousemove", (e) => {
+    document.addEventListener("pointermove", (e) => {
       if (cursorCircle.current == null) return;
       const tl = gsap.timeline();
       tl.set(cursorCircle.current, {
@@ -34,7 +34,11 @@ const Cursor = () => {
 
   return (
     <div className="cursor">
-      <div className="cursor-circle" ref={cursorCircle}></div>
+      <div
+        className="cursor-circle"
+        id="cursor-circle"
+        ref={cursorCircle}
+      ></div>
     </div>
   );
 };
