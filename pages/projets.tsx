@@ -9,10 +9,10 @@ import "swiper/css";
 import React from "react";
 import { useState } from "react";
 
-const ProjetPage: NextPage = (props) => {
-  // const ProjetPage: (props: {
-  //   projets: [GraphQLResponse.Projet];
-  // }) => JSX.Element = (props: { projets: [GraphQLResponse.Projet] }) => {
+// const ProjetPage: NextPage = (props) => {
+const ProjetPage: (props: {
+  projets: GraphQLResponse.AllProjets;
+}) => JSX.Element = (props: { projets: GraphQLResponse.AllProjets }) => {
   // @ts-ignore
   const projets: [GraphQLResponse.Projet] = props.projets;
 
@@ -20,7 +20,7 @@ const ProjetPage: NextPage = (props) => {
     <>
       <div className="projects">
         <div className="wrap-slider">
-          {/* <Swiper
+          <Swiper
             spaceBetween={150}
             slidesPerView={3}
             centeredSlides={true}
@@ -58,9 +58,9 @@ const ProjetPage: NextPage = (props) => {
                 </SwiperSlide>
               );
             })}
-          </Swiper> */}
+          </Swiper>
 
-          <Swiper
+          {/* <Swiper
             spaceBetween={150}
             slidesPerView={3}
             centeredSlides={true}
@@ -169,7 +169,7 @@ const ProjetPage: NextPage = (props) => {
                 </a>
               </Link>
             </SwiperSlide>
-          </Swiper>
+          </Swiper> */}
 
           {/* {projets.map((projet) => {
             return (
