@@ -26,7 +26,7 @@ const ProjetPage: NextPage = (props) => {
     <>
       <div className="projects">
         <div className="wrap-slider">
-          {/* <Swiper
+          <Swiper
             spaceBetween={150}
             slidesPerView={3}
             centeredSlides={true}
@@ -63,8 +63,9 @@ const ProjetPage: NextPage = (props) => {
                 </SwiperSlide>
               );
             })}
-          </Swiper> */}
-          {projets.map((projet) => {
+          </Swiper>
+
+          {/* {projets.map((projet) => {
             return (
               <Link key={projet.slug} href={"/projets/" + projet.slug}>
                 <a>
@@ -90,7 +91,7 @@ const ProjetPage: NextPage = (props) => {
                 </a>
               </Link>
             );
-          })}
+          })} */}
         </div>
       </div>
     </>
