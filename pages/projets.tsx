@@ -5,7 +5,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
-import "swiper/css";
+// import "swiper/css";
 import React from "react";
 import { useState } from "react";
 
@@ -40,14 +40,13 @@ const ProjetPage: NextPage = (props) => {
                         </span>
                       </div>
                       <div className="inner-img">
-                        {/* <Image
+                        <Image
                           src={projet.imageHeader.url}
                           layout="fill"
                           objectFit="cover"
                           quality={100}
                           alt="montpellier"
-                        /> */}
-                        <img src={projet.imageHeader.url} alt="" />
+                        />
                       </div>
                       <div className="outer-title">
                         <div className="name">
