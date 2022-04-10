@@ -9,10 +9,10 @@ import "swiper/css";
 import React from "react";
 import { useState } from "react";
 
-// const ProjetPage: NextPage = (props) => {
-const ProjetPage: (props: {
-  projets: GraphQLResponse.AllProjets;
-}) => JSX.Element = (props: { projets: GraphQLResponse.AllProjets }) => {
+const ProjetPage: NextPage = (props) => {
+  // const ProjetPage: (props: {
+  //   projets: GraphQLResponse.AllProjets;
+  // }) => JSX.Element = (props: { projets: GraphQLResponse.AllProjets }) => {
   // @ts-ignore
   const projets: [GraphQLResponse.Projet] = props.projets;
 

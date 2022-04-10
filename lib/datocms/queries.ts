@@ -84,6 +84,7 @@ query MyQuery ($slug: String){
       url
       width
     }
+    slug
   }
 }
 `;
