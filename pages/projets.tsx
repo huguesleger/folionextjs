@@ -40,13 +40,14 @@ const ProjetPage: NextPage = (props) => {
                         </span>
                       </div>
                       <div className="inner-img">
-                        <Image
+                        {/* <Image
                           src={projet.imageHeader.url}
                           layout="fill"
                           objectFit="cover"
                           quality={100}
                           alt="montpellier"
-                        />
+                        /> */}
+                        <img src={projet.imageHeader.url} alt="" />
                       </div>
                       <div className="outer-title">
                         <div className="name">
