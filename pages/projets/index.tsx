@@ -1,6 +1,6 @@
-import { request } from "../lib/datocms/datocms";
-import Query from "../lib/datocms/queries";
-import { GraphQLResponse } from "../lib/datocms/types";
+import { request } from "../../lib/datocms/datocms";
+import Query from "../../lib/datocms/queries";
+import { GraphQLResponse } from "../../lib/datocms/types";
 import { NextPage } from "next";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
