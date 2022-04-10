@@ -6,22 +6,15 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import "swiper/css";
+import React from "react";
 
-export async function getServerSideProps() {
-  const res = (await request(
-    Query.QUERY_CARD_PROJETS
-  )) as GraphQLResponse.AllProjets;
-
-  return {
-    props: {
-      projets: (res && res.allProjets) || [],
-    },
-  };
-}
-
-const ProjetPage: NextPage = (props) => {
+// const ProjetPage: NextPage = (props) => {
+const ProjetPage: (props: {
+  projets: [GraphQLResponse.Projet];
+}) => JSX.Element = (props: { projets: [GraphQLResponse.Projet] }) => {
   // @ts-ignore
-  const projets: [GraphQLResponse.Projet] = props.projets;
+  // const projets: [GraphQLResponse.Projet] = props.projets;
+
   return (
     <>
       <div className="projects">
@@ -34,7 +27,7 @@ const ProjetPage: NextPage = (props) => {
             autoHeight={false}
             grabCursor={true}
           >
-            {projets.map((projet) => {
+            {props.projets.map((projet) => {
               return (
                 <SwiperSlide key={projet.slug}>
                   <Link href={"/projets/" + projet.slug}>
@@ -99,3 +92,15 @@ const ProjetPage: NextPage = (props) => {
 };
 
 export default ProjetPage;
+
+export async function getServerSideProps() {
+  const res = (await request(
+    Query.QUERY_CARD_PROJETS
+  )) as GraphQLResponse.AllProjets;
+
+  return {
+    props: {
+      projets: (res && res.allProjets) || [],
+    },
+  };
+}
