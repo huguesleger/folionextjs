@@ -20,7 +20,7 @@ const ProjetPage: NextPage = (props) => {
     <>
       <div className="projects">
         <div className="wrap-slider">
-          <Swiper
+          {/* <Swiper
             spaceBetween={150}
             slidesPerView={3}
             centeredSlides={true}
@@ -58,6 +58,117 @@ const ProjetPage: NextPage = (props) => {
                 </SwiperSlide>
               );
             })}
+          </Swiper> */}
+
+          <Swiper
+            spaceBetween={150}
+            slidesPerView={3}
+            centeredSlides={true}
+            loop={true}
+            autoHeight={false}
+            grabCursor={true}
+            observer={true}
+          >
+            <SwiperSlide>
+              <Link href="">
+                <a>
+                  <div className="inner-title title-white">
+                    <span className="name">
+                      <span>test</span>
+                    </span>
+                  </div>
+                  <div className="inner-img">
+                    <Image
+                      src="/images/mtp.svg"
+                      layout="fill"
+                      objectFit="cover"
+                      quality={100}
+                      alt="montpellier"
+                    />
+                  </div>
+                  <div className="outer-title">
+                    <div className="name">
+                      <span>test</span>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Link href="">
+                <a>
+                  <div className="inner-title title-white">
+                    <span className="name">
+                      <span>test</span>
+                    </span>
+                  </div>
+                  <div className="inner-img">
+                    <Image
+                      src="/images/mtp.svg"
+                      layout="fill"
+                      objectFit="cover"
+                      quality={100}
+                      alt="montpellier"
+                    />
+                  </div>
+                  <div className="outer-title">
+                    <div className="name">
+                      <span>test</span>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Link href="">
+                <a>
+                  <div className="inner-title title-white">
+                    <span className="name">
+                      <span>test</span>
+                    </span>
+                  </div>
+                  <div className="inner-img">
+                    <Image
+                      src="/images/mtp.svg"
+                      layout="fill"
+                      objectFit="cover"
+                      quality={100}
+                      alt="montpellier"
+                    />
+                  </div>
+                  <div className="outer-title">
+                    <div className="name">
+                      <span>test</span>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Link href="">
+                <a>
+                  <div className="inner-title title-white">
+                    <span className="name">
+                      <span>test</span>
+                    </span>
+                  </div>
+                  <div className="inner-img">
+                    <Image
+                      src="/images/mtp.svg"
+                      layout="fill"
+                      objectFit="cover"
+                      quality={100}
+                      alt="montpellier"
+                    />
+                  </div>
+                  <div className="outer-title">
+                    <div className="name">
+                      <span>test</span>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            </SwiperSlide>
           </Swiper>
 
           {/* {projets.map((projet) => {

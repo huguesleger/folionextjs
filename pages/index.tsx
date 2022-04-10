@@ -7,9 +7,6 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import formatTxt from "../lib/functions/formatTxt";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-
 // const Pixi = dynamic(() => import("../components/Pixi"), {
 //   ssr: false,
 // });
@@ -77,116 +74,6 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
           </div>
         </div>
       </div>
-      <Swiper
-        spaceBetween={150}
-        slidesPerView={3}
-        centeredSlides={true}
-        loop={true}
-        autoHeight={false}
-        grabCursor={true}
-        observer={true}
-      >
-        <SwiperSlide>
-          <Link href="">
-            <a>
-              <div className="inner-title title-white">
-                <span className="name">
-                  <span>test</span>
-                </span>
-              </div>
-              <div className="inner-img">
-                <Image
-                  src={props.home.image.url}
-                  layout="fill"
-                  objectFit="cover"
-                  quality={100}
-                  alt="montpellier"
-                />
-              </div>
-              <div className="outer-title">
-                <div className="name">
-                  <span>test</span>
-                </div>
-              </div>
-            </a>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href="">
-            <a>
-              <div className="inner-title title-white">
-                <span className="name">
-                  <span>test</span>
-                </span>
-              </div>
-              <div className="inner-img">
-                <Image
-                  src={props.home.image.url}
-                  layout="fill"
-                  objectFit="cover"
-                  quality={100}
-                  alt="montpellier"
-                />
-              </div>
-              <div className="outer-title">
-                <div className="name">
-                  <span>test</span>
-                </div>
-              </div>
-            </a>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href="">
-            <a>
-              <div className="inner-title title-white">
-                <span className="name">
-                  <span>test</span>
-                </span>
-              </div>
-              <div className="inner-img">
-                <Image
-                  src={props.home.image.url}
-                  layout="fill"
-                  objectFit="cover"
-                  quality={100}
-                  alt="montpellier"
-                />
-              </div>
-              <div className="outer-title">
-                <div className="name">
-                  <span>test</span>
-                </div>
-              </div>
-            </a>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href="">
-            <a>
-              <div className="inner-title title-white">
-                <span className="name">
-                  <span>test</span>
-                </span>
-              </div>
-              <div className="inner-img">
-                <Image
-                  src={props.home.image.url}
-                  layout="fill"
-                  objectFit="cover"
-                  quality={100}
-                  alt="montpellier"
-                />
-              </div>
-              <div className="outer-title">
-                <div className="name">
-                  <span>test</span>
-                </div>
-              </div>
-            </a>
-          </Link>
-        </SwiperSlide>
-      </Swiper>
     </div>
   );
 };
