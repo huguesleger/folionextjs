@@ -23,10 +23,11 @@ const ProjetPage: NextPage = (props) => {
           <Swiper
             spaceBetween={150}
             slidesPerView={3}
-            // centeredSlides={true}
-            // loop={true}
-            // autoHeight={false}
-            // grabCursor={true}
+            centeredSlides={true}
+            loop={true}
+            autoHeight={false}
+            grabCursor={true}
+            observer={true}
           >
             {projets.map((projet) => {
               return (
