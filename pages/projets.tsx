@@ -1,6 +1,6 @@
-import { request } from "../../lib/datocms/datocms";
-import Query from "../../lib/datocms/queries";
-import { GraphQLResponse } from "../../lib/datocms/types";
+import { request } from "../lib/datocms/datocms";
+import Query from "../lib/datocms/queries";
+import { GraphQLResponse } from "../lib/datocms/types";
 import { NextPage } from "next";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,7 +15,6 @@ const ProjetPage: NextPage = (props) => {
   // }) => JSX.Element = (props: { projets: [GraphQLResponse.Projet] }) => {
   // @ts-ignore
   const projets: [GraphQLResponse.Projet] = props.projets;
-  const [firstSwiper, setFirstSwiper] = useState(null);
 
   return (
     <>
@@ -28,7 +27,6 @@ const ProjetPage: NextPage = (props) => {
             loop={true}
             autoHeight={false}
             grabCursor={true}
-            onSwiper={setFirstSwiper}
           >
             {projets.map((projet) => {
               return (
