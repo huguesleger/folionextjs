@@ -5,7 +5,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
-// import "swiper/css";
+import "swiper/css";
 import React from "react";
 import { useState } from "react";
 
