@@ -290,7 +290,7 @@ const CardDetails: (props: {
                 <a className="">
                   <span className="">Prev: </span>
                   <span className="">
-                    {props.projet && getPrevpost().titre}
+                    {props.projets && getPrevpost().titre}
                   </span>
                 </a>
               </Link>
@@ -300,7 +300,7 @@ const CardDetails: (props: {
                 <a className="" rel="prev">
                   <span className="">Next: </span>
                   <span className="">
-                    {props.projet && getNextpost().titre}
+                    {props.projets && getNextpost().titre}
                   </span>
                 </a>
               </Link>
