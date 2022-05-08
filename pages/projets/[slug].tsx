@@ -43,7 +43,7 @@ const CardDetails: (props: {
     if (index === (projets && projets.length) - 1) {
       return projets[0];
     } else {
-      return projets[index + 1];
+      return projets[projets && index + 1];
     }
   };
 
@@ -54,7 +54,7 @@ const CardDetails: (props: {
     if (index === 0) {
       return projets[(projets && projets.length) - 1];
     } else {
-      return projets[index - 1];
+      return projets[projets && index - 1];
     }
   };
 
