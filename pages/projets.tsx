@@ -7,12 +7,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import "swiper/css";
 import React from "react";
-import { useState, useEffect } from "react";
 
 const ProjetPage: NextPage = (props) => {
-  // const ProjetPage: (props: {
-  //   projets: GraphQLResponse.AllProjets;
-  // }) => JSX.Element = (props: { projets: GraphQLResponse.AllProjets }) => {
   // @ts-ignore
   const projets: [GraphQLResponse.Projet] = props.projets;
 

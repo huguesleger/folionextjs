@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // height: 100%;
   min-height: 100vh;
   padding: 7.5rem 2rem 2rem;
   .title-inner {
@@ -49,7 +48,6 @@
         font-family: $font_gallient;
         font-size: 3rem;
         text-transform: uppercase;
-        // font-weight: 600;
         transition: transform 1s cubic-bezier(0.31, 0, 0.05, 0.93) 0.1s;
         transform: translateY(100%);
       }
@@ -79,9 +77,6 @@
       transition: transform 0.8s cubic-bezier(0.31, 0, 0.05, 0.93) 1s;
       transform: translateY(100%);
       .thumb {
-        // &.d-none {
-        //   display: none !important;
-        // }
       }
     }
   }

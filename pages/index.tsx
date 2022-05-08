@@ -3,19 +3,13 @@ import Query from "../lib/datocms/queries";
 import { GraphQLResponse } from "../lib/datocms/types";
 import Preloader from "../components/Loader";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import formatTxt from "../lib/functions/formatTxt";
 import { useState } from "react";
 
-// const Pixi = dynamic(() => import("../components/Pixi"), {
-//   ssr: false,
-// });
-
 const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
   home: GraphQLResponse.Home;
 }) => {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
   return (
     <div className="homepage">
       <Preloader />
@@ -35,19 +29,11 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
               height={1280}
               alt="montpellier"
             />
-            {/* <Pixi /> */}
           </div>
         </div>
         <div className="intro-name">
           <div className="intro-enter">
             <div className="arrow-enter">
-              {/* <Image
-                src="/images/arrow-enter.svg"
-                layout="intrinsic"
-                width={90}
-                height={90}
-                alt="montpellier"
-              /> */}
               <svg viewBox="0 0 302.4 395.36">
                 <path d="M278.88,220.08,168,331V0H134.4V331L23.52,220.08,0,244.16l151.2,151.2,151.2-151.2Z" />
               </svg>
@@ -92,7 +78,6 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
             className="wrap-title"
             data-scroll
             data-scroll-direction="horizontal"
-            // data-scroll-target="#homeWorks"
             data-scroll-speed="-3"
           >
             <h2
@@ -108,7 +93,6 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
             className="wrap-subtitle"
             data-scroll
             data-scroll-direction="horizontal"
-            // data-scroll-target="#homeWorks"
             data-scroll-speed="6"
           >
             <h3

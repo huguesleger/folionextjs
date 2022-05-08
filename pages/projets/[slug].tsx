@@ -2,26 +2,8 @@ import { request } from "../../lib/datocms/datocms";
 import Query from "../../lib/datocms/queries";
 import { GraphQLResponse } from "../../lib/datocms/types";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { StructuredText } from "react-datocms";
-import { useRouter } from "next/router";
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
-import ProjetPage from "../projets";
-import { AnimatePresence, motion } from "framer-motion";
-// import { useLocomotiveScroll } from "react-locomotive-scroll";
-
-// export default function CardDetails(props: {
-//   projet: GraphQLResponse.Projet;
-//   projets: [GraphQLResponse.Projet];
-//   other: GraphQLResponse.Projet[];
-// }) {
-
-const variants = {
-  hidden: { opacity: 0, x: 0, y: 0 },
-  enter: { opacity: 1, x: 0, y: 0 },
-  exit: { opacity: 0, x: 0, y: 0 },
-};
 
 const CardDetails: (props: {
   projet: GraphQLResponse.Projet;
@@ -31,9 +13,6 @@ const CardDetails: (props: {
   projets: GraphQLResponse.Projet[];
 }) => {
   const projets: GraphQLResponse.Projet[] = props.projets;
-
-  // const totalProjet = projets.length;
-  // const totalProject = projets && projets.length;
 
   const getNextpost = () => {
     const index = projets.findIndex((el) => el.slug === props.projet.slug);
@@ -55,16 +34,6 @@ const CardDetails: (props: {
 
   return (
     <>
-      {/* <AnimatePresence initial={false} exitBeforeEnter>
-        <motion.div
-          key={props.projet.slug}
-          initial="hidden"
-          animate="enter"
-          exit="exit"
-          variants={variants}
-          transition={{ type: "linear", delay: 0.8 }}
-          className="page-content"
-        > */}
       <div className="project-content">
         <div className="project-header" data-scroll-section>
           <div className="container">
@@ -104,18 +73,6 @@ const CardDetails: (props: {
             </div>
           </div>
         </div>
-        {/* <div className="project-img-full" data-scroll-section>
-          <div className="img-inner">
-            <div
-              className="bg-img"
-              style={{
-                backgroundImage: `url("${props.projet.imageFull.url}")`,
-              }}
-              data-scroll
-              data-scroll-speed="-1"
-            ></div>
-          </div>
-        </div> */}
         <div className="project-img-full" data-scroll-section>
           <div className="inner-img-full">
             <Image
@@ -305,8 +262,6 @@ const CardDetails: (props: {
           </div>
         </div>
       </div>
-      {/* </motion.div>
-      </AnimatePresence> */}
     </>
   );
 };

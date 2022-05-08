@@ -1,39 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { AnimateSharedLayout, motion } from "framer-motion";
-import { Context } from "../../context/AppContext";
+import { AnimateSharedLayout } from "framer-motion";
 import { useState } from "react";
 
 export default function Navbar(): JSX.Element {
-  // const { darkMode, setDarkMode } = useContext(Context);
-
-  // const toggleBtn = () => {
-  //   setDarkMode(!darkMode);
-  // };
-
-  // useEffect(() => {
-  //   setDarkMode(false);
-  //   if (darkMode) {
-  //     document.body.classList.add("light-mode");
-  //     document.body.classList.remove("dark-mode");
-  //     localStorage.setItem("theme", "light-mode");
-  //   } else {
-  //     document.body.classList.add("dark-mode");
-  //     document.body.classList.remove("light-mode");
-  //     localStorage.setItem("theme", "dark-mode");
-  //   }
-  // });
-
-  // useEffect(() => {
-  //   if (localStorage.getItem("theme") === "light-mode") {
-  //     document.body.classList.add("light-mode");
-  //   } else if (localStorage.getItem("theme") === "dark-mode") {
-  //     document.body.classList.add("dark-mode");
-  //     setDarkMode(!darkMode);
-  //   }
-  // }, []);
-
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const handleToggle = () => {
     setIsDarkTheme(!isDarkTheme);
@@ -109,66 +80,20 @@ export default function Navbar(): JSX.Element {
                 </div>
               </a>
             </Link>
-            {/* <button onClick={handleToggle} className="item-link">
-              DarkMode
-            </button> */}
-            {/* <label>
-              <input
-                type="checkbox"
-                checked={isDarkTheme}
-                onChange={handleToggle}
-              />{" "}
-              Dark
-            </label> */}
-            {/* <input
-              id="s1"
-              type="checkbox"
-              className="switch"
-              checked={isDarkTheme}
-              onChange={handleToggle}
-            />
-            <label htmlFor="s1">Switch</label> */}
-            {/* <input
-              type="checkbox"
-              id="switch"
-              className="switch"
-              checked={isDarkTheme}
-              onChange={handleToggle}
-            />
-            <label htmlFor="switch">Toggle</label> */}
             <button onClick={handleToggle} className="btn-theme-mode">
               {isDarkTheme === true && (
                 <>
-                  {/* <Image
-                    src="/images/sun.svg"
-                    layout="intrinsic"
-                    width={25}
-                    height={25}
-                  /> */}
                   <i className="far fa-lightbulb" aria-hidden></i>
                   <span className="txt-theme-mode">mode lumière</span>
                 </>
               )}
               {isDarkTheme === false && (
                 <>
-                  {/* <Image
-                    src="/images/moon.svg"
-                    layout="intrinsic"
-                    width={20}
-                    height={20}
-                  /> */}
                   <i className="fas fa-moon" aria-hidden></i>
                   <span className="txt-theme-mode">mode sombre</span>
                 </>
               )}
-              {/* <Image src={sun} layout="intrinsic" width={25} height={25} /> */}
             </button>
-            {/* {isDarkTheme === false && (
-              <span className="txt-theme-mode">mode lumière</span>
-            )}
-            {isDarkTheme === true && (
-              <span className="txt-theme-mode">mode sombre</span>
-            )} */}
           </nav>
         </div>
       </header>

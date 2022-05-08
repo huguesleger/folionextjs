@@ -1,10 +1,9 @@
 import Layout from "../components/Layout/Layout";
 import "../styles/scss/main.scss";
 import type { AppProps } from "next/app";
-import React, { useRef, useEffect, createRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Cursor from "../components/Cursor";
 import { useRouter } from "next/router";
-// import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
@@ -21,8 +20,6 @@ const variants = {
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   const { asPath } = useRouter();
   const containerRef = useRef(null);
-  // const regex = /(?:\/projets[^\/])/g;
-  const regex = /(?:\/projets\/)/g;
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const handleDarkMode = (value: boolean) => {
@@ -34,102 +31,11 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
     setIsDarkTheme: handleDarkMode,
   };
 
-  useEffect(() => {
-    // window.dispatchEvent(new Event("resize")), [Component];
-    // let scroll: any;
-    // import("locomotive-scroll").then((locomotiveModule) => {
-    //   scroll = new locomotiveModule.default({
-    //     el: document.querySelector("[data-scroll-container]"),
-    //     smooth: true,
-    //     smoothMobile: false,
-    //     resetNativeScroll: true,
-    //   });
-    // });
-    // return () => scroll.destroy();
-  }, []);
-
-  useEffect(() => {
-    // const locomotiveScroll = new LocomotiveScroll({
-    //   el: document.querySelector(myScrollContainer)
-    // })
-    // scroll.on("call", (value) => {
-    //   value === "updateBg" && console.log("Scroll function called");
-    //   // value === "updateBg" && document.body.classList.add("dark-theme");
-    // });
-  }, []);
-
   return (
-    // <>
-    //   <Cursor />
-    //   <Layout>
-    //     <LocomotiveScrollProvider
-    //       options={{
-    //         smooth: true,
-    //       }}
-    //       watch={[]}
-    //       location={asPath}
-    //       onLocationChange={(scroll: any) =>
-    //         scroll.scrollTo(0, { duration: 0, disableLerp: true })
-    //       }
-    //       containerRef={containerRef}
-    //     >
-    //       <div data-scroll-container ref={containerRef}>
-    //         <AnimatePresence initial={false} exitBeforeEnter>
-    //           <motion.div
-    //             key={router.route}
-    //             initial="hidden"
-    //             animate="enter"
-    //             exit="exit"
-    //             variants={variants}
-    //             transition={{ type: "linear" }}
-    //             className="page-content"
-    //           >
-    //             <Component {...pageProps} key={router.route} />
-    //           </motion.div>
-    //         </AnimatePresence>
-    //       </div>
-    //     </LocomotiveScrollProvider>
-    //   </Layout>
-    // </>
-
-    // <>
-    //   <Cursor />
-    //   <Layout>
-    //     <RLSProvider
-    //       options={{
-    //         smooth: true,
-    //       }}
-    //       watch={[]}
-    //       location={asPath}
-    //       onLocationChange={(scroll: any) =>
-    //         scroll.scrollTo(0, { duration: 0, disableLerp: true })
-    //       }
-    //       containerRef={containerRef}
-    //     >
-    //       <div data-scroll-container ref={containerRef}>
-    //         <AnimatePresence initial={false} exitBeforeEnter>
-    //           <motion.div
-    //             key={router.route}
-    //             initial="hidden"
-    //             animate="enter"
-    //             exit="exit"
-    //             variants={variants}
-    //             transition={{ type: "linear" }}
-    //             className="page-content"
-    //           >
-    //             <Component {...pageProps} key={router.route} />
-    //           </motion.div>
-    //         </AnimatePresence>
-    //       </div>
-    //     </RLSProvider>
-    //   </Layout>
-    // </>
-
     <>
       <Context.Provider value={appValue}>
         <Cursor />
         <Layout>
-          {/* {!router.pathname.match(regex) ? ( */}
           {router.pathname == "/projets" ? (
             <>
               <AnimatePresence initial={false} exitBeforeEnter>

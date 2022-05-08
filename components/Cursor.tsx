@@ -23,7 +23,6 @@ export const Cursor = () => {
         onComplete: () => {
           gsap.to(cursor.current, {
             duration: 0.2,
-            // scale: mouseIsHover ? 3 : 1,
           });
           mouseIsHover
             ? cursorWraper.current.classList.add("is-hover")
@@ -33,7 +32,6 @@ export const Cursor = () => {
 
       if ((e.target as HTMLElement).closest(cursorHoverElems)) {
         mouseIsHover = true;
-        // cursorCircle.current.classList.add("is-hover");
         if ((e.target as HTMLElement).getAttribute("data-cursor-label")) {
           cursor.current.classList.add("has-label");
           label.current.innerHTML = (e.target as HTMLElement).getAttribute(
@@ -42,7 +40,6 @@ export const Cursor = () => {
         }
       } else {
         mouseIsHover = false;
-        // cursorCircle.current.classList.remove("is-hover");
         cursor.current.classList.remove("has-label");
         label.current.innerHTML = "";
       }
