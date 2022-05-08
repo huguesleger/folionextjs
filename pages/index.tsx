@@ -117,25 +117,42 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
                     <h3 className="title-work">Easy Music Project</h3>
                     <p className="type-work">Type d&apos;intervention</p>
                     <Link href="#">
-                      <a className="link-work">Voir le projet</a>
+                      <a className="wrap-cta">
+                        <span className="link-underline link-white">
+                          Voir le projet
+                        </span>
+                        <span className="link-arrow">
+                          <Image
+                            src="/images/link-arrow-white.svg"
+                            layout="intrinsic"
+                            width={24}
+                            height={24}
+                            alt="Voir le site"
+                          />
+                        </span>
+                      </a>
                     </Link>
                   </div>
                 </div>
                 <div className="col-work">
                   <div className="wrap-img">
-                    <Link href="#">
-                      <a className="link-img-work">
-                        <Image
-                          className="img-work"
-                          src="/images/post-home.jpg"
-                          layout="responsive"
-                          width={1280}
-                          height={2079}
-                          alt=""
-                          data-cursor-label="Voir le projet"
-                        />
-                      </a>
-                    </Link>
+                    <div className="inner-img">
+                      <Link href="#">
+                        <a className="link-img-work">
+                          <Image
+                            className="img-work"
+                            src="/images/post-home.jpg"
+                            layout="responsive"
+                            width={1280}
+                            height={2079}
+                            alt=""
+                            data-cursor-label="Voir le projet"
+                            data-scroll
+                            data-scroll-speed="-3"
+                          />
+                        </a>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -150,20 +167,42 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
                     <h3 className="title-work">Viz360</h3>
                     <p className="type-work">Type d&apos;intervention</p>
                     <Link href="#">
-                      <a className="link-work">Voir le projet</a>
+                      <a className="wrap-cta">
+                        <span className="link-underline link-white">
+                          Voir le projet
+                        </span>
+                        <span className="link-arrow">
+                          <Image
+                            src="/images/link-arrow-white.svg"
+                            layout="intrinsic"
+                            width={24}
+                            height={24}
+                            alt="Voir le site"
+                          />
+                        </span>
+                      </a>
                     </Link>
                   </div>
                 </div>
                 <div className="col-work">
-                  <div className="wrap-img" data-cursor-label="a">
-                    <Image
-                      className="img-work"
-                      src="/images/post-home.jpg"
-                      layout="responsive"
-                      width={1280}
-                      height={2079}
-                      alt=""
-                    />
+                  <div className="wrap-img">
+                    <div className="inner-img">
+                      <Link href="#">
+                        <a className="link-img-work">
+                          <Image
+                            className="img-work"
+                            src="/images/post-home.jpg"
+                            layout="responsive"
+                            width={1280}
+                            height={2079}
+                            alt=""
+                            data-cursor-label="Voir le projet"
+                            data-scroll
+                            data-scroll-speed="-3"
+                          />
+                        </a>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -178,20 +217,42 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
                     <h3 className="title-work">Serv&apos;eat</h3>
                     <p className="type-work">Type d&apos;intervention</p>
                     <Link href="#">
-                      <a className="link-work">Voir le projet</a>
+                      <a className="wrap-cta">
+                        <span className="link-underline link-white">
+                          Voir le projet
+                        </span>
+                        <span className="link-arrow">
+                          <Image
+                            src="/images/link-arrow-white.svg"
+                            layout="intrinsic"
+                            width={24}
+                            height={24}
+                            alt="Voir le site"
+                          />
+                        </span>
+                      </a>
                     </Link>
                   </div>
                 </div>
                 <div className="col-work">
                   <div className="wrap-img">
-                    <Image
-                      className="img-work"
-                      src="/images/post-home.jpg"
-                      layout="responsive"
-                      width={1280}
-                      height={2079}
-                      alt=""
-                    />
+                    <div className="inner-img">
+                      <Link href="#">
+                        <a className="link-img-work">
+                          <Image
+                            className="img-work"
+                            src="/images/post-home.jpg"
+                            layout="responsive"
+                            width={1280}
+                            height={2079}
+                            alt=""
+                            data-cursor-label="Voir le projet"
+                            data-scroll
+                            data-scroll-speed="-3"
+                          />
+                        </a>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -201,10 +262,18 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
       </div>
       <div className="section home-contact" data-scroll-section>
         <div className="container">
-          <h2>Connectons-nous</h2>
-          <Link href="mailto:contactme@hl-developerz.com">
-            <a className="link-mail">contactme@hl-developerz.com</a>
-          </Link>
+          <div className="wrap-title">
+            <h2 className="title-contact" data-scroll data-scroll-speed="2">
+              Connectons-nous
+            </h2>
+          </div>
+          <div className="wrap-mail">
+            <Link href="mailto:contactme@hl-developerz.com">
+              <a className="link-mail" data-scroll data-scroll-speed="6">
+                contactme@hl-developerz.com
+              </a>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

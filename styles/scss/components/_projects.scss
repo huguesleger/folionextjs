@@ -113,6 +113,17 @@
           opacity: 1;
         }
       }
+      .inner-img {
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        transform: scale(1);
+        transition: 0.5s transform ease;
+        img {
+          transform: scale(1);
+          transition: 0.5s transform ease;
+        }
+      }
     }
     .swiper-slide-next {
       transform: scale(0.75) translate(17%, 0px);
@@ -120,16 +131,5 @@
     .swiper-slide-prev {
       transform: scale(0.75) translate(-17%, 0px);
     }
-  }
-}
-.inner-img {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  transform: scale(1);
-  transition: 0.5s transform ease;
-  img {
-    transform: scale(1);
-    transition: 0.5s transform ease;
   }
 }

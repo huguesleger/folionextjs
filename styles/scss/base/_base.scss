@@ -44,30 +44,44 @@ body {
   color: #fff;
 }
 
-.link-underline {
-  position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    opacity: 1;
-    transform: scaleX(0);
-    transform-origin: 0 50%;
-    transition: transform 0.5s;
-    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-    background-color: transparent;
-  }
-  &:hover {
+.wrap-cta {
+  display: flex;
+  .link-underline {
+    position: relative;
     &::after {
-      transform: scaleX(1);
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      opacity: 1;
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      transition: transform 0.5s;
+      transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+      background-color: transparent;
+    }
+    &:hover {
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+    &.link-white {
+      &::after {
+        background-color: #fff;
+      }
     }
   }
-  &.link-white {
-    &::after {
-      background-color: #fff;
+  .link-arrow {
+    width: 24px;
+    height: 24px;
+    margin-left: 1rem;
+    transition: 0.2s transform ease-in-out;
+  }
+  &:hover {
+    .link-arrow {
+      transform: translateX(5px);
     }
   }
 }

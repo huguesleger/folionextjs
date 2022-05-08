@@ -27,20 +27,6 @@
           border-bottom: 1px solid #fff;
           padding-bottom: 1rem;
         }
-        .wrap-cta {
-          display: flex;
-          .link-arrow {
-            width: 24px;
-            height: 24px;
-            margin-left: 1rem;
-            transition: 0.2s transform ease-in-out;
-          }
-          &:hover {
-            .link-arrow {
-              transform: translateX(5px);
-            }
-          }
-        }
       }
     }
   }
