@@ -26,11 +26,9 @@ const variants = {
 const CardDetails: (props: {
   projet: GraphQLResponse.Projet;
   projets: GraphQLResponse.Projet[];
-  other: GraphQLResponse.Projet[];
 }) => JSX.Element = (props: {
   projet: GraphQLResponse.Projet;
   projets: GraphQLResponse.Projet[];
-  other: GraphQLResponse.Projet[];
 }) => {
   const projets: GraphQLResponse.Projet[] = props.projets;
 
@@ -38,9 +36,7 @@ const CardDetails: (props: {
   // const totalProject = projets && projets.length;
 
   const getNextpost = () => {
-    const index = projets.findIndex(
-      (el) => el.slug === props.projet.slug && el.titre === props.projet.titre
-    );
+    const index = projets.findIndex((el) => el.slug === props.projet.slug);
     if (index === (projets && projets.length) - 1) {
       return projets[0];
     } else {
@@ -49,9 +45,7 @@ const CardDetails: (props: {
   };
 
   const getPrevpost = () => {
-    const index = projets.findIndex(
-      (el) => el.slug === props.projet.slug && el.titre === props.projet.titre
-    );
+    const index = projets.findIndex((el) => el.slug === props.projet.slug);
     if (index === 0) {
       return projets[(projets && projets.length) - 1];
     } else {
@@ -326,7 +320,7 @@ export const getStaticPaths = async () => {
 
   const paths = res.allProjets.map((item) => {
     return {
-      params: { slug: item.slug, titre: item.titre },
+      params: { slug: item.slug },
     };
   });
 
@@ -340,13 +334,10 @@ export const getStaticPaths = async () => {
 export async function getStaticProps({ params }) {
   const res = (await request(Query.QUERY_PROJET_BY_SLUG, {
     slug: params.slug,
-    titre: params.titre,
   })) as GraphQLResponse.Projet;
   const resAll = (await request(
-    Query.QUERY_CARD_PROJETS
+    Query.QUERY_SLUGS_PROJETS
   )) as GraphQLResponse.AllProjets;
-
-  let others = [] as GraphQLResponse.Projet[];
 
   if (!res && !resAll) {
     return {
@@ -361,7 +352,6 @@ export async function getStaticProps({ params }) {
     props: {
       projet: res.projet,
       projets: (resAll && resAll.allProjets) || [],
-      other: others,
     },
     revalidate: 1,
   };
