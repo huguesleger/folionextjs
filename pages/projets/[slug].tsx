@@ -289,9 +289,9 @@ const CardDetails: (props: {
               <Link href={`/projets/${getPrevpost().slug}`}>
                 <a className="">
                   <span className="">Prev: </span>
-                  {props.projet && (
-                    <span className="">{getPrevpost().titre}</span>
-                  )}
+                  <span className="">
+                    {props.projet && getPrevpost().titre}
+                  </span>
                 </a>
               </Link>
             </div>
@@ -299,9 +299,9 @@ const CardDetails: (props: {
               <Link href={`/projets/${getNextpost().slug}`}>
                 <a className="" rel="prev">
                   <span className="">Next: </span>
-                  {props.projet && (
-                    <span className="">{getNextpost().titre}</span>
-                  )}
+                  <span className="">
+                    {props.projet && getNextpost().titre}
+                  </span>
                 </a>
               </Link>
             </div>
