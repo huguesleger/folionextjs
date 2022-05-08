@@ -5,7 +5,8 @@ export default function Footer(): JSX.Element {
     <div className="footer" data-scroll-section>
       <div className="inner-footer">
         <span className="copyright">
-          &copy; HL Developerz 2022. Tous droit réservés
+          <i className="far fa-copyright"></i> HL Developerz 2022. Tous droit
+          réservés
         </span>
         <div className="wrap-social">
           <Link href="#">
