@@ -131,7 +131,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
                     data-scroll-target="#work1"
                   >
                     <h3 className="title-work">Easy Music Project</h3>
-                    <p className="type-work">Type d'intervention</p>
+                    <p className="type-work">Type d&apos;intervention</p>
                     <Link href="#">
                       <a className="link-work">Voir le projet</a>
                     </Link>
@@ -164,7 +164,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
                     data-scroll-target="#work2"
                   >
                     <h3 className="title-work">Viz360</h3>
-                    <p className="type-work">Type d'intervention</p>
+                    <p className="type-work">Type d&apos;intervention</p>
                     <Link href="#">
                       <a className="link-work">Voir le projet</a>
                     </Link>
@@ -191,8 +191,8 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
                     data-scroll-sticky
                     data-scroll-target="#work3"
                   >
-                    <h3 className="title-work">Serv'eat</h3>
-                    <p className="type-work">Type d'intervention</p>
+                    <h3 className="title-work">Serv&apos;eat</h3>
+                    <p className="type-work">Type d&apos;intervention</p>
                     <Link href="#">
                       <a className="link-work">Voir le projet</a>
                     </Link>
