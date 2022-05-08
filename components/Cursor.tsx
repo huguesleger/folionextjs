@@ -3,42 +3,59 @@ import gsap from "gsap";
 
 export const Cursor = () => {
   const cursorCircle = useRef(null);
-  const cursorHoverElems = "a, button, .btn-main";
+  const cursor = useRef(null);
+  const cursorWraper = useRef(null);
+  const label = useRef(null);
+  const cursorHoverElems = "a, button, .btn-main, [data-cursor-label]";
   let mouseIsHover = false;
   useEffect(() => {
-    if (cursorCircle.current == null || cursorCircle == null) return;
+    if (cursor.current == null || cursor == null) return;
     document.addEventListener("pointermove", (e) => {
-      if (cursorCircle.current == null) return;
+      if (cursor.current == null) return;
       const tl = gsap.timeline();
-      tl.set(cursorCircle.current, {
+      tl.set(cursor.current, {
         x: e.clientX,
         y: e.clientY,
-      }).to(cursorCircle.current, {
+      }).to(cursor.current, {
         duration: 0.2,
         x: e.clientX,
         y: e.clientY,
         onComplete: () => {
-          gsap.to(cursorCircle.current, {
+          gsap.to(cursor.current, {
             duration: 0.2,
-            scale: mouseIsHover ? 3 : 1,
+            // scale: mouseIsHover ? 3 : 1,
           });
+          mouseIsHover
+            ? cursorWraper.current.classList.add("is-hover")
+            : cursorWraper.current.classList.remove("is-hover");
         },
       });
+
       if ((e.target as HTMLElement).closest(cursorHoverElems)) {
         mouseIsHover = true;
+        // cursorCircle.current.classList.add("is-hover");
+        if ((e.target as HTMLElement).getAttribute("data-cursor-label")) {
+          cursor.current.classList.add("has-label");
+          label.current.innerHTML = (e.target as HTMLElement).getAttribute(
+            "data-cursor-label"
+          );
+        }
       } else {
         mouseIsHover = false;
+        // cursorCircle.current.classList.remove("is-hover");
+        cursor.current.classList.remove("has-label");
+        label.current.innerHTML = "";
       }
     });
   }, []);
 
   return (
-    <div className="cursor">
-      <div
-        className="cursor-circle"
-        id="cursor-circle"
-        ref={cursorCircle}
-      ></div>
+    <div className="cursor" ref={cursor}>
+      <div className="cursor-wrapper" ref={cursorWraper}>
+        <div className="cursor-circle" id="cursor-circle" ref={cursorCircle}>
+          <div className="cursor-label" ref={label}></div>
+        </div>
+      </div>
     </div>
   );
 };

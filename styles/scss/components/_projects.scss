@@ -10,7 +10,7 @@
 // }
 
 .projects {
-  height: 100vh;
+  height: calc(100vh - 50px);
   &.projects-home {
     position: absolute;
     top: 0;
@@ -39,6 +39,7 @@
   .swiper {
     width: 100%;
     height: 500px;
+    margin-top: 3rem;
     .swiper-slide {
       position: relative;
       // transform: scale(0.75) translate(0, 0);

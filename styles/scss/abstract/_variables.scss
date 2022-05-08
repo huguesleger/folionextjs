@@ -1,2 +1,42 @@
+@font-face {
+  font-family: "argestadisplay";
+  src: url("/fonts/argestadisplay.woff2") format("woff2"),
+    url("/fonts/argestadisplay.woff") format("woff"),
+    url("/fonts/argestadisplay.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "bigilla";
+  src: url("/fonts/bigilla.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "bigilla-bold";
+  src: url("/fonts/bigilla-bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "loki";
+  src: url("/fonts/loki.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "novar";
+  src: url("/fonts/novar.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gallient";
+  src: url("/fonts/Gallient.ttf") format("truetype");
+}
+
+$font_gallient: "Gallient", sans-serif;
+$font_novar: "novar", sans-serif;
+$font_loki: "loki", sans-serif;
+$font_bigilla: "bigilla", sans-serif;
+$font_bigilla_bold: "bigilla-bold", sans-serif;
+$font_argesta: "argestadisplay", sans-serif;
 $font_poppins: "Poppins", sans-serif;
 $font_nunito: "Nunito Sans", sans-serif;
+
+$dark_grey: #171717;

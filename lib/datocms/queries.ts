@@ -60,7 +60,7 @@ query MyQuery {
     id
     slug
     titre
-    imageHeader {
+    imageSlider {
       alt
       height
       id
@@ -76,15 +76,61 @@ query MyQuery ($slug: String){
   projet(filter: {slug: {eq: $slug}}) {
     id
     titre
-    description
-    imageHeader {
+    slug
+    annee
+    titreCharte
+    descriptionCharte
+    descriptionProjet
+    imageCharte {
+      id
+      _modelApiKey
+      image {
+        alt
+        height
+        id
+        url
+        width
+      }
+    }
+    imageFull {
+      alt
+      height
+      id
+      width
+      url
+    }
+    imagePage {
+      id
+      _modelApiKey
+      image {
+        alt
+        height
+        id
+        url
+        width
+      }
+    }
+    imageTemplateMobile {
       alt
       height
       id
       url
       width
     }
-    slug
+    imageTemplateDesktop {
+      alt
+      height
+      id
+      url
+      width
+    }
+    intervention
+    siteWeb
+    description {
+      value
+    }
+    texteProjet
+    descriptionProjet
   }
 }
 `;

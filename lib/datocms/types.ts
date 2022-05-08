@@ -1,3 +1,5 @@
+import { StructuredText } from "datocms-structured-text-utils";
+
 export namespace GraphQLResponse {
   export interface HomePage {
     home: Home;
@@ -35,8 +37,20 @@ export namespace GraphQLResponse {
     id: string;
     slug: string;
     titre: string;
-    description: string;
-    imageHeader: Image;
+    imageSlider: Image;
+    annee: string;
+    titreCharte: string;
+    descriptionCharte: string;
+    texteProjet: string;
+    descriptionProjet: string;
+    intervention: string;
+    siteWeb: string;
+    imageCharte: ImageCharte[];
+    imageFull: Image;
+    imagePage: ImagePage[];
+    imageTemplateDesktop: Image;
+    imageTemplateMobile: Image;
+    description: StructuredText<any>;
   }
 
   export interface Home {
@@ -51,6 +65,15 @@ export namespace GraphQLResponse {
   // }
 }
 
+interface ImageCharte {
+  id: string;
+  image: Image;
+}
+
+interface ImagePage {
+  id: string;
+  image: Image;
+}
 interface Image {
   id: string;
   alt: string;

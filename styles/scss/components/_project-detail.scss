@@ -1,0 +1,111 @@
+.project-content {
+  .project-section {
+    padding: 4rem 0;
+  }
+  .project-header {
+    min-height: 100vh;
+    background-color: $dark_grey;
+    color: #fff;
+    .title-project {
+      font-size: 14vw;
+      font-family: $font_gallient;
+      text-transform: uppercase;
+      padding-top: 12rem;
+      line-height: 1;
+    }
+    .wrap-infos {
+      width: 100%;
+      display: flex;
+      padding: 8rem 0 2rem;
+      .block-info {
+        width: 33.333%;
+        margin-right: 6rem;
+        .title-info {
+          font-size: 0.813rem;
+          font-weight: 100;
+          margin-bottom: 2rem;
+          border-bottom: 1px solid #fff;
+          padding-bottom: 1rem;
+        }
+        .wrap-cta {
+          display: flex;
+          .link-arrow {
+            width: 24px;
+            height: 24px;
+            margin-left: 1rem;
+            transition: 0.2s transform ease-in-out;
+          }
+          &:hover {
+            .link-arrow {
+              transform: translateX(5px);
+            }
+          }
+        }
+      }
+    }
+  }
+  //   .project-img-full {
+  //     height: 100vh;
+  //     .img-inner {
+  //       overflow-y: hidden;
+  //       height: 100%;
+  //       .bg-img {
+  //         height: 100%;
+  //         background-size: cover;
+  //         background-position: center;
+  //       }
+  //     }
+  //   }
+  .project-img-full {
+    padding-bottom: 4rem;
+    .inner-img-full {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      &::before {
+        content: "";
+        display: block;
+        padding-top: 60%;
+      }
+    }
+  }
+  .project-description {
+    .inner-txt {
+      padding: 0 5rem;
+      font-size: 1.5rem;
+      font-weight: 100;
+      strong {
+        font-weight: bold;
+        font-family: $font_gallient;
+        text-transform: uppercase;
+      }
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  .project-charte {
+    .wrap-img-charte {
+      display: flex;
+      flex-wrap: wrap;
+      .block-img {
+        width: 50%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        &:nth-child(odd) {
+          padding-top: 3rem;
+        }
+      }
+    }
+  }
+  .project-template-mobile {
+    background-color: $dark_grey;
+    padding-bottom: 0;
+    .wrap-img-mobile {
+      height: 600px;
+      overflow: hidden;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  }
+}

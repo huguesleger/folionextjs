@@ -6,10 +6,8 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import "swiper/css";
-// import "swiper/swiper-bundle.min.css";
-// import "swiper/swiper.min.css";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ProjetPage: NextPage = (props) => {
   // const ProjetPage: (props: {
@@ -43,7 +41,7 @@ const ProjetPage: NextPage = (props) => {
                       </div>
                       <div className="inner-img">
                         <Image
-                          src={projet.imageHeader.url}
+                          src={projet.imageSlider.url}
                           layout="fill"
                           objectFit="cover"
                           quality={100}
@@ -61,145 +59,6 @@ const ProjetPage: NextPage = (props) => {
               );
             })}
           </Swiper>
-
-          {/* <Swiper
-            spaceBetween={150}
-            slidesPerView={3}
-            centeredSlides={true}
-            loop={true}
-            autoHeight={false}
-            grabCursor={true}
-            observer={true}
-          >
-            <SwiperSlide>
-              <Link href="">
-                <a>
-                  <div className="inner-title title-white">
-                    <span className="name">
-                      <span>test</span>
-                    </span>
-                  </div>
-                  <div className="inner-img">
-                    <Image
-                      src="/images/mtp.svg"
-                      layout="fill"
-                      objectFit="cover"
-                      quality={100}
-                      alt="montpellier"
-                    />
-                  </div>
-                  <div className="outer-title">
-                    <div className="name">
-                      <span>test</span>
-                    </div>
-                  </div>
-                </a>
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Link href="">
-                <a>
-                  <div className="inner-title title-white">
-                    <span className="name">
-                      <span>test</span>
-                    </span>
-                  </div>
-                  <div className="inner-img">
-                    <Image
-                      src="/images/mtp.svg"
-                      layout="fill"
-                      objectFit="cover"
-                      quality={100}
-                      alt="montpellier"
-                    />
-                  </div>
-                  <div className="outer-title">
-                    <div className="name">
-                      <span>test</span>
-                    </div>
-                  </div>
-                </a>
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Link href="">
-                <a>
-                  <div className="inner-title title-white">
-                    <span className="name">
-                      <span>test</span>
-                    </span>
-                  </div>
-                  <div className="inner-img">
-                    <Image
-                      src="/images/mtp.svg"
-                      layout="fill"
-                      objectFit="cover"
-                      quality={100}
-                      alt="montpellier"
-                    />
-                  </div>
-                  <div className="outer-title">
-                    <div className="name">
-                      <span>test</span>
-                    </div>
-                  </div>
-                </a>
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Link href="">
-                <a>
-                  <div className="inner-title title-white">
-                    <span className="name">
-                      <span>test</span>
-                    </span>
-                  </div>
-                  <div className="inner-img">
-                    <Image
-                      src="/images/mtp.svg"
-                      layout="fill"
-                      objectFit="cover"
-                      quality={100}
-                      alt="montpellier"
-                    />
-                  </div>
-                  <div className="outer-title">
-                    <div className="name">
-                      <span>test</span>
-                    </div>
-                  </div>
-                </a>
-              </Link>
-            </SwiperSlide>
-          </Swiper> */}
-
-          {/* {projets.map((projet) => {
-            return (
-              <Link key={projet.slug} href={"/projets/" + projet.slug}>
-                <a>
-                  <div className="inner-title title-white">
-                    <span className="name">
-                      <span>{projet.titre}</span>
-                    </span>
-                  </div>
-                  <div className="inner-img">
-                    <Image
-                      src={projet.imageHeader.url}
-                      layout="fill"
-                      objectFit="cover"
-                      quality={100}
-                      alt="montpellier"
-                    />
-                  </div>
-                  <div className="outer-title">
-                    <div className="name">
-                      <span>{projet.titre}</span>
-                    </div>
-                  </div>
-                </a>
-              </Link>
-            );
-          })} */}
         </div>
       </div>
     </>
