@@ -32,31 +32,28 @@ const CardDetails: (props: {
   projets: [GraphQLResponse.Projet];
   other: GraphQLResponse.Projet[];
 }) => {
-  const projets: [GraphQLResponse.Projet] = props.projets;
+  // const projets: [GraphQLResponse.Projet] = props.projets;
+
   // const totalProjet = projets.length;
   // const totalProject = projets && projets.length;
 
-  const getNextpost = () => {
-    const index = projets.findIndex(
-      (el) => el.slug === props.projet.slug && el.titre === props.projet.titre
-    );
-    if (index === (projets && projets.length) - 1) {
-      return projets[0];
-    } else {
-      return projets[projets && index + 1];
-    }
-  };
+  // const getNextpost = () => {
+  //   const index = projets.findIndex((el) => el.slug === props.projet.slug);
+  //   if (index === (projets && projets.length) - 1) {
+  //     return projets[0];
+  //   } else {
+  //     return projets[index + 1];
+  //   }
+  // };
 
-  const getPrevpost = () => {
-    const index = projets.findIndex(
-      (el) => el.slug === props.projet.slug && el.titre === props.projet.titre
-    );
-    if (index === 0) {
-      return projets[(projets && projets.length) - 1];
-    } else {
-      return projets[projets && index - 1];
-    }
-  };
+  // const getPrevpost = () => {
+  //   const index = projets.findIndex((el) => el.slug === props.projet.slug);
+  //   if (index === 0) {
+  //     return projets[(projets && projets.length) - 1];
+  //   } else {
+  //     return projets[index - 1];
+  //   }
+  // };
 
   return (
     <>
@@ -292,20 +289,20 @@ const CardDetails: (props: {
         <div className="project-section project-items" data-scroll-section>
           <div className="container">
             <div className="prev">
-              <Link href={`/projets/${getPrevpost().slug}`}>
+              {/* <Link href={`/projets/${getPrevpost().slug}`}>
                 <a className="">
                   <span className="">Prev: </span>
                   <span className="">{getPrevpost().titre}</span>
                 </a>
-              </Link>
+              </Link> */}
             </div>
             <div className="next">
-              <Link href={`/projets/${getNextpost().slug}`}>
+              {/* <Link href={`/projets/${getNextpost().slug}`}>
                 <a className="" rel="prev">
                   <span className="">Next: </span>
                   <span className="">{getNextpost().titre}</span>
                 </a>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
