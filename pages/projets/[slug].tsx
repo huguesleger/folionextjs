@@ -69,7 +69,9 @@ const CardDetails: (props: {
       <div className="project-content">
         <div className="project-header" data-scroll-section>
           <div className="container">
-            <h1 className="title-project">{props.projet.titre}</h1>
+            <h1 className="title-project">
+              {props.projet.titre && props.projet.titre}
+            </h1>
             <div className="wrap-infos">
               <div className="block-info">
                 <p className="title-info">Site web</p>
