@@ -33,11 +33,12 @@ const CardDetails: (props: {
   other: GraphQLResponse.Projet[];
 }) => {
   const projets: [GraphQLResponse.Projet] = props.projets;
-  const totalProjet = projets.length;
+  // const totalProjet = projets.length;
+  // const totalProject = projets && projets.length;
 
   const getNextpost = () => {
     const index = projets.findIndex((el) => el.slug === props.projet.slug);
-    if (index === totalProjet - 1) {
+    if (index === (projets && projets.length) - 1) {
       return projets[0];
     } else {
       return projets[index + 1];
@@ -47,7 +48,7 @@ const CardDetails: (props: {
   const getPrevpost = () => {
     const index = projets.findIndex((el) => el.slug === props.projet.slug);
     if (index === 0) {
-      return projets[totalProjet - 1];
+      return projets[(projets && projets.length) - 1];
     } else {
       return projets[index - 1];
     }
