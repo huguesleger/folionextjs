@@ -288,22 +288,8 @@ const CardDetails: (props: {
         </div>
         <div className="project-section project-items" data-scroll-section>
           <div className="container">
-            <div className="prev">
-              {/* <Link href={`/projets/${getPrevpost().slug}`}>
-                <a className="">
-                  <span className="">Prev: </span>
-                  <span className="">{getPrevpost().titre}</span>
-                </a>
-              </Link> */}
-            </div>
-            <div className="next">
-              {/* <Link href={`/projets/${getNextpost().slug}`}>
-                <a className="" rel="prev">
-                  <span className="">Next: </span>
-                  <span className="">{getNextpost().titre}</span>
-                </a>
-              </Link> */}
-            </div>
+            <div className="prev"></div>
+            <div className="next"></div>
           </div>
         </div>
       </div>
@@ -322,7 +308,7 @@ export const getStaticPaths = async () => {
 
   const paths = res.allProjets.map((item) => {
     return {
-      params: { slug: item.slug, titre: item.titre },
+      params: { slug: item.slug },
     };
   });
 
@@ -336,7 +322,6 @@ export const getStaticPaths = async () => {
 export async function getStaticProps({ params }) {
   const res = (await request(Query.QUERY_PROJET_BY_SLUG, {
     slug: params.slug,
-    titre: params.titre,
   })) as GraphQLResponse.Projet;
   const resAll = (await request(
     Query.QUERY_CARD_PROJETS
