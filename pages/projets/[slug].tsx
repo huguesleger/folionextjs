@@ -289,7 +289,7 @@ const CardDetails: (props: {
               <Link href={`/projets/${getPrevpost().slug}`}>
                 <a className="">
                   <span className="">Prev: </span>
-                  <span className="">{props && getPrevpost().titre}</span>
+                  <span className="">{getPrevpost().titre}</span>
                 </a>
               </Link>
             </div>
@@ -297,7 +297,7 @@ const CardDetails: (props: {
               <Link href={`/projets/${getNextpost().slug}`}>
                 <a className="" rel="prev">
                   <span className="">Next: </span>
-                  <span className="">{props && getNextpost().titre}</span>
+                  <span className="">{getNextpost().titre}</span>
                 </a>
               </Link>
             </div>
@@ -334,9 +334,9 @@ export async function getStaticProps({ params }) {
   const res = (await request(Query.QUERY_PROJET_BY_SLUG, {
     slug: params.slug,
   })) as GraphQLResponse.Projet;
-  const resAll = (await request(
-    Query.QUERY_CARD_PROJETS
-  )) as GraphQLResponse.AllProjets;
+  const resAll = (await request(Query.QUERY_CARD_PROJETS, {
+    titre: params.titre,
+  })) as GraphQLResponse.AllProjets;
 
   let others = [] as GraphQLResponse.Projet[];
 
