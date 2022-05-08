@@ -339,7 +339,7 @@ export async function getStaticProps({ params }) {
 
   let others = [] as GraphQLResponse.Projet[];
 
-  if (!res) {
+  if (!res && !resAll) {
     return {
       redirect: {
         destination: "/",
