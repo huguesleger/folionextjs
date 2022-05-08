@@ -73,8 +73,8 @@ query MyQuery {
 `;
 
 const QUERY_PROJET_BY_SLUG = `
-query MyQuery ($slug: String){
-  projet(filter: {slug: {eq: $slug}}) {
+query MyQuery ($slug: String, $titre: String){
+  projet(filter: {slug: {eq: $slug}, titre: {eq: $titre}}) {
     id
     titre
     slug
