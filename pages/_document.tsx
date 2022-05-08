@@ -22,6 +22,8 @@ class MyDocument extends Document {
           <script
             src="https://kit.fontawesome.com/4f54ea7bd1.js"
             crossOrigin="anonymous"
+            async
+            defer
           ></script>
         </Head>
         <body>
