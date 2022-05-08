@@ -320,13 +320,13 @@ export const getStaticPaths = async () => {
 
   const paths = res.allProjets.map((item) => {
     return {
-      params: { slug: item.slug, titre: item.titre },
+      params: { slug: item.slug },
     };
   });
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
@@ -336,7 +336,7 @@ export async function getStaticProps({ params }) {
     slug: params.slug,
   })) as GraphQLResponse.Projet;
   const resAll = (await request(
-    Query.QUERY_SLUGS_PROJETS
+    Query.QUERY_CARD_PROJETS
   )) as GraphQLResponse.AllProjets;
 
   if (!res && !resAll) {
