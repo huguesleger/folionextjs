@@ -91,11 +91,8 @@
     transition: color 0.7s ease-in-out;
     &.bg-dark {
       color: #fff !important;
-      a {
-        transition: color 0.7s ease-in-out;
-        color: #fff;
-      }
       .intro .intro-enter .arrow-enter svg {
+        transition: fill 0.7s ease-in-out;
         fill: #fff;
       }
     }

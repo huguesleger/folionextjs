@@ -57,12 +57,23 @@ export namespace GraphQLResponse {
     id: string;
     titre: string;
     image: Image;
+    lastWork: LastWork[];
   }
 
   // export interface Projet {
   //   id: string;
   //   slider: Slider[];
   // }
+}
+
+interface LastWork {
+  id: string;
+  _modelApiKey: string;
+  titre: string;
+  typeProjet: string;
+  slug: string;
+  image: Image;
+  target: number;
 }
 
 interface ImageCharte {

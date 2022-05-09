@@ -11,6 +11,21 @@ query MyQuery {
         url
         width
       }
+      lastWork {
+        _modelApiKey
+        id
+        titre
+        typeProjet
+        target
+        slug
+        image {
+          alt
+          height
+          id
+          url
+          width
+        }
+      }
     }
   }
   `;

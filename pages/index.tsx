@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import formatTxt from "../lib/functions/formatTxt";
 import { useState } from "react";
+import LastWork from "../components/Home/LastWork";
 
 const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
   home: GraphQLResponse.Home;
@@ -13,7 +14,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
   return (
     <div className="homepage">
       <Preloader />
-      <div className="intro" id="intro" data-scroll-section>
+      <div className="intro container" id="intro" data-scroll-section>
         <div className="intro-title">
           <div className="title-inner">
             <h1 className="title">{formatTxt(props.home.titre)}</h1>
@@ -106,156 +107,20 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
           </div>
           <div className="container">
             <div className="wrap-works" id="wrapWorks">
-              <div className="inner-work" id="work1">
-                <div className="col-work-infos">
-                  <div
-                    className="wrap-infos"
-                    data-scroll
-                    data-scroll-sticky
-                    data-scroll-target="#work1"
-                  >
-                    <h3 className="title-work">Easy Music Project</h3>
-                    <p className="type-work">Type d&apos;intervention</p>
-                    <Link href="#">
-                      <a className="wrap-cta">
-                        <span className="link-underline link-white">
-                          Voir le projet
-                        </span>
-                        <span className="link-arrow">
-                          <Image
-                            src="/images/link-arrow-white.svg"
-                            layout="intrinsic"
-                            width={24}
-                            height={24}
-                            alt="Voir le site"
-                          />
-                        </span>
-                      </a>
-                    </Link>
+              {props.home.lastWork.map((el, index) => {
+                index = index + 1;
+                return (
+                  <div className="inner-work" id={`work${index}`} key={el.id}>
+                    <LastWork
+                      titre={el.titre}
+                      slug={el.slug}
+                      image={el.image}
+                      typeProjet={el.typeProjet}
+                      target={el.target}
+                    />
                   </div>
-                </div>
-                <div className="col-work">
-                  <div className="wrap-img">
-                    <div className="inner-img">
-                      <Link href="#">
-                        <a className="link-img-work">
-                          <Image
-                            className="img-work"
-                            src="/images/post-home.jpg"
-                            layout="responsive"
-                            width={1280}
-                            height={2079}
-                            alt=""
-                            data-cursor-label="Voir le projet"
-                            data-scroll
-                            data-scroll-speed="-3"
-                          />
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="inner-work" id="work2">
-                <div className="col-work-infos">
-                  <div
-                    className="wrap-infos"
-                    data-scroll
-                    data-scroll-sticky
-                    data-scroll-target="#work2"
-                  >
-                    <h3 className="title-work">Viz360</h3>
-                    <p className="type-work">Type d&apos;intervention</p>
-                    <Link href="#">
-                      <a className="wrap-cta">
-                        <span className="link-underline link-white">
-                          Voir le projet
-                        </span>
-                        <span className="link-arrow">
-                          <Image
-                            src="/images/link-arrow-white.svg"
-                            layout="intrinsic"
-                            width={24}
-                            height={24}
-                            alt="Voir le site"
-                          />
-                        </span>
-                      </a>
-                    </Link>
-                  </div>
-                </div>
-                <div className="col-work">
-                  <div className="wrap-img">
-                    <div className="inner-img">
-                      <Link href="#">
-                        <a className="link-img-work">
-                          <Image
-                            className="img-work"
-                            src="/images/post-home.jpg"
-                            layout="responsive"
-                            width={1280}
-                            height={2079}
-                            alt=""
-                            data-cursor-label="Voir le projet"
-                            data-scroll
-                            data-scroll-speed="-3"
-                          />
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="inner-work" id="work3">
-                <div className="col-work-infos">
-                  <div
-                    className="wrap-infos"
-                    data-scroll
-                    data-scroll-sticky
-                    data-scroll-target="#work3"
-                  >
-                    <h3 className="title-work">Serv&apos;eat</h3>
-                    <p className="type-work">Type d&apos;intervention</p>
-                    <Link href="#">
-                      <a className="wrap-cta">
-                        <span className="link-underline link-white">
-                          Voir le projet
-                        </span>
-                        <span className="link-arrow">
-                          <Image
-                            src="/images/link-arrow-white.svg"
-                            layout="intrinsic"
-                            width={24}
-                            height={24}
-                            alt="Voir le site"
-                          />
-                        </span>
-                      </a>
-                    </Link>
-                  </div>
-                </div>
-                <div className="col-work">
-                  <div className="wrap-img">
-                    <div className="inner-img">
-                      <Link href="#">
-                        <a className="link-img-work">
-                          <Image
-                            className="img-work"
-                            src="/images/post-home.jpg"
-                            layout="responsive"
-                            width={1280}
-                            height={2079}
-                            alt=""
-                            data-cursor-label="Voir le projet"
-                            data-scroll
-                            data-scroll-speed="-3"
-                          />
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -268,11 +133,11 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
             </h2>
           </div>
           <div className="wrap-mail">
-            <Link href="mailto:contactme@hl-developerz.com">
-              <a className="link-mail" data-scroll data-scroll-speed="6">
-                contactme@hl-developerz.com
-              </a>
-            </Link>
+            <div className="link-mail" data-scroll data-scroll-speed="6">
+              <Link href="mailto:contactme@hl-developerz.com">
+                <a>contactme@hl-developerz.com</a>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
