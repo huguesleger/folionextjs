@@ -57,6 +57,8 @@ export namespace GraphQLResponse {
     id: string;
     titre: string;
     image: Image;
+    titleLastProject: string;
+    subtitleLastProject: string;
     lastWork: LastWork[];
   }
 

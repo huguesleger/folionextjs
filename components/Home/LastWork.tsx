@@ -37,13 +37,14 @@ const LastWork = ({
             <a className="wrap-cta">
               <span className="link-underline link-white">Voir le projet</span>
               <span className="link-arrow">
-                <Image
-                  src="/images/link-arrow-white.svg"
-                  layout="intrinsic"
-                  width={24}
-                  height={24}
-                  alt="Voir le site"
-                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="395.36"
+                  height="302.4"
+                  viewBox="0 0 395.36 302.4"
+                >
+                  <path d="M220.08,23.52,331,134.4H0V168H331L220.08,278.88l24.08,23.52,151.2-151.2L244.16,0Z" />
+                </svg>
               </span>
             </a>
           </Link>

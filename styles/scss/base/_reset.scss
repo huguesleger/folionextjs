@@ -70,9 +70,6 @@ a {
   text-decoration: inherit;
   color: inherit;
 }
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
 
 b,
 strong {

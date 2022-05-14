@@ -11,6 +11,8 @@ query MyQuery {
         url
         width
       }
+      titleLastProject
+      subtitleLastProject
       lastWork {
         _modelApiKey
         id

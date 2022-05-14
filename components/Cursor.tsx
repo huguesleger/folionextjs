@@ -6,7 +6,8 @@ export const Cursor = () => {
   const cursor = useRef(null);
   const cursorWraper = useRef(null);
   const label = useRef(null);
-  const cursorHoverElems = "a, button, .btn-main, [data-cursor-label]";
+  const cursorHoverElems =
+    "a, button, .btn-main, [data-cursor-label], [data-cursor-big]";
   let mouseIsHover = false;
   useEffect(() => {
     if (cursor.current == null || cursor == null) return;
@@ -38,9 +39,13 @@ export const Cursor = () => {
             "data-cursor-label"
           );
         }
+        if ((e.target as HTMLElement).getAttribute("data-cursor-big")) {
+          cursor.current.classList.add("has-big");
+        }
       } else {
         mouseIsHover = false;
         cursor.current.classList.remove("has-label");
+        cursor.current.classList.remove("has-big");
         label.current.innerHTML = "";
       }
     });

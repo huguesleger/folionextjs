@@ -45,9 +45,10 @@ body {
 }
 
 .wrap-cta {
-  display: flex;
+  display: inline-flex;
   .link-underline {
     position: relative;
+    color: #000;
     &::after {
       content: "";
       position: absolute;
@@ -78,6 +79,10 @@ body {
     height: 24px;
     margin-left: 1rem;
     transition: 0.2s transform ease-in-out;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
   &:hover {
     .link-arrow {

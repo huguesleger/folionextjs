@@ -29,6 +29,8 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
               width={1920}
               height={1280}
               alt="montpellier"
+              data-scroll
+              data-scroll-speed="-1"
             />
           </div>
         </div>
@@ -87,7 +89,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
               data-scroll-sticky
               data-scroll-target="#homeWorks"
             >
-              Mes projets récents
+              {props.home.titleLastProject}
             </h2>
           </div>
           <div
@@ -102,7 +104,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
               data-scroll-sticky
               data-scroll-target="#homeWorks"
             >
-              Développement front-end - Webdesign - Intégration web - Graphisme
+              {props.home.subtitleLastProject}
             </h3>
           </div>
           <div className="container">
@@ -135,7 +137,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
           <div className="wrap-mail">
             <div className="link-mail" data-scroll data-scroll-speed="6">
               <Link href="mailto:contactme@hl-developerz.com">
-                <a>contactme@hl-developerz.com</a>
+                <a data-cursor-big>contactme@hl-developerz.com</a>
               </Link>
             </div>
           </div>
