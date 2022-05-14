@@ -41,13 +41,21 @@
           position: absolute;
         }
       }
-      &:hover {
+      &:hover,
+      &.item-active {
         .item-wrap {
           .item {
             transform: translate3d(0, -50%, 0) rotateX(-90deg);
           }
           .item-hover {
             transform: translate3d(0, -100%, 0);
+          }
+        }
+      }
+      &.item-active {
+        .item-wrap {
+          .item-hover {
+            text-decoration: line-through;
           }
         }
       }

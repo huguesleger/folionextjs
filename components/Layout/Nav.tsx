@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimateSharedLayout } from "framer-motion";
-import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Navbar(): JSX.Element {
+  const router = useRouter();
+
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const handleToggle = () => {
     setIsDarkTheme(!isDarkTheme);
@@ -57,7 +59,13 @@ export default function Navbar(): JSX.Element {
         <div className="header-nav">
           <nav className="nav-items">
             <Link href="/projets">
-              <a className="item-link">
+              <a
+                className={
+                  router.pathname === "/projets"
+                    ? "item-link item-active"
+                    : "item-link"
+                }
+              >
                 <div className="item-wrap">
                   <span className="item">Projets</span>
                   <span className="item-hover">Projets</span>
@@ -65,7 +73,13 @@ export default function Navbar(): JSX.Element {
               </a>
             </Link>
             <Link href="#">
-              <a className="item-link">
+              <a
+                className={
+                  router.pathname === "/a-propos"
+                    ? "item-link item-active"
+                    : "item-link"
+                }
+              >
                 <div className="item-wrap">
                   <span className="item">A propos</span>
                   <span className="item-hover">A propos</span>
@@ -73,7 +87,13 @@ export default function Navbar(): JSX.Element {
               </a>
             </Link>
             <Link href="#">
-              <a className="item-link">
+              <a
+                className={
+                  router.pathname === "/contact"
+                    ? "item-link item-active"
+                    : "item-link"
+                }
+              >
                 <div className="item-wrap">
                   <span className="item">Contact</span>
                   <span className="item-hover">Contact</span>

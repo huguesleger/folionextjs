@@ -6,12 +6,17 @@
     min-height: 100vh;
     background-color: $dark_grey;
     color: #fff;
-    .title-project {
-      font-size: 14vw;
-      font-family: $font_gallient;
-      text-transform: uppercase;
+    .wrap-title {
       padding-top: 12rem;
-      line-height: 1;
+      .inner-title {
+        overflow: hidden;
+        .title-project {
+          font-size: 11vw;
+          font-family: $font_gallient;
+          text-transform: uppercase;
+          line-height: 1;
+        }
+      }
     }
     .wrap-infos {
       width: 100%;
@@ -20,6 +25,7 @@
       .block-info {
         width: 33.333%;
         margin-right: 6rem;
+        overflow: hidden;
         .title-info {
           font-size: 0.813rem;
           font-weight: 100;
@@ -44,7 +50,7 @@
       &::before {
         content: "";
         display: block;
-        padding-top: 60%;
+        padding-top: 55%;
       }
     }
   }

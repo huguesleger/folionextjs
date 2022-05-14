@@ -4,6 +4,8 @@ import { GraphQLResponse } from "../../lib/datocms/types";
 import Image from "next/image";
 import Link from "next/link";
 import { StructuredText } from "react-datocms";
+import HeaderProject from "../../components/Project/HeaderProject";
+import React from "react";
 
 const CardDetails: (props: {
   projet: GraphQLResponse.Projet;
@@ -36,42 +38,12 @@ const CardDetails: (props: {
     <>
       <div className="project-content">
         <div className="project-header" data-scroll-section>
-          <div className="container">
-            <h1 className="title-project">
-              {props.projet.titre && props.projet.titre}
-            </h1>
-            <div className="wrap-infos">
-              <div className="block-info">
-                <p className="title-info">Site web</p>
-                <p>
-                  <Link href={`https://${props.projet.siteWeb}`}>
-                    <a className="wrap-cta">
-                      <span className="link-underline link-white">
-                        Voir le site
-                      </span>
-                      <span className="link-arrow">
-                        <Image
-                          src="/images/link-arrow-white.svg"
-                          layout="intrinsic"
-                          width={24}
-                          height={24}
-                          alt="Voir le site"
-                        />
-                      </span>
-                    </a>
-                  </Link>
-                </p>
-              </div>
-              <div className="block-info">
-                <p className="title-info">Intervention</p>
-                <p>{props.projet.intervention}</p>
-              </div>
-              <div className="block-info">
-                <p className="title-info">Année</p>
-                <p>{props.projet.annee}</p>
-              </div>
-            </div>
-          </div>
+          <HeaderProject
+            titre={props.projet.titre}
+            siteWeb={props.projet.siteWeb}
+            intervention={props.projet.intervention}
+            annee={props.projet.annee}
+          />
         </div>
         <div className="project-img-full" data-scroll-section>
           <div className="inner-img-full">
@@ -83,7 +55,7 @@ const CardDetails: (props: {
               quality={100}
               alt={props.projet.imageFull.alt}
               data-scroll
-              data-scroll-speed="-1"
+              data-scroll-speed="-2"
             />
           </div>
         </div>
@@ -105,13 +77,13 @@ const CardDetails: (props: {
             )}
             <div className="wrap-img-charte">
               {props.projet.imageCharte.map((el, index) => {
-                if (index === 1) {
+                if (index % 2 == 0) {
                   return (
                     <div
                       key={el.id}
                       className="block-img"
                       data-scroll
-                      data-scroll-speed="-1"
+                      data-scroll-speed="1"
                     >
                       <Image
                         key={el.id}
@@ -130,7 +102,7 @@ const CardDetails: (props: {
                       key={el.id}
                       className="block-img"
                       data-scroll
-                      data-scroll-speed="1"
+                      data-scroll-speed="-1"
                     >
                       <Image
                         key={el.id}
@@ -191,13 +163,13 @@ const CardDetails: (props: {
           <div className="container">
             <div className="wrap-img-charte">
               {props.projet.imagePage.map((el, index) => {
-                if (index === 1) {
+                if (index % 2 == 0) {
                   return (
                     <div
                       key={el.id}
                       className="block-img"
                       data-scroll
-                      data-scroll-speed="-1"
+                      data-scroll-speed="1"
                     >
                       <Image
                         key={el.id}
@@ -216,7 +188,7 @@ const CardDetails: (props: {
                       key={el.id}
                       className="block-img"
                       data-scroll
-                      data-scroll-speed="1"
+                      data-scroll-speed="-1"
                     >
                       <Image
                         key={el.id}
@@ -294,10 +266,10 @@ export async function getStaticProps({ params }) {
     Query.QUERY_CARD_PROJETS
   )) as GraphQLResponse.AllProjets;
 
-  if (!res && !resAll) {
+  if (!res) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/projets",
         permanent: false,
       },
     };
