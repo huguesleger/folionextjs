@@ -1,4 +1,4 @@
-.home-works {
+.section-works {
   .wrap-title {
     overflow: hidden;
     text-align: center;
@@ -6,7 +6,7 @@
       text-transform: uppercase;
       font-family: $font_gallient;
       font-size: 6rem;
-      padding-top: 3rem;
+      padding-top: 5rem;
     }
   }
   .wrap-subtitle {
@@ -25,6 +25,10 @@
     .inner-work {
       display: flex;
       width: 100%;
+      margin-bottom: 3rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
     .col-work-infos {
       width: 60%;

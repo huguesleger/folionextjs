@@ -68,9 +68,9 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
           </div>
         </div>
       </div>
-      <div className="section home-works" data-scroll-section>
+      <div className="section section-works" data-scroll-section>
         <div
-          className="wrap-works"
+          className="last-works"
           id="homeWorks"
           data-scroll
           data-scroll-target="#wrapWorks"
@@ -127,7 +127,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
           </div>
         </div>
       </div>
-      <div className="section home-contact" data-scroll-section>
+      <div className="section section-contact" data-scroll-section>
         <div className="container">
           <div className="wrap-title">
             <h2 className="title-contact" data-scroll data-scroll-speed="2">
