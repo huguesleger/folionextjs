@@ -6,11 +6,15 @@
 @import "base/animations";
 
 @import "layout/nav";
+@import "layout/footer";
+@import "layout/theme-mode";
 
+@import "components/btn";
 @import "components/cursor";
 @import "components/loader";
-@import "components/intro";
 @import "components/projects";
 @import "components/project-detail";
 
-@import "pages/home";
+@import "pages/home/intro";
+@import "pages/home/last-works";
+@import "pages/home/contact";

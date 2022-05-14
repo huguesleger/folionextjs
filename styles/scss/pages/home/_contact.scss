@@ -1,0 +1,27 @@
+.home-contact {
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .link-mail {
+    padding-top: 2rem;
+    display: block;
+    font-family: $font_gallient;
+    font-size: 6rem;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .wrap-mail,
+  .wrap-title {
+    overflow: hidden;
+  }
+  .wrap-title {
+    padding-top: 3rem;
+    .title-contact {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.light-mode {
+  .homepage {
+    transition: color 0.7s ease-in-out;
+    &.bg-dark {
+      color: #fff !important;
+      .wrap-cta .link-underline {
+        transition: color 0.7s ease-in-out;
+        color: #fff;
+      }
+      .intro .intro-enter .arrow-enter svg,
+      .wrap-cta .link-arrow svg {
+        transition: fill 0.7s ease-in-out;
+        fill: #fff;
+      }
+    }
+  }
+}
+
+.dark-mode {
+  #app {
+    background-color: $dark_grey;
+  }
+  .homepage {
+    background-color: $dark_grey !important;
+  }
+}

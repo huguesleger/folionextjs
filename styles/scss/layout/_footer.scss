@@ -1,0 +1,17 @@
+.footer {
+  height: 50px;
+  display: flex;
+  .inner-footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    .copyright {
+      font-size: 0.688rem;
+    }
+    .item-social {
+      margin-left: 2em;
+    }
+  }
+}
