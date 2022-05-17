@@ -27,6 +27,7 @@
     width: 100%;
     height: 500px;
     margin-top: 3rem;
+    overflow: visible;
     .swiper-slide {
       position: relative;
       transform: scale(0.75) translate(0, 0);
@@ -45,7 +46,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 5rem;
+        font-size: 5vw;
         text-transform: uppercase;
         opacity: 0;
         white-space: nowrap;
@@ -75,7 +76,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 5rem;
+        font-size: 5vw;
         text-transform: uppercase;
         opacity: 0;
         white-space: nowrap;
@@ -131,6 +132,28 @@
     }
     .swiper-slide-prev {
       transform: scale(0.75) translate(-17%, 0px);
+    }
+  }
+  .slider-progress-bar {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: -3rem;
+    .progress-bar {
+      width: 50%;
+      height: 1px;
+      position: relative;
+      background-color: #dddddd;
+      .swiper-pagination-progressbar-fill {
+        background: $dark_grey;
+      }
+    }
+    .progress-item-first,
+    .progress-item-last {
+      padding: 0 1rem;
+      min-width: 53px;
     }
   }
 }

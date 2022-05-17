@@ -36,7 +36,7 @@ const HeaderProject = ({
         opacity: 1,
         delay: 0.6,
         ease: "Power2.easeInOut",
-        duration: 0.8,
+        duration: 1.2,
       })
       .to(blockInfo, {
         yPercent: 0,
@@ -58,7 +58,7 @@ const HeaderProject = ({
         <div className="block-info">
           <p className="title-info">Site web</p>
           <Link href={`https://${siteWeb}`}>
-            <a className="wrap-cta">
+            <a className="wrap-cta" target="_blank" rel="noopener noreferrer">
               <span className="link-underline link-white">Voir le site</span>
               <span className="link-arrow">
                 <Image

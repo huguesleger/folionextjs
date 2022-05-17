@@ -56,6 +56,10 @@ export const Cursor = () => {
       <div className="cursor-wrapper" ref={cursorWraper}>
         <div className="cursor-circle" id="cursor-circle" ref={cursorCircle}>
           <div className="cursor-label" ref={label}></div>
+          <div className="cursor-drag">
+            <div className="arrow-left"></div>
+            <div className="arrow-right"></div>
+          </div>
         </div>
       </div>
     </div>

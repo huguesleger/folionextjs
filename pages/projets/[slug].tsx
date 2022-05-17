@@ -5,7 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { StructuredText } from "react-datocms";
 import HeaderProject from "../../components/Project/HeaderProject";
-import React from "react";
+import React, { useEffect } from "react";
+import Parallax from "../../components/Project/ParallaxImg";
+import DragGallery from "../../components/Project/DraggableGallery";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { gsap } from "gsap";
 
 const CardDetails: (props: {
   projet: GraphQLResponse.Projet;
@@ -33,6 +38,16 @@ const CardDetails: (props: {
       return projets[index - 1];
     }
   };
+
+  useEffect(() => {
+    const dragEl = document.querySelector(".is-draggable");
+    dragEl.addEventListener("mouseenter", (e) => {
+      document.querySelector(".cursor").classList.add("has-drag");
+    });
+    dragEl.addEventListener("mouseleave", (e) => {
+      document.querySelector(".cursor").classList.remove("has-drag");
+    });
+  }, []);
 
   return (
     <>
@@ -124,18 +139,7 @@ const CardDetails: (props: {
           className="project-section project-template-mobile"
           data-scroll-section
         >
-          <div className="container">
-            <div className="wrap-img-mobile">
-              <Image
-                className=""
-                src={props.projet.imageTemplateMobile.url}
-                layout="responsive"
-                width={props.projet.imageTemplateMobile.width}
-                height={props.projet.imageTemplateMobile.height}
-                alt={props.projet.imageTemplateMobile.alt}
-              />
-            </div>
-          </div>
+          <Parallax imageTemplateMobile={props.projet.imageTemplateMobile} />
         </div>
         <div
           className="project-section project-template-desktop"
@@ -159,57 +163,107 @@ const CardDetails: (props: {
             <p>{props.projet.descriptionProjet}</p>
           </div>
         </div>
-        <div className="project-section project-charte" data-scroll-section>
-          <div className="container">
-            <div className="wrap-img-charte">
+        <div
+          className="project-section project-template-page"
+          data-scroll-section
+        >
+          <div className="wrap-img-template-page is-draggable">
+            <Swiper
+              spaceBetween={40}
+              slidesPerView={4}
+              centeredSlides={false}
+              loop={false}
+              // autoHeight={false}
+              grabCursor={false}
+              observer={true}
+              onTouchStart={() => {
+                document.querySelector("body").classList.add("is-draggy");
+                const item = document.querySelectorAll(
+                  ".swiper-slide .inner-img"
+                );
+                const itemImg = document.querySelectorAll(
+                  ".swiper-slide .inner-img img"
+                );
+                const tl = gsap.timeline();
+                tl.set(item, {
+                  duration: 0.3,
+                  scale: 1,
+                  ease: "Power2.easeInOu",
+                })
+                  .set(itemImg, {
+                    duration: 0.3,
+                    scale: 1,
+                    ease: "Power2.easeInOu",
+                  })
+                  .to(item, {
+                    duration: 0.3,
+                    scale: 0.8,
+                    ease: "Power2.easeInOu",
+                    onStart: () => {
+                      gsap.to(itemImg, {
+                        duration: 0.3,
+                        scale: 1.6,
+                        ease: "Power2.easeInOu",
+                      });
+                    },
+                  });
+              }}
+              onTouchEnd={() => {
+                document.querySelector("body").classList.remove("is-draggy");
+                const item = document.querySelectorAll(
+                  ".swiper-slide .inner-img"
+                );
+                const itemImg = document.querySelectorAll(
+                  ".swiper-slide .inner-img img"
+                );
+                const tl = gsap.timeline();
+                tl.set(item, {
+                  duration: 0.3,
+                  scale: 0.8,
+                  ease: "Power2.easeInOu",
+                })
+                  .set(itemImg, {
+                    duration: 0.3,
+                    scale: 1.6,
+                    ease: "Power2.easeInOu",
+                  })
+                  .to(item, {
+                    duration: 0.3,
+                    scale: 1,
+                    ease: "Power2.easeInOu",
+                    onStart: () => {
+                      gsap.to(itemImg, {
+                        duration: 0.3,
+                        scale: 1,
+                        ease: "Power2.easeInOu",
+                      });
+                    },
+                  });
+              }}
+            >
               {props.projet.imagePage.map((el, index) => {
-                if (index % 2 == 0) {
-                  return (
-                    <div
-                      key={el.id}
-                      className="block-img"
-                      data-scroll
-                      data-scroll-speed="1"
-                    >
-                      <Image
-                        key={el.id}
-                        className=""
-                        src={el.image.url}
-                        layout="responsive"
-                        width={el.image.width}
-                        height={el.image.height}
-                        alt={el.image.alt}
-                      />
+                return (
+                  <SwiperSlide key={index}>
+                    <div className="inner-img">
+                      <DragGallery imagePage={el.image} />
                     </div>
-                  );
-                } else {
-                  return (
-                    <div
-                      key={el.id}
-                      className="block-img"
-                      data-scroll
-                      data-scroll-speed="-1"
-                    >
-                      <Image
-                        key={el.id}
-                        className=""
-                        src={el.image.url}
-                        layout="responsive"
-                        width={el.image.width}
-                        height={el.image.height}
-                        alt={el.image.alt}
-                      />
-                    </div>
-                  );
-                }
+                  </SwiperSlide>
+                );
               })}
-            </div>
+            </Swiper>
           </div>
         </div>
+
         <div className="project-section project-link" data-scroll-section>
           <div className="container">
             <Link href={`https://${props.projet.siteWeb}`}>
-              <a className="btn btn-primary">Voir le site</a>
+              <a
+                className="btn btn-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Voir le site
+              </a>
             </Link>
           </div>
         </div>

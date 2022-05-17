@@ -84,13 +84,36 @@
     }
   }
   .project-template-mobile {
-    background-color: $dark_grey;
     padding-bottom: 0;
-    .wrap-img-mobile {
-      height: 600px;
+    .inner-template-mobile {
+      position: relative;
+      background-color: $dark_grey;
+      min-height: 100vh;
       overflow: hidden;
+    }
+    .wrap-img-mobile {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 600px;
       max-width: 800px;
       margin: 0 auto;
+    }
+  }
+
+  .project-template-page {
+    .wrap-img-template-page {
+      .swiper {
+        height: 550px;
+        .inner-img {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          position: relative;
+        }
+      }
     }
   }
 }
