@@ -47,7 +47,7 @@ const CardDetails: (props: {
     dragEl.addEventListener("mouseleave", (e) => {
       document.querySelector(".cursor").classList.remove("has-drag");
     });
-  }, []);
+  });
 
   return (
     <>

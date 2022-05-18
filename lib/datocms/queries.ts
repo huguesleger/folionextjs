@@ -4,6 +4,10 @@ query MyQuery {
       _modelApiKey
       id
       titre
+      texteEntrer
+      titreEntrer
+      email
+      titreContact
       image {
         alt
         height
@@ -31,6 +35,26 @@ query MyQuery {
     }
   }
   `;
+
+const QUERY_CONTACT = `
+query MyQuery {
+  contact {
+    id
+    _modelApiKey
+    titre
+    ville
+    pays
+    email
+    image {
+      alt
+      height
+      id
+      width
+      url
+    }
+  }
+}
+`;
 
 const QUERY_SLUGS_TEST = `
 query MyQuery {
@@ -154,6 +178,7 @@ query MyQuery ($slug: String){
 
 const Query = {
   QUERY_HOME,
+  QUERY_CONTACT,
   QUERY_SLUGS_TEST,
   QUERY_CARD_TEST,
   QUERY_TEST_BY_SLUG,

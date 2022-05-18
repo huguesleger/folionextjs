@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
       <Context.Provider value={appValue}>
         <Cursor />
         <Layout>
-          {router.pathname == "/projets" ? (
+          {router.pathname == "/projets" || router.pathname == "/contact" ? (
             <>
               <AnimatePresence initial={false} exitBeforeEnter>
                 <motion.div

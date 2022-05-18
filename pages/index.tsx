@@ -44,10 +44,10 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
             <div className="content-txt">
               <Link href="/projets">
                 <a className="txt btn-enter">
-                  <span className="hello">Hello</span>cliquez ici, pour
-                  découvrir
-                  <br />
-                  mes projets.
+                  <span className="hello">
+                    {formatTxt(props.home.titreEntrer)}
+                  </span>
+                  {formatTxt(props.home.texteEntrer)}
                 </a>
               </Link>
             </div>
@@ -131,13 +131,13 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
         <div className="container">
           <div className="wrap-title">
             <h2 className="title-contact" data-scroll data-scroll-speed="2">
-              Connectons-nous
+              {props.home.titreContact}
             </h2>
           </div>
           <div className="wrap-mail">
             <div className="link-mail" data-scroll data-scroll-speed="6">
               <Link href="mailto:contactme@hl-developerz.com">
-                <a data-cursor-big>contactme@hl-developerz.com</a>
+                <a data-cursor-big>{props.home.email}</a>
               </Link>
             </div>
           </div>

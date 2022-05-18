@@ -5,6 +5,10 @@ export namespace GraphQLResponse {
     home: Home;
   }
 
+  export interface ContactPage {
+    contact: Contact;
+  }
+
   // export interface Projet {
   //   projet: Projet;
   // }
@@ -55,11 +59,26 @@ export namespace GraphQLResponse {
 
   export interface Home {
     id: string;
+    _modelApiKey: string;
     titre: string;
     image: Image;
     titleLastProject: string;
     subtitleLastProject: string;
     lastWork: LastWork[];
+    texteEntrer: string;
+    titreEntrer: string;
+    email: string;
+    titreContact: string;
+  }
+
+  export interface Contact {
+    id: string;
+    _modelApiKey: string;
+    titre: string;
+    ville: string;
+    pays: string;
+    email: string;
+    image: Image;
   }
 
   // export interface Projet {

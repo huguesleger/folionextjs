@@ -86,7 +86,7 @@ export default function Navbar(): JSX.Element {
                 </div>
               </a>
             </Link>
-            <Link href="#">
+            <Link href="/contact">
               <a
                 className={
                   router.pathname === "/contact"
