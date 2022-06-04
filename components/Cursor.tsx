@@ -9,6 +9,7 @@ export const Cursor = () => {
   const cursorHoverElems =
     "a, button, .btn-main, [data-cursor-label], [data-cursor-big]";
   let mouseIsHover = false;
+
   useEffect(() => {
     if (cursor.current == null || cursor == null) return;
     document.addEventListener("pointermove", (e) => {

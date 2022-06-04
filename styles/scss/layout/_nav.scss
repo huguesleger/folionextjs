@@ -106,17 +106,20 @@ input:checked + label:after {
   display: flex;
   align-items: center;
   cursor: pointer;
-  height: 25px;
-  margin-left: 5rem;
+  // height: 25px;
+  margin-left: 5rem !important;
   i {
     font-size: 1.5rem;
     &.fa-lightbulb {
       width: 24px;
     }
   }
+  .item-wrap {
+    min-width: 75px;
+  }
 }
 .txt-theme-mode {
   font-size: 0.688rem;
-  margin-left: 0.5rem;
+  // margin-left: 0.5rem;
   font-weight: 300;
 }

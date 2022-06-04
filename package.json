@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@cyriacbr/react-split-text": "^1.0.0",
     "@inlet/react-pixi": "^6.6.5",
     "axios": "^0.21.1",
     "framer-motion": "^6.2.9",

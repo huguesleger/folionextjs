@@ -71,7 +71,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                     }}
                     watch={[]}
                     onUpdate={(scroll: any) =>
-                      scroll.on("call", (value) => {
+                      scroll.on("call", (value: any) => {
                         const home = document.querySelector(".homepage");
                         const tl = gsap.timeline();
                         value === "updateBg" &&

@@ -3,6 +3,9 @@
     padding: 4rem 0;
   }
   .project-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     min-height: 100vh;
     background-color: $dark_grey;
     color: #fff;
@@ -19,9 +22,9 @@
       }
     }
     .wrap-infos {
-      width: 100%;
       display: flex;
-      padding: 8rem 0 2rem;
+      margin-top: auto;
+      padding-bottom: 2rem;
       .block-info {
         width: 33.333%;
         margin-right: 6rem;

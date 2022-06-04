@@ -14,4 +14,10 @@
       margin-left: 2em;
     }
   }
+  &.footer-about {
+    justify-content: flex-end;
+    .inner-footer {
+      width: 60%;
+    }
+  }
 }

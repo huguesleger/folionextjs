@@ -72,7 +72,7 @@ export default function Navbar(): JSX.Element {
                 </div>
               </a>
             </Link>
-            <Link href="#">
+            <Link href="/a-propos">
               <a
                 className={
                   router.pathname === "/a-propos"
@@ -100,19 +100,24 @@ export default function Navbar(): JSX.Element {
                 </div>
               </a>
             </Link>
-            <button onClick={handleToggle} className="btn-theme-mode">
-              {isDarkTheme === true && (
-                <>
-                  <i className="far fa-lightbulb" aria-hidden></i>
-                  <span className="txt-theme-mode">mode lumière</span>
-                </>
-              )}
-              {isDarkTheme === false && (
-                <>
-                  <i className="fas fa-moon" aria-hidden></i>
-                  <span className="txt-theme-mode">mode sombre</span>
-                </>
-              )}
+            <button onClick={handleToggle} className="btn-theme-mode item-link">
+              <div className="item-wrap">
+                {isDarkTheme === true ? (
+                  <>
+                    <span className="item txt-theme-mode">mode lumière</span>
+                    <span className="item-hover txt-theme-mode">
+                      mode sombre
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="item txt-theme-mode">mode sombre</span>
+                    <span className="item-hover txt-theme-mode">
+                      mode lumière
+                    </span>
+                  </>
+                )}
+              </div>
             </button>
           </nav>
         </div>
