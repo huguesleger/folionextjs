@@ -12,20 +12,17 @@ const HoverItem = ({ titre, desc, image }: HoverItemType): JSX.Element => {
   useEffect(() => {
     let mousepos = { x: 0, y: 0 };
     const items = document.querySelectorAll(".wrap-list-item");
-    const sectionItems = document.querySelector(".section-competences");
-    const boundsSectionItems = sectionItems.getBoundingClientRect();
-    window.addEventListener("mousemove", (ev) => {
-      mousepos = getMousePos(ev);
-    });
 
     window.addEventListener("mousemove", (ev) => {
+      mousepos = getMousePos(ev);
+
       items.forEach((el) => {
         const reveal = el.querySelector(".hover-reveal");
+        const revealInner = el.querySelector(".hover-reveal-inner");
         const boundsItem = el.getBoundingClientRect();
         const boundsReveal = reveal.getBoundingClientRect();
 
         el.addEventListener("mousemove", (e) => {
-          console.log(boundsSectionItems, "tt");
           gsap.set(reveal, {
             x: Math.abs(mousepos.x - boundsItem.left) - boundsReveal.width / 2,
             y: Math.abs(mousepos.y - boundsItem.top) - boundsReveal.height / 2,
@@ -41,9 +38,18 @@ const HoverItem = ({ titre, desc, image }: HoverItemType): JSX.Element => {
           gsap.set(reveal, {
             opacity: 0,
           });
-          const tl = gsap.timeline({
-            onStart: () => {},
-          });
+          const tl = gsap.timeline();
+          tl.fromTo(
+            revealInner,
+            {
+              scale: 0.3,
+            },
+            {
+              duration: 1.2,
+              ease: "Power2.easeOut",
+              scale: 1,
+            }
+          );
         });
       });
     });

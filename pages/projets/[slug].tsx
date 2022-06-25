@@ -188,22 +188,22 @@ const CardDetails: (props: {
                 tl.set(item, {
                   duration: 0.3,
                   scale: 1,
-                  ease: "Power2.easeInOu",
+                  ease: "Power2.easeInOut",
                 })
                   .set(itemImg, {
                     duration: 0.3,
                     scale: 1,
-                    ease: "Power2.easeInOu",
+                    ease: "Power2.easeInOut",
                   })
                   .to(item, {
                     duration: 0.3,
                     scale: 0.8,
-                    ease: "Power2.easeInOu",
+                    ease: "Power2.easeInOut",
                     onStart: () => {
                       gsap.to(itemImg, {
                         duration: 0.3,
                         scale: 1.6,
-                        ease: "Power2.easeInOu",
+                        ease: "Power2.easeInOut",
                       });
                     },
                   });
@@ -220,22 +220,22 @@ const CardDetails: (props: {
                 tl.set(item, {
                   duration: 0.3,
                   scale: 0.8,
-                  ease: "Power2.easeInOu",
+                  ease: "Power2.easeInOut",
                 })
                   .set(itemImg, {
                     duration: 0.3,
                     scale: 1.6,
-                    ease: "Power2.easeInOu",
+                    ease: "Power2.easeInOut",
                   })
                   .to(item, {
                     duration: 0.3,
                     scale: 1,
-                    ease: "Power2.easeInOu",
+                    ease: "Power2.easeInOut",
                     onStart: () => {
                       gsap.to(itemImg, {
                         duration: 0.3,
                         scale: 1,
-                        ease: "Power2.easeInOu",
+                        ease: "Power2.easeInOut",
                       });
                     },
                   });
