@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 import { getMousePos } from "./utils";
 
@@ -9,102 +9,89 @@ type HoverItemType = {
 };
 
 const HoverItem = ({ titre, desc, image }: HoverItemType): JSX.Element => {
-  useEffect(() => {
-    let mousepos = { x: 0, y: 0 };
-    const items = document.querySelectorAll(".wrap-list-item");
-    const windowWidth = window.innerWidth;
+  const refHover = useRef(null);
+  const refListItem = useRef(null);
+  const refInner = useRef(null);
 
-    if (windowWidth >= 1100) {
-      window.addEventListener("mousemove", (ev) => {
-        mousepos = getMousePos(ev);
+  let mousepos = { x: 0, y: 0 };
 
-        items.forEach((el) => {
-          const reveal = el.querySelector(".hover-reveal");
-          const revealInner = el.querySelector(".hover-reveal-inner");
-          const boundsItem = el.getBoundingClientRect();
-          const boundsReveal = reveal.getBoundingClientRect();
+  const mouseMove = (ev: any) => {
+    const boundsItem = refListItem.current.getBoundingClientRect();
+    const boundsReveal = refHover.current.getBoundingClientRect();
 
-          el.addEventListener("mousemove", (e) => {
-            gsap.set(reveal, {
-              x:
-                Math.abs(mousepos.x - boundsItem.left) - boundsReveal.width / 2,
-              y:
-                Math.abs(mousepos.y - boundsItem.top) - boundsReveal.height / 2,
-            });
-            const tl = gsap.timeline();
-            tl.to(reveal, {
-              duration: 0.2,
-              x:
-                Math.abs(mousepos.x - boundsItem.left) - boundsReveal.width / 2,
-              y:
-                Math.abs(mousepos.y - boundsItem.top) - boundsReveal.height / 2,
-            });
+    const wW = window.innerWidth;
+
+    if (wW >= 1100) {
+      mousepos = getMousePos(ev);
+
+      const tl = gsap.timeline({
+        onStart: () => {
+          gsap.set(refHover.current, {
+            opacity: 1,
           });
-          el.addEventListener("mouseenter", (e) => {
-            gsap.set(reveal, {
-              opacity: 0,
-            });
-            const tl = gsap.timeline();
-            tl.fromTo(
-              revealInner,
-              {
-                scale: 0.3,
-              },
-              {
-                duration: 1.2,
-                ease: "Power2.easeOut",
-                scale: 1,
-              }
-            );
-          });
-        });
+        },
+      });
+      gsap.set(refHover.current, {
+        x: Math.abs(mousepos.x - boundsItem.left) - boundsReveal.width / 2,
+        y: Math.abs(mousepos.y - boundsItem.top) - boundsReveal.height / 2,
+      });
+      tl.to(refHover.current, {
+        duration: 0.2,
+        x: Math.abs(mousepos.x - boundsItem.left) - boundsReveal.width / 2,
+        y: Math.abs(mousepos.y - boundsItem.top) - boundsReveal.height / 2,
       });
     }
+  };
 
-    if (windowWidth >= 1100) {
-      items.forEach((el) => {
-        const reveal = el.querySelector(".hover-reveal");
-        const boundsItem = el.getBoundingClientRect();
-        const boundsReveal = reveal.getBoundingClientRect();
+  const mouseEnter = () => {
+    const wW = window.innerWidth;
 
-        el.addEventListener("mousemove", (e) => {
-          const tl = gsap.timeline({
-            onStart: () => {
-              gsap.set(reveal, {
-                opacity: 1,
-              });
-            },
-          });
-          gsap.set(reveal, {
-            x: Math.abs(mousepos.x - boundsItem.left) - boundsReveal.width / 2,
-            y: Math.abs(mousepos.y - boundsItem.top) - boundsReveal.height / 2,
-          });
-          tl.to(reveal, {
-            duration: 0.2,
-            x: Math.abs(mousepos.x - boundsItem.left) - boundsReveal.width / 2,
-            y: Math.abs(mousepos.y - boundsItem.top) - boundsReveal.height / 2,
-          });
-        });
-        el.addEventListener("mouseleave", (e) => {
-          const tl = gsap.timeline();
-          tl.to(reveal, {
-            opacity: 0,
-          });
-        });
+    if (wW >= 1100) {
+      gsap.set(refHover.current, {
+        opacity: 0,
+      });
+      const tl = gsap.timeline();
+      tl.fromTo(
+        refInner.current,
+        {
+          scale: 0.3,
+        },
+        {
+          duration: 1.2,
+          ease: "Power2.easeOut",
+          scale: 1,
+        }
+      );
+    }
+  };
+
+  const mouseLeave = () => {
+    const wW = window.innerWidth;
+
+    if (wW >= 1100) {
+      const tl = gsap.timeline();
+      tl.to(refHover.current, {
+        opacity: 0,
       });
     }
-  }, []);
+  };
 
   return (
-    <div className="list-item">
+    <div
+      className="list-item"
+      ref={refListItem}
+      onMouseMove={mouseMove}
+      onMouseEnter={mouseEnter}
+      onMouseLeave={mouseLeave}
+    >
       <div className="title-list">
         <h3>{titre}</h3>
       </div>
       <div className="desc-list">
         <p>{desc}</p>
       </div>
-      <div className="hover-reveal">
-        <div className="hover-reveal-inner">
+      <div className="hover-reveal" ref={refHover}>
+        <div className="hover-reveal-inner" ref={refInner}>
           <div
             className="hover-reveal-img"
             style={{ backgroundImage: `url(${image})` }}
