@@ -1,36 +1,47 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { getMousePos } from "./utils";
 
-export const Cursor = () => {
+const Cursor = () => {
   const cursorCircle = useRef(null);
   const cursor = useRef(null);
   const cursorWraper = useRef(null);
   const label = useRef(null);
   const cursorHoverElems =
     "a, button, .btn-main, [data-cursor-label], [data-cursor-big]";
+
   let mouseIsHover = false;
+  let mousepos = { x: 0, y: 0 };
+
+  const mouseMove = (ev: any) => {
+    mousepos = getMousePos(ev);
+
+    const tl = gsap.timeline();
+    tl.set(cursor.current, {
+      x: mousepos.x,
+      y: mousepos.y,
+      opacity: 1,
+    }).to(cursor.current, {
+      duration: 0.2,
+      x: mousepos.x,
+      y: mousepos.y,
+      onComplete: () => {
+        gsap.to(cursor.current, {
+          duration: 0.2,
+        });
+        mouseIsHover
+          ? cursorWraper.current.classList.add("is-hover")
+          : cursorWraper.current.classList.remove("is-hover");
+      },
+    });
+  };
 
   useEffect(() => {
     if (cursor.current == null || cursor == null) return;
     document.addEventListener("pointermove", (e) => {
       if (cursor.current == null) return;
-      const tl = gsap.timeline();
-      tl.set(cursor.current, {
-        x: e.clientX,
-        y: e.clientY,
-      }).to(cursor.current, {
-        duration: 0.2,
-        x: e.clientX,
-        y: e.clientY,
-        onComplete: () => {
-          gsap.to(cursor.current, {
-            duration: 0.2,
-          });
-          mouseIsHover
-            ? cursorWraper.current.classList.add("is-hover")
-            : cursorWraper.current.classList.remove("is-hover");
-        },
-      });
+
+      mouseMove(e);
 
       if ((e.target as HTMLElement).closest(cursorHoverElems)) {
         mouseIsHover = true;
