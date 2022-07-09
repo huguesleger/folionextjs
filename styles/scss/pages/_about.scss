@@ -2,14 +2,14 @@
   .title-about {
     padding-top: 8rem;
     .title {
-      font-size: 6rem;
+      font-size: 11vw;
       font-family: $font_gallient;
       line-height: 1;
       text-transform: uppercase;
       overflow: hidden;
     }
   }
-  .list-competences {
+  .list-cursus {
     .wrap-list-item {
       border-bottom: 1px solid;
       .list-item {
@@ -17,7 +17,7 @@
         align-items: center;
         justify-content: space-between;
         position: relative;
-        padding: 2.5rem 0;
+        padding: 2rem 0;
         .hover-reveal {
           position: absolute;
           z-index: -1;
@@ -41,6 +41,44 @@
               background-size: cover;
               background-position: 50% 50%;
             }
+          }
+        }
+        .title-list {
+          h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+          }
+          .school-list {
+            color: #a1a1a1;
+            mix-blend-mode: difference;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            .reveal-txt {
+              position: absolute;
+              left: 0;
+              top: 0;
+              bottom: 0;
+              width: 100%;
+              background-color: #000;
+              height: 100%;
+            }
+          }
+        }
+        .year-list {
+          font-size: 2rem;
+          font-family: $font_gallient;
+          position: relative;
+          display: inline-block;
+          overflow: hidden;
+          .reveal-txt {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #000;
+            height: 100%;
           }
         }
       }

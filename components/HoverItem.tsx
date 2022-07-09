@@ -1,14 +1,21 @@
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { getMousePos } from "./utils";
+import SplittingWrapperWord from "./SplittingWrapperWord";
 
 type HoverItemType = {
   titre: string;
   desc: string;
   image: string;
+  annee: string;
 };
 
-const HoverItem = ({ titre, desc, image }: HoverItemType): JSX.Element => {
+const HoverItem = ({
+  titre,
+  desc,
+  image,
+  annee,
+}: HoverItemType): JSX.Element => {
   const refHover = useRef(null);
   const refListItem = useRef(null);
   const refInner = useRef(null);
@@ -85,10 +92,19 @@ const HoverItem = ({ titre, desc, image }: HoverItemType): JSX.Element => {
       onMouseLeave={mouseLeave}
     >
       <div className="title-list">
-        <h3>{titre}</h3>
+        <h3>
+          <SplittingWrapperWord>{titre}</SplittingWrapperWord>
+        </h3>
+        <p className="school-list">
+          {desc}
+          <span className="reveal-txt"></span>
+        </p>
       </div>
-      <div className="desc-list">
-        <p>{desc}</p>
+      <div className="year-list">
+        <p>
+          {annee}
+          <span className="reveal-txt"></span>
+        </p>
       </div>
       <div className="hover-reveal" ref={refHover}>
         <div className="hover-reveal-inner" ref={refInner}>

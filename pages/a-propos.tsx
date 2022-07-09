@@ -1,17 +1,24 @@
-import React, { useEffect } from "react";
-import Image from "next/image";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap/dist/gsap";
 import SplittingWrapperWord from "../components/SplittingWrapperWord";
 import HoverItem from "../components/HoverItem";
 
 function APropos() {
+  const refCursus = useRef(null);
+
   useEffect(() => {
-    const char = document.querySelectorAll(".wrapper-word .char");
+    const char = document.querySelectorAll(".title-about .wrapper-word .char");
+    const titleList = document.querySelectorAll(
+      ".section-cursus .wrapper-word .char"
+    );
+    const revealTxt = document.querySelectorAll(".reveal-txt");
+
     const tlSettings = {
       staggerVal: 0.015,
       charsDuration: 0.7,
     };
     const tl = gsap.timeline();
+
     tl.set(char, {
       yPercent: 100,
       opacity: 0,
@@ -23,40 +30,102 @@ function APropos() {
       duration: tlSettings.charsDuration,
       stagger: tlSettings.staggerVal,
     });
+
+    if (refCursus.current.offsetTop > 100) {
+      tl.set(titleList, {
+        yPercent: 100,
+        opacity: 0,
+      }).to(titleList, {
+        yPercent: 0,
+        opacity: 1,
+        delay: 1,
+        ease: "Power2.easeInOut",
+        duration: tlSettings.charsDuration,
+        stagger: tlSettings.staggerVal,
+        onComplete: () => {
+          tl.set(revealTxt, {
+            xPercent: 0,
+          }).to(revealTxt, {
+            xPercent: 101,
+            ease: "Power2.easeInOut",
+            duration: tlSettings.charsDuration,
+            stagger: tlSettings.staggerVal,
+          });
+        },
+      });
+    }
+
+    let options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1,
+    };
+
+    let observer = new IntersectionObserver(callbackFunction, options);
+
+    function callbackFunction(entries: any) {
+      entries.forEach((entry: any) => {
+        console.log(entry);
+        if (entry.isIntersecting === true) {
+          tl.set(titleList, {
+            yPercent: 100,
+            opacity: 0,
+          }).to(titleList, {
+            yPercent: 0,
+            opacity: 1,
+            delay: 1,
+            ease: "Power2.easeInOut",
+            duration: tlSettings.charsDuration,
+            stagger: tlSettings.staggerVal,
+          });
+        }
+        observer.observe(refCursus.current);
+      });
+    }
   }, []);
 
   return (
     <div className="about">
-      <div className="section section-title" data-scroll-section>
+      <div className="section" data-scroll-section>
         <div className="container">
           <div className="title-about">
             <h1 className="title">
-              <SplittingWrapperWord>A propos</SplittingWrapperWord>
+              <SplittingWrapperWord>
+                Développeur front & webdesigner
+              </SplittingWrapperWord>
             </h1>
           </div>
         </div>
       </div>
-      <div className="section section-competences" data-scroll-section>
+      <div className="section section-cursus" data-scroll-section>
         <div className="container">
-          <div className="list-competences">
+          <h2 className="section-title">
+            <SplittingWrapperWord>Cursus & Formations</SplittingWrapperWord>
+          </h2>
+        </div>
+        <div className="container">
+          <div className="list-cursus" ref={refCursus}>
             <div className="wrap-list-item">
               <HoverItem
-                titre={"Graphisme"}
-                desc={"lorem ipsum"}
+                titre={"Développeur Web"}
+                desc={"#BEWEB"}
+                annee={"2016"}
                 image={"/images/img-intro.jpg"}
               />
             </div>
             <div className="wrap-list-item">
               <HoverItem
                 titre={"Webdesign"}
-                desc={"lorem ipsum"}
+                desc={"#ARIES"}
+                annee={"2009"}
                 image={"/images/post-home.jpg"}
               />
             </div>
             <div className="wrap-list-item">
               <HoverItem
-                titre={"test"}
-                desc={"lorem ipsum"}
+                titre={"BTS Communication Visuelle"}
+                desc={"#ESMA"}
+                annee={"2004/2006"}
                 image={"/images/img-intro.jpg"}
               />
             </div>
