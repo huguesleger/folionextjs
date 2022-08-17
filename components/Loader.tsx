@@ -8,7 +8,6 @@ const Preloader = () => {
     const loaderNumber = document.querySelector(".loader-number");
     const intro = document.querySelector(".intro");
     let date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
-    console.log(date);
 
     if (localStorage.getItem("preloader") == date.toString()) {
       loaderWrapper.remove();

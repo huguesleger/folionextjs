@@ -70,7 +70,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                       smooth: true,
                     }}
                     watch={[]}
-                    onUpdate={(scroll: any) =>
+                    onUpdate={(scroll: any) => {
                       scroll.on("call", (value: any) => {
                         const home = document.querySelector(".homepage");
                         const tl = gsap.timeline();
@@ -89,8 +89,27 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                             duration: 0.7,
                           });
                         }
-                      })
-                    }
+                      });
+                      const header = document.querySelector(".header");
+                      const btnNav = document.querySelector(".wrap-btn-main");
+                      if (scroll) {
+                        scroll.on("scroll", () => {
+                          if (scroll.scroll.instance.scroll.y > 10) {
+                            console.log(
+                              scroll.scroll.instance.scroll.y,
+                              "rroror"
+                            );
+                            header.classList.add("is-hide");
+                            btnNav.classList.remove("is-hide");
+                            btnNav.classList.add("is-show");
+                          } else {
+                            header.classList.remove("is-hide");
+                            btnNav.classList.remove("is-show");
+                            btnNav.classList.add("is-hide");
+                          }
+                        });
+                      }
+                    }}
                     location={asPath}
                     onLocationChange={(scroll: any) =>
                       scroll.scrollTo(0, {
