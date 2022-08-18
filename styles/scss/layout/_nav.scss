@@ -216,31 +216,61 @@ input:checked + label:after {
 }
 
 .wrap-full-nav {
-  height: 100vh;
-  background: $dark_grey;
-  color: #fff;
   position: fixed;
+  top: 0;
   left: 0;
-  right: 0;
   width: 100%;
-  z-index: 1;
-  transform: translateY(100%);
-  transform-origin: top;
-  // clip-path: polygon(100% 20%, 100% 0%, 0% 0%, 0% 4%);
-  transition: transform 0.6s cubic-bezier(0.38, 0.005, 0.215, 1),
-    clip-path 0.8s ease-in;
-  // transition: transform 0.6s cubic-bezier(0.38, 0.005, 0.215, 1);
+  height: 100vh;
+  overflow: hidden;
+  background: transparent;
+  color: #fff;
+  .full-nav-rounded {
+    position: relative;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    will-change: top;
+    background: $dark_grey;
+    transform: translateY(100%);
+    transition: transform 0.6s cubic-bezier(0.62, 0.2, 0.29, 1.01);
+    .rounded-top {
+      top: 0;
+      position: absolute;
+      transform: translateY(-100%) scale(1, -1);
+      z-index: 2;
+      height: 0vh;
+      will-change: height;
+      width: 100%;
+      overflow: hidden;
+      transition: height 0.6s cubic-bezier(0.62, 0.2, 0.29, 1.01);
+      .rounded {
+        width: 150%;
+        display: block;
+        position: absolute;
+        background: $dark_grey;
+        height: 750%;
+        left: 50%;
+        border-radius: 50%;
+        transform: translate(-50%, -86.666%);
+        z-index: 1;
+      }
+    }
+  }
 
   &.is-show {
-    // clip-path: polygon(100% 100%, 100% 0, 0% 0%, 0% 100%);
-    transform: translateY(0);
+    .full-nav-rounded {
+      transform: translateY(0);
+      .rounded-top {
+        height: 10vh;
+      }
+    }
   }
 
   .nav-mobile {
     display: flex;
     padding: 6rem 3rem;
     .wrap-items {
-      // flex: 1;
       width: 70%;
     }
     .list-item {
@@ -364,6 +394,11 @@ input:checked + label:after {
         border: 1px solid $light_grey;
         border-radius: 50%;
         margin-right: 1rem;
+        &.btn-effect {
+          &::before {
+            background: $light_grey;
+          }
+        }
       }
     }
   }

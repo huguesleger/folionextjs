@@ -42,12 +42,16 @@ export default function Navbar(): JSX.Element {
 
     if (toggleBtn === true) {
       navMobile.current.classList.add("is-show");
+      navMobile.current.style.zIndex = "1";
       btnMobile.current.classList.add("is-open");
     } else if (navMobile.current.classList.contains("is-show")) {
       setTimeout(() => {
         navMobile.current.classList.remove("is-show");
         btnMobile.current.classList.remove("is-open");
       }, 500);
+      setTimeout(() => {
+        navMobile.current.style.zIndex = "0";
+      }, 800);
     }
 
     const link = document.querySelectorAll(".nav-mobile .item-link");
@@ -62,6 +66,9 @@ export default function Navbar(): JSX.Element {
         btnNav.classList.add("is-hide");
         btnNav.classList.remove("is-show");
         setToggleBtn(false);
+        setTimeout(() => {
+          navMobile.current.style.zIndex = "0";
+        }, 800);
       });
     });
 
@@ -127,12 +134,14 @@ export default function Navbar(): JSX.Element {
           opacity: 1,
           ease: "Power2.easeInOut",
           duration: 0.5,
+          delay: -0.8,
         })
         .to(innerSocial, {
           yPercent: 0,
           opacity: 1,
           ease: "Power2.easeInOut",
           duration: 0.5,
+          delay: -0.8,
         });
     } else {
       tl.to(linkItem, {
@@ -260,89 +269,106 @@ export default function Navbar(): JSX.Element {
         </div>
       </header>
       <div className="wrap-full-nav" ref={navMobile}>
-        <div className="container">
-          <nav className="nav-mobile">
-            <div className="wrap-items">
-              <HoverItem
-                titre={"accueil"}
-                itemNumber={"01"}
-                slug={""}
-                desc={""}
-                annee={""}
-                image={"/images/img-intro.jpg"}
-              />
-              <HoverItem
-                titre={"projets"}
-                itemNumber={"02"}
-                slug={"projets"}
-                desc={""}
-                annee={""}
-                image={"/images/img-intro.jpg"}
-              />
-              <HoverItem
-                titre={"a propos"}
-                itemNumber={"03"}
-                slug={"a-propos"}
-                desc={""}
-                annee={""}
-                image={"/images/post-home.jpg"}
-              />
-              <HoverItem
-                titre={"contact"}
-                itemNumber={"04"}
-                slug={"contact"}
-                desc={""}
-                annee={""}
-                image={"/images/img-intro.jpg"}
-              />
-            </div>
-            <div className="wrap-infos">
-              <div className="inner-contact">
-                <h3 className="title-contact">Entrer en contact</h3>
-                {/* <Link href="mailto:contactme@hl-developerz.com">
-                <a className="link-email">Envoyez-moi un e-mail</a>
-              </Link> */}
-                <Link href="mailto:contactme@hl-developerz.com">
-                  <a className="wrap-cta">
-                    <span className="link-arrow">
-                      <Image
-                        src="/images/link-arrow-white.svg"
-                        layout="intrinsic"
-                        width={24}
-                        height={24}
-                        alt=""
-                      />
-                    </span>
-                    <span className="link-email link-white">
-                      Envoyez-moi un e-mail
-                    </span>
-                  </a>
-                </Link>
+        <div className="full-nav-rounded">
+          <div className="rounded-top">
+            <div className="rounded"></div>
+          </div>
+          <div className="container">
+            <nav className="nav-mobile">
+              <div className="wrap-items">
+                <HoverItem
+                  titre={"accueil"}
+                  itemNumber={"01"}
+                  slug={""}
+                  desc={""}
+                  annee={""}
+                  image={"/images/img-intro.jpg"}
+                />
+                <HoverItem
+                  titre={"projets"}
+                  itemNumber={"02"}
+                  slug={"projets"}
+                  desc={""}
+                  annee={""}
+                  image={"/images/img-intro.jpg"}
+                />
+                <HoverItem
+                  titre={"a propos"}
+                  itemNumber={"03"}
+                  slug={"a-propos"}
+                  desc={""}
+                  annee={""}
+                  image={"/images/post-home.jpg"}
+                />
+                <HoverItem
+                  titre={"contact"}
+                  itemNumber={"04"}
+                  slug={"contact"}
+                  desc={""}
+                  annee={""}
+                  image={"/images/img-intro.jpg"}
+                />
               </div>
-              <div className="wrap-social">
-                <div className="inner-social">
-                  <h3 className="title-social">Suivez-moi</h3>
-                  <div className="items-social">
-                    <Link href="#">
-                      <a className="item-social">
-                        <i className="fab fa-facebook-f" aria-hidden></i>
-                      </a>
-                    </Link>
-                    <Link href="#">
-                      <a className="item-social">
-                        <i className="fab fa-linkedin-in" aria-hidden></i>
-                      </a>
-                    </Link>
-                    <Link href="#">
-                      <a className="item-social">
-                        <i className="fab fa-instagram" aria-hidden></i>
-                      </a>
-                    </Link>
+              <div className="wrap-infos">
+                <div className="inner-contact">
+                  <h3 className="title-contact">Entrer en contact</h3>
+                  {/* <Link href="mailto:contactme@hl-developerz.com">
+                  <a className="link-email">Envoyez-moi un e-mail</a>
+                </Link> */}
+                  <Link href="mailto:contactme@hl-developerz.com">
+                    <a className="wrap-cta">
+                      <span className="link-arrow">
+                        <Image
+                          src="/images/link-arrow-white.svg"
+                          layout="intrinsic"
+                          width={24}
+                          height={24}
+                          alt=""
+                        />
+                      </span>
+                      <span className="link-email link-white">
+                        Envoyez-moi un e-mail
+                      </span>
+                    </a>
+                  </Link>
+                </div>
+                <div className="wrap-social">
+                  <div className="inner-social">
+                    <h3 className="title-social">Suivez-moi</h3>
+                    <div className="items-social">
+                      <Link href="#">
+                        <a className="item-social btn-effect">
+                          <span>
+                            <span>
+                              <i className="fab fa-facebook-f" aria-hidden></i>
+                            </span>
+                          </span>
+                        </a>
+                      </Link>
+                      <Link href="#">
+                        <a className="item-social btn-effect">
+                          <span>
+                            <span>
+                              <i className="fab fa-linkedin-in" aria-hidden></i>
+                            </span>
+                          </span>
+                        </a>
+                      </Link>
+                      <Link href="#">
+                        <a className="item-social btn-effect">
+                          <span>
+                            <span>
+                              <i className="fab fa-instagram" aria-hidden></i>
+                            </span>
+                          </span>
+                        </a>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </nav>
+            </nav>
+          </div>
         </div>
       </div>
     </AnimateSharedLayout>
