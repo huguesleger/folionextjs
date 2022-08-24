@@ -1,0 +1,25 @@
+.circles {
+  .circles-text {
+    text-transform: uppercase;
+    fill: #fff;
+  }
+  .circles-text-1 {
+    font-size: 6rem;
+    font-family: $font_gallient;
+  }
+  .circles-text-2 {
+    font-size: 4rem;
+    font-family: $font_nunito;
+    font-weight: 800;
+  }
+  .circles-text-3 {
+    font-size: 3rem;
+    font-family: $font_bigilla;
+    font-weight: 700;
+  }
+  .circles-text-4 {
+    font-size: 2rem;
+    font-family: $font_poppins;
+    font-weight: 100;
+  }
+}

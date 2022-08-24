@@ -2,7 +2,7 @@
   .title-about {
     padding-top: 8rem;
     .title {
-      font-size: 11vw;
+      font-size: 10rem;
       font-family: $font_gallient;
       line-height: 1;
       text-transform: uppercase;
@@ -46,7 +46,8 @@
         .title-list {
           h3 {
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
+            font-family: $font_nunito;
           }
           .school-list {
             color: #a1a1a1;
@@ -80,6 +81,137 @@
             background-color: #000;
             height: 100%;
           }
+        }
+      }
+    }
+  }
+  .wrap-bio {
+    padding-top: 8rem;
+    .section-title {
+      margin-bottom: 2rem;
+      margin-top: 3rem;
+      .icon-emoji {
+        font-size: 3rem;
+      }
+    }
+    .wrap-desc {
+      display: flex;
+      justify-content: space-between;
+      .col-txt {
+        width: 50%;
+      }
+      .col-img {
+        width: 30%;
+        .inner-img {
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  .circle-txt-anim {
+    .wrap-circle-txt {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+  .section-services {
+    padding-bottom: 12rem;
+  }
+  .container-services {
+    max-width: 1600px;
+  }
+  .wrap-services {
+    display: flex;
+    .inner-service {
+      margin-right: 6rem;
+      width: 33.333%;
+    }
+    .number-service {
+      font-size: 1rem;
+      color: $ultralight_grey;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid $ultralight_grey;
+      padding-bottom: 1rem;
+    }
+    .desc-service {
+      h3 {
+        font-size: 2.5rem;
+        font-family: $font_gallient;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      }
+      p,
+      ul {
+        color: $light_grey;
+      }
+      .wrap-list {
+        display: flex;
+        padding-left: 2rem;
+        & ul:not(:last-child) {
+          padding-right: 3rem;
+        }
+        ul {
+          list-style-type: circle;
+        }
+      }
+    }
+  }
+  .contact-rounded {
+    background: #fff;
+    width: 100%;
+    position: relative;
+    height: 0;
+    display: block;
+    z-index: 2;
+    .rounded-top {
+      top: 0;
+      position: relative;
+      transform: translateY(-1px);
+      z-index: 2;
+      // height: 0vh;
+      height: 10vh;
+      will-change: height;
+      width: 100%;
+      overflow: hidden;
+      .rounded {
+        width: 150%;
+        display: block;
+        position: absolute;
+        background: #fff;
+        height: 750%;
+        left: 50%;
+        border-radius: 50%;
+        transform: translate(-50%, -86.666%);
+        z-index: 1;
+      }
+    }
+  }
+  .wrap-contact {
+    height: calc(100vh - 50px);
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    .inner-contact {
+      padding-top: 12rem;
+      .link-mail {
+        padding-top: 2rem;
+        display: block;
+        font-family: $font_gallient;
+        font-size: 6rem;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+      .wrap-mail,
+      .wrap-title {
+        overflow: hidden;
+      }
+      .wrap-title {
+        padding-top: 3rem;
+        .title-contact {
+          display: block;
+          font-size: 1.5rem;
+          font-weight: 300;
+          margin-bottom: 0;
         }
       }
     }

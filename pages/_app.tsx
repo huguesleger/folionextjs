@@ -95,10 +95,6 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                       if (scroll) {
                         scroll.on("scroll", () => {
                           if (scroll.scroll.instance.scroll.y > 10) {
-                            console.log(
-                              scroll.scroll.instance.scroll.y,
-                              "rroror"
-                            );
                             header.classList.add("is-hide");
                             btnNav.classList.remove("is-hide");
                             btnNav.classList.add("is-show");

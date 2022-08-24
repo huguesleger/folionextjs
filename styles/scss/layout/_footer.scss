@@ -20,4 +20,16 @@
       width: 60%;
     }
   }
+  &.footer-dark {
+    color: #fff;
+    background-color: $dark_grey;
+    .bg-footer {
+      width: 100%;
+      background-color: $dark_grey;
+      transform: translateY(-1px);
+      .inner-footer {
+        height: 100%;
+      }
+    }
+  }
 }

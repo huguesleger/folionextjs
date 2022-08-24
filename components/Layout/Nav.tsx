@@ -51,7 +51,7 @@ export default function Navbar(): JSX.Element {
       }, 500);
       setTimeout(() => {
         navMobile.current.style.zIndex = "0";
-      }, 800);
+      }, 950);
     }
 
     const link = document.querySelectorAll(".nav-mobile .item-link");
@@ -68,7 +68,7 @@ export default function Navbar(): JSX.Element {
         setToggleBtn(false);
         setTimeout(() => {
           navMobile.current.style.zIndex = "0";
-        }, 800);
+        }, 950);
       });
     });
 
