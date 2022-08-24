@@ -169,7 +169,7 @@ function APropos() {
             <div className="wrap-desc">
               <div className="col-txt">
                 <h2 className="section-title">
-                  Hey, <span className="icon-emoji">&#128512;</span>
+                  Hey, <span className="icon-emoji">😀</span>
                 </h2>
                 <p>
                   Hugues Leger, basé sur Montpellier. Toujours amoureux du code
