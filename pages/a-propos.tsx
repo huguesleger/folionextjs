@@ -173,9 +173,9 @@ function APropos() {
                 </h2>
                 <p>
                   Hugues Leger, basé sur Montpellier. Toujours amoureux du code
-                  et du design, j'aime apprendre de nouvelles choses chaque jour
-                  et me lancer des défis avec de nouveaux projets, traduire des
-                  concepts en design visuel en prêtant une attention
+                  et du design, j&apos;aime apprendre de nouvelles choses chaque
+                  jour et me lancer des défis avec de nouveaux projets, traduire
+                  des concepts en design visuel en prêtant une attention
                   particulière aux détails, et les convertir en expériences
                   hautement interactives.
                 </p>
@@ -292,9 +292,9 @@ function APropos() {
                 <h3>Design</h3>
                 <p>
                   Avec une solide expérience dans la conception de sites Web et
-                  d'applications, je propose des conceptions numériques solides
-                  et conviviales. Une image de marque solide est la base de tout
-                  site Web réussi.
+                  d&apos;applications, je propose des conceptions numériques
+                  solides et conviviales. Une image de marque solide est la base
+                  de tout site Web réussi.
                 </p>
               </div>
             </div>
@@ -304,9 +304,10 @@ function APropos() {
                 <h3>Développement</h3>
                 <p>
                   Je crée des sites Web évolutifs à partir de zéro qui
-                  s'intègrent parfaitement au design. Je me concentre sur les
-                  micro-animations, les transitions et l'interaction. Pour la
-                  gestion de contenu, j'utilise Wordpress et Dato CMS.
+                  s&apos;intègrent parfaitement au design. Je me concentre sur
+                  les micro-animations, les transitions et l&apos;interaction.
+                  Pour la gestion de contenu, j&apos;utilise Wordpress et Dato
+                  CMS.
                 </p>
               </div>
             </div>
