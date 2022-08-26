@@ -195,7 +195,7 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
             >
               {props.about.listeCursus.map((el) => {
                 return (
-                  <div className="wrap-list-item">
+                  <div className="wrap-list-item" key={el.id}>
                     <HoverItem
                       titre={el.titre}
                       school={el.ecole}
@@ -241,7 +241,7 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
             <div className="wrap-services">
               {props.about.listeCompetence.map((el) => {
                 return (
-                  <div className="inner-service">
+                  <div className="inner-service" key={el.id}>
                     <p className="number-service">{el.number}</p>
                     <div className="desc-service">
                       <h3>
@@ -257,7 +257,7 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
               })}
               {props.about.listeCompetenceItems.map((el) => {
                 return (
-                  <div className="inner-service">
+                  <div className="inner-service" key={el.id}>
                     <p className="number-service">{el.number}</p>
                     <div className="desc-service">
                       <h3>
@@ -267,17 +267,17 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
                       <div className="wrap-list">
                         <ul>
                           {el.listeServiceLeft.map((item) => {
-                            return <li>{item.texte}</li>;
+                            return <li key={item.id}>{item.texte}</li>;
                           })}
                         </ul>
                         <ul>
                           {el.listeServiceCenter.map((item) => {
-                            return <li>{item.texte}</li>;
+                            return <li key={item.id}>{item.texte}</li>;
                           })}
                         </ul>
                         <ul>
                           {el.listeServiceRight.map((item) => {
-                            return <li>{item.texte}</li>;
+                            return <li key={item.id}>{item.texte}</li>;
                           })}
                         </ul>
                       </div>
