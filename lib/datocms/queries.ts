@@ -42,8 +42,6 @@ query MyQuery {
     id
     _modelApiKey
     titre
-    ville
-    pays
     email
     image {
       alt
@@ -176,6 +174,88 @@ query MyQuery ($slug: String){
 }
 `;
 
+const QUERY_ABOUT = `
+query MyQuery {
+  about {
+    _modelApiKey
+    id
+    titre
+    titreBio
+    iconBio
+    texteBio {
+      value
+    }
+    imageBio {
+      id
+      alt
+      height
+      width
+      url
+    }
+    texteCircle {
+      _modelApiKey
+      id
+      texte
+    }
+    titreCursus
+    listeCursus {
+      _modelApiKey
+      id
+      titre
+      ecole
+      annee
+      image {
+        id
+        alt
+        height
+        width
+        url
+      }
+    }
+    titreCompetence {
+      _modelApiKey
+      id
+      titre
+      icon
+    }
+    listeCompetence {
+      _modelApiKey
+      id
+      number
+      icon
+      titre
+      description {
+        value
+      }
+    }
+    listeCompetenceItems {
+      _modelApiKey
+      id
+      number
+      icon
+      titre
+      listeServiceLeft {
+        _modelApiKey
+        id
+        texte
+      }
+      listeServiceCenter {
+        _modelApiKey
+        id
+        texte
+      }
+      listeServiceRight {
+        _modelApiKey
+        id
+        texte
+      }
+    }
+    titreContact
+    emailContact
+  }
+}
+`;
+
 const Query = {
   QUERY_HOME,
   QUERY_CONTACT,
@@ -185,6 +265,7 @@ const Query = {
   QUERY_SLUGS_PROJETS,
   QUERY_CARD_PROJETS,
   QUERY_PROJET_BY_SLUG,
+  QUERY_ABOUT,
 };
 
 export default Query;

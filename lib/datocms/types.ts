@@ -37,6 +37,28 @@ export namespace GraphQLResponse {
     projet: Projet;
   }
 
+  export interface AboutPage {
+    about: About;
+  }
+
+  export interface About {
+    id: string;
+    _modelApiKey: string;
+    titre: string;
+    titreBio: string;
+    iconBio: string;
+    texteBio: StructuredText<any>;
+    imageBio: Image;
+    texteCircle: TexteCircle[];
+    titreCursus: string;
+    listeCursus: ListeCursus[];
+    titreCompetence: TitreCompetence[];
+    listeCompetence: ListeCompetence[];
+    listeCompetenceItems: ListeCompetenceItems[];
+    titreContact: string;
+    emailContact: string;
+  }
+
   export interface Projet {
     id: string;
     slug: string;
@@ -75,8 +97,6 @@ export namespace GraphQLResponse {
     id: string;
     _modelApiKey: string;
     titre: string;
-    ville: string;
-    pays: string;
     email: string;
     image: Image;
   }
@@ -112,6 +132,54 @@ interface Image {
   url: string;
   width: string;
   height: string;
+}
+
+interface TexteCircle {
+  _modelApiKey: string;
+  id: string;
+  texte: string;
+}
+
+interface ListeCursus {
+  _modelApiKey: string;
+  id: string;
+  titre: string;
+  ecole: string;
+  annee: string;
+  image: Image;
+}
+
+interface TitreCompetence {
+  _modelApiKey: string;
+  id: string;
+  titre: string;
+  icon: string;
+}
+
+interface ListeCompetence {
+  _modelApiKey: string;
+  id: string;
+  number: string;
+  icon: string;
+  titre: string;
+  description: StructuredText<any>;
+}
+
+interface ListeCompetenceItems {
+  _modelApiKey: string;
+  id: string;
+  number: string;
+  icon: string;
+  titre: string;
+  listeServiceLeft: ListeService[];
+  listeServiceCenter: ListeService[];
+  listeServiceRight: ListeService[];
+}
+
+interface ListeService {
+  _modelApiKey: string;
+  id: string;
+  texte: string;
 }
 
 interface Slider {

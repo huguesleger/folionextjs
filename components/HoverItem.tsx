@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 type HoverItemType = {
   titre: string;
-  desc?: string;
+  school?: string;
   image: string;
   annee?: string;
   slug?: string;
@@ -16,7 +16,7 @@ type HoverItemType = {
 
 const HoverItem = ({
   titre,
-  desc,
+  school,
   image,
   annee,
   slug,
@@ -168,7 +168,7 @@ const HoverItem = ({
         <>
           <div className="title-list">
             <h3>{titre}</h3>
-            <p className="school-list">{desc}</p>
+            <p className="school-list">{school}</p>
           </div>
           <div className="year-list">
             <p>{annee}</p>
