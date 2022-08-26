@@ -280,7 +280,7 @@ export default function Navbar(): JSX.Element {
                   titre={"accueil"}
                   itemNumber={"01"}
                   slug={""}
-                  desc={""}
+                  school={""}
                   annee={""}
                   image={"/images/img-intro.jpg"}
                 />
@@ -288,7 +288,7 @@ export default function Navbar(): JSX.Element {
                   titre={"projets"}
                   itemNumber={"02"}
                   slug={"projets"}
-                  desc={""}
+                  school={""}
                   annee={""}
                   image={"/images/img-intro.jpg"}
                 />
@@ -296,7 +296,7 @@ export default function Navbar(): JSX.Element {
                   titre={"a propos"}
                   itemNumber={"03"}
                   slug={"a-propos"}
-                  desc={""}
+                  school={""}
                   annee={""}
                   image={"/images/post-home.jpg"}
                 />
@@ -304,7 +304,7 @@ export default function Navbar(): JSX.Element {
                   titre={"contact"}
                   itemNumber={"04"}
                   slug={"contact"}
-                  desc={""}
+                  school={""}
                   annee={""}
                   image={"/images/img-intro.jpg"}
                 />
