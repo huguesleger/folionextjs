@@ -47,7 +47,7 @@ function APropos() {
         });
       },
     });
-  }, [scroll]);
+  }, []);
 
   useEffect(() => {
     const textSvg = document.querySelectorAll(".circles-text");

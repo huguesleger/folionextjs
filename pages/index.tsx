@@ -5,7 +5,6 @@ import Preloader from "../components/Loader";
 import Image from "next/image";
 import Link from "next/link";
 import formatTxt from "../lib/functions/formatTxt";
-import { useState } from "react";
 import LastWork from "../components/Home/LastWork";
 
 const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {

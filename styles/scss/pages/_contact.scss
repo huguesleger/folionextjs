@@ -1,28 +1,51 @@
 .contact {
-  display: flex;
   height: calc(100vh - 50px);
-  .wrap-content {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 3rem;
-    width: 60%;
+  color: #fff;
+  .title-contact {
+    padding-top: 8rem;
     .title {
+      font-size: 10rem;
       font-family: $font_gallient;
-      font-size: 8rem;
       line-height: 1;
+      text-transform: uppercase;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
     }
   }
-  .wrap-social {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    padding: 3rem;
-    width: 40%;
-    background-color: $dark_grey;
-    color: #fff;
-    .email {
-      font-size: 2rem;
+  .section-hero {
+    position: relative;
+    padding-bottom: 0;
+    .hover-reveal {
+      position: absolute;
+      z-index: 1;
+      width: 150px;
+      height: 200px;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      transform-origin: 0% 0%;
+      opacity: 0;
+      will-change: transform;
+      .hover-reveal-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        .hover-reveal-img {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          background-size: cover;
+          background-position: 50% 50%;
+        }
+      }
+    }
+  }
+  .section-email {
+    padding: 8rem 0 0;
+    .contact-email {
+      font-size: 3rem;
       font-family: $font_gallient;
       .wrap-cta {
         overflow: hidden;
@@ -52,16 +75,10 @@
         }
       }
     }
-    .img-contact {
-      padding-bottom: 1.5rem;
-    }
-    .address {
-      padding-top: 2rem;
-      font-weight: 200;
+    .contact-address {
+      padding-top: 3rem;
       .title {
-        font-size: 1.25rem;
-        font-weight: 400;
-        padding-bottom: 0.5rem;
+        padding-bottom: 1rem;
       }
     }
   }

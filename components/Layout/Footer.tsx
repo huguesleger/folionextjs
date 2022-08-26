@@ -6,12 +6,14 @@ export default function Footer(): JSX.Element {
   return (
     <div
       className={`footer ${
-        router.pathname === "/a-propos" ? "footer-dark" : ""
+        router.pathname === "/a-propos" || router.pathname === "/contact"
+          ? "footer-dark"
+          : ""
       }`}
       data-scroll-section
       data-scroll
     >
-      {router.pathname === "/a-propos" ? (
+      {router.pathname === "/a-propos" || router.pathname === "/contact" ? (
         <div className="bg-footer">
           <div className="inner-footer">
             <span className="copyright">
