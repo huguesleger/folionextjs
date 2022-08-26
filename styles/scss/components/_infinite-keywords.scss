@@ -10,11 +10,14 @@
     animation-play-state: running;
     perspective: 8000px;
     perspective-origin: -100% 50%;
-    .separate-keyword {
+    .wrap-keyword {
       display: flex;
-      align-items: center;
-      font-size: 2rem;
-      padding: 0 2rem;
+      .separate-keyword {
+        display: flex;
+        align-items: center;
+        font-size: 2rem;
+        padding: 0 2rem;
+      }
     }
   }
 }

@@ -133,9 +133,9 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
                     </h2>
                   </div>
                   <div className="inner-txt">
-                    <p data-scroll data-scroll-speed="3">
+                    <div data-scroll data-scroll-speed="3">
                       <StructuredText data={props.about.texteBio} />
-                    </p>
+                    </div>
                   </div>
                 </div>
                 <div className="col-img">
@@ -213,24 +213,24 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
             <h3 className="keywords">
               {props.about.titreCompetence.map((el) => {
                 return (
-                  <>
+                  <span className="wrap-keyword" key={el.id}>
                     {el.titre}
                     <span className="separate-keyword">
                       <i className={el.icon} aria-hidden></i>
                     </span>
-                  </>
+                  </span>
                 );
               })}
             </h3>
             <p className="keywords">
               {props.about.titreCompetence.map((el) => {
                 return (
-                  <>
+                  <span className="wrap-keyword" key={el.id}>
                     {el.titre}
                     <span className="separate-keyword">
                       <i className={el.icon} aria-hidden></i>
                     </span>
-                  </>
+                  </span>
                 );
               })}
             </p>
@@ -248,9 +248,9 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
                         <i className={`${el.icon} mr-1`} aria-hidden></i>
                         {el.titre}
                       </h3>
-                      <p>
+                      <div>
                         <StructuredText data={el.description} />
-                      </p>
+                      </div>
                     </div>
                   </div>
                 );
