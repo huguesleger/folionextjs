@@ -167,19 +167,11 @@ const HoverItem = ({
       ) : (
         <>
           <div className="title-list">
-            <h3>
-              <SplittingWrapperWord>{titre}</SplittingWrapperWord>
-            </h3>
-            <p className="school-list">
-              {desc}
-              <span className="reveal-txt"></span>
-            </p>
+            <h3>{titre}</h3>
+            <p className="school-list">{desc}</p>
           </div>
           <div className="year-list">
-            <p>
-              {annee}
-              <span className="reveal-txt"></span>
-            </p>
+            <p>{annee}</p>
           </div>
           <div className="hover-reveal" ref={refHover}>
             <div className="hover-reveal-inner" ref={refInner}>

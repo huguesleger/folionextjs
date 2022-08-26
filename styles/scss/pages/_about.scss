@@ -9,6 +9,16 @@
       overflow: hidden;
     }
   }
+  .section-cursus {
+    .wrap-title {
+      padding-top: 3rem;
+      margin-bottom: 3rem;
+      overflow: hidden;
+      .section-title {
+        margin-bottom: 0;
+      }
+    }
+  }
   .list-cursus {
     .wrap-list-item {
       border-bottom: 1px solid;
@@ -87,9 +97,20 @@
   }
   .wrap-bio {
     padding-top: 8rem;
+    // .inner-title,
+    // .inner-txt {
+    //   overflow: hidden;
+    // }
+    .inner-txt {
+      padding-top: 3rem;
+    }
+    .inner-title {
+      padding-top: 3rem;
+      overflow: hidden;
+    }
     .section-title {
-      margin-bottom: 2rem;
-      margin-top: 3rem;
+      margin-bottom: 0;
+      // margin-top: 3rem;
       .icon-emoji {
         font-size: 3rem;
       }
@@ -104,6 +125,16 @@
         width: 30%;
         .inner-img {
           overflow: hidden;
+          position: relative;
+          .reveal-img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #fff;
+            height: 100%;
+          }
         }
       }
     }

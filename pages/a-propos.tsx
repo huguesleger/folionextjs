@@ -12,17 +12,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 function APropos() {
   const refCursus = useRef(null);
+  const refSectionCursus = useRef(null);
   const refContact = useRef(null);
   const refRoundedContact = useRef(null);
   const refWrapContact = useRef(null);
+  const refRevealImg = useRef(null);
   const { scroll } = useLocomotiveScroll();
 
   useEffect(() => {
     const char = document.querySelectorAll(".title-about .wrapper-word .char");
-    const titleList = document.querySelectorAll(
-      ".section-cursus .wrapper-word .char"
-    );
-    const revealTxt = document.querySelectorAll(".reveal-txt");
 
     const tlSettings = {
       staggerVal: 0.015,
@@ -40,60 +38,16 @@ function APropos() {
       ease: "Power2.easeInOut",
       duration: tlSettings.charsDuration,
       stagger: tlSettings.staggerVal,
+      onComplete: () => {
+        gsap.to(refRevealImg.current, {
+          yPercent: 100,
+          ease: "Power4.easeInOut",
+          duration: 0.8,
+          delay: 1,
+        });
+      },
     });
-
-    if (refCursus.current.offsetTop > 100) {
-      tl.set(titleList, {
-        yPercent: 100,
-        opacity: 0,
-      }).to(titleList, {
-        yPercent: 0,
-        opacity: 1,
-        delay: 1,
-        ease: "Power2.easeInOut",
-        duration: tlSettings.charsDuration,
-        stagger: tlSettings.staggerVal,
-        onComplete: () => {
-          tl.set(revealTxt, {
-            xPercent: 0,
-          }).to(revealTxt, {
-            xPercent: 101,
-            ease: "Power2.easeInOut",
-            duration: tlSettings.charsDuration,
-            stagger: tlSettings.staggerVal,
-          });
-        },
-      });
-    }
-
-    let options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 1,
-    };
-
-    let observer = new IntersectionObserver(callbackFunction, options);
-
-    function callbackFunction(entries: any) {
-      entries.forEach((entry: any) => {
-        console.log(entry);
-        if (entry.isIntersecting === true) {
-          tl.set(titleList, {
-            yPercent: 100,
-            opacity: 0,
-          }).to(titleList, {
-            yPercent: 0,
-            opacity: 1,
-            delay: 1,
-            ease: "Power2.easeInOut",
-            duration: tlSettings.charsDuration,
-            stagger: tlSettings.staggerVal,
-          });
-        }
-        observer.observe(refCursus.current);
-      });
-    }
-  }, []);
+  }, [scroll]);
 
   useEffect(() => {
     const textSvg = document.querySelectorAll(".circles-text");
@@ -101,14 +55,7 @@ function APropos() {
     if (scroll) {
       scroll.on("scroll", (instance: any) => {
         if (wrapCircleAnim.classList.contains("is-inview")) {
-          // gsap.to(textSvg, {
-          //   duration: 0.3,
-          //   ease: "power1",
-          //   rotate: scroll.scroll.instance.scroll.y,
-          //   stagger: 0.015,
-          //   transformOrigin: "50%, 50%",
-          // });
-          let tl = gsap.timeline({
+          const tl = gsap.timeline({
             scrollTrigger: {
               trigger: wrapCircleAnim,
               start: "0% 100%",
@@ -168,17 +115,25 @@ function APropos() {
           <div className="wrap-bio">
             <div className="wrap-desc">
               <div className="col-txt">
-                <h2 className="section-title">
-                  Hey, <span className="icon-emoji">😀</span>
-                </h2>
-                <p>
-                  Hugues Leger, basé sur Montpellier. Toujours amoureux du code
-                  et du design, j&apos;aime apprendre de nouvelles choses chaque
-                  jour et me lancer des défis avec de nouveaux projets, traduire
-                  des concepts en design visuel en prêtant une attention
-                  particulière aux détails, et les convertir en expériences
-                  hautement interactives.
-                </p>
+                <div className="inner-title">
+                  <h2
+                    className="section-title"
+                    data-scroll
+                    data-scroll-speed="2"
+                  >
+                    Hey, <span className="icon-emoji">😀</span>
+                  </h2>
+                </div>
+                <div className="inner-txt">
+                  <p data-scroll data-scroll-speed="3">
+                    Hugues Leger, basé sur Montpellier. Toujours amoureux du
+                    code et du design, j&apos;aime apprendre de nouvelles choses
+                    chaque jour et me lancer des défis avec de nouveaux projets,
+                    traduire des concepts en design visuel en prêtant une
+                    attention particulière aux détails, et les convertir en
+                    expériences hautement interactives.
+                  </p>
+                </div>
               </div>
               <div className="col-img">
                 <div className="inner-img">
@@ -192,6 +147,7 @@ function APropos() {
                     data-scroll
                     data-scroll-speed="-3"
                   />
+                  <div className="reveal-img" ref={refRevealImg}></div>
                 </div>
               </div>
             </div>
@@ -203,7 +159,6 @@ function APropos() {
         data-scroll-section
         data-scroll
         data-scroll-repeat
-        // data-scroll-offset="50%, 70%"
       >
         <div className="container">
           <div className="wrap-circle-txt">
@@ -216,14 +171,25 @@ function APropos() {
           </div>
         </div>
       </div>
-      <section className="section section-cursus" data-scroll-section>
+      <section
+        className="section section-cursus"
+        data-scroll-section
+        ref={refSectionCursus}
+      >
         <div className="container">
-          <h2 className="section-title">
-            <SplittingWrapperWord>Cursus & Formations</SplittingWrapperWord>
-          </h2>
+          <div className="wrap-title">
+            <h2 className="section-title" data-scroll data-scroll-speed="2">
+              Cursus & Formations
+            </h2>
+          </div>
         </div>
         <div className="container">
-          <div className="list-cursus" ref={refCursus}>
+          <div
+            className="list-cursus"
+            ref={refCursus}
+            data-scroll
+            data-scroll-speed="6"
+          >
             <div className="wrap-list-item">
               <HoverItem
                 titre={"Développeur Web"}
