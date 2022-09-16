@@ -3,17 +3,23 @@ import { useRouter } from "next/router";
 
 export default function Footer(): JSX.Element {
   const router = useRouter();
+  const regexprojectSlug = /(?:\/projets\/)/g;
+
   return (
     <div
       className={`footer ${
-        router.pathname === "/a-propos" || router.pathname === "/contact"
+        router.pathname === "/a-propos" ||
+        router.pathname === "/contact" ||
+        router.pathname.match(regexprojectSlug)
           ? "footer-dark"
           : ""
       }`}
       data-scroll-section
       data-scroll
     >
-      {router.pathname === "/a-propos" || router.pathname === "/contact" ? (
+      {router.pathname === "/a-propos" ||
+      router.pathname === "/contact" ||
+      router.pathname.match(regexprojectSlug) ? (
         <div className="bg-footer">
           <div className="inner-footer">
             <span className="copyright">

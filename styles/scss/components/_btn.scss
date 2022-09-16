@@ -2,7 +2,7 @@
   display: inline-flex;
   .link-underline {
     position: relative;
-    color: #000;
+    color: $dark_grey;
     &::after {
       content: "";
       position: absolute;
@@ -25,6 +25,11 @@
     &.link-white {
       &::after {
         background-color: #fff;
+      }
+    }
+    &.link-dark {
+      &::after {
+        background-color: $dark_grey;
       }
     }
   }

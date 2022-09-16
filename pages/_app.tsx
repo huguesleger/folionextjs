@@ -107,12 +107,12 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                       }
                     }}
                     location={asPath}
-                    onLocationChange={(scroll: any) =>
+                    onLocationChange={(scroll: any) => {
                       scroll.scrollTo(0, {
                         duration: 800,
                         disableLerp: true,
-                      })
-                    }
+                      });
+                    }}
                     containerRef={containerRef}
                   >
                     <div data-scroll-container ref={containerRef}>

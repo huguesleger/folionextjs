@@ -5,12 +5,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { StructuredText } from "react-datocms";
 import HeaderProject from "../../components/Project/HeaderProject";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Parallax from "../../components/Project/ParallaxImg";
 import DragGallery from "../../components/Project/DraggableGallery";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useLocomotiveScroll } from "react-locomotive-scroll";
+import HoverReveal from "../../components/HoverReveal";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const CardDetails: (props: {
   projet: GraphQLResponse.Projet;
@@ -21,11 +26,18 @@ const CardDetails: (props: {
 }) => {
   const projets: GraphQLResponse.Projet[] = props.projets;
 
+  const refProjectNav = useRef(null);
+  const refRoundedProject = useRef(null);
+  const refWrapProject = useRef(null);
+
+  const { scroll } = useLocomotiveScroll();
+
   const getNextpost = () => {
     const index = projets.findIndex((el) => el.slug === props.projet.slug);
     if (index === (projets && projets.length) - 1) {
       return projets[0];
     } else {
+      if (scroll) scroll.start();
       return projets[index + 1];
     }
   };
@@ -41,13 +53,37 @@ const CardDetails: (props: {
 
   useEffect(() => {
     const dragEl = document.querySelector(".is-draggable");
-    dragEl.addEventListener("mouseenter", (e) => {
-      document.querySelector(".cursor").classList.add("has-drag");
-    });
-    dragEl.addEventListener("mouseleave", (e) => {
-      document.querySelector(".cursor").classList.remove("has-drag");
-    });
+    if (dragEl) {
+      dragEl.addEventListener("mouseenter", (e) => {
+        document.querySelector(".cursor").classList.add("has-drag");
+      });
+      dragEl.addEventListener("mouseleave", (e) => {
+        document.querySelector(".cursor").classList.remove("has-drag");
+      });
+    }
   });
+
+  useEffect(() => {
+    if (scroll) {
+      scroll.on("scroll", (instance: any) => {
+        let tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: refWrapProject.current,
+            start: "0% 100%",
+            end: "100% 100%",
+            scrub: 0,
+          },
+        });
+        tl.set(refRoundedProject.current, {
+          height: 94,
+        });
+        tl.to(refRoundedProject.current, {
+          height: 0,
+          ease: "none",
+        });
+      });
+    }
+  }, [scroll]);
 
   return (
     <>
@@ -157,106 +193,109 @@ const CardDetails: (props: {
             />
           </div>
         </div>
-        <div className="project-section project-text" data-scroll-section>
-          <div className="container">
-            <h3>{props.projet.texteProjet}</h3>
-            <p>{props.projet.descriptionProjet}</p>
+        {props.projet.descriptionProjet && (
+          <div className="project-section project-text" data-scroll-section>
+            <div className="container">
+              <h3>{props.projet.texteProjet}</h3>
+              <p>{props.projet.descriptionProjet}</p>
+            </div>
           </div>
-        </div>
-        <div
-          className="project-section project-template-page"
-          data-scroll-section
-        >
-          <div className="wrap-img-template-page is-draggable">
-            <Swiper
-              spaceBetween={40}
-              slidesPerView={4}
-              centeredSlides={false}
-              loop={false}
-              // autoHeight={false}
-              grabCursor={false}
-              observer={true}
-              onTouchStart={() => {
-                document.querySelector("body").classList.add("is-draggy");
-                const item = document.querySelectorAll(
-                  ".swiper-slide .inner-img"
-                );
-                const itemImg = document.querySelectorAll(
-                  ".swiper-slide .inner-img img"
-                );
-                const tl = gsap.timeline();
-                tl.set(item, {
-                  duration: 0.3,
-                  scale: 1,
-                  ease: "Power2.easeInOut",
-                })
-                  .set(itemImg, {
+        )}
+        {props.projet.imagePage.length >= 1 && (
+          <div
+            className="project-section project-template-page"
+            data-scroll-section
+          >
+            <div className="wrap-img-template-page is-draggable">
+              <Swiper
+                spaceBetween={40}
+                slidesPerView={4}
+                centeredSlides={false}
+                loop={false}
+                grabCursor={false}
+                observer={true}
+                onTouchStart={() => {
+                  document.querySelector("body").classList.add("is-draggy");
+                  const item = document.querySelectorAll(
+                    ".swiper-slide .inner-img"
+                  );
+                  const itemImg = document.querySelectorAll(
+                    ".swiper-slide .inner-img img"
+                  );
+                  const tl = gsap.timeline();
+                  tl.set(item, {
                     duration: 0.3,
                     scale: 1,
                     ease: "Power2.easeInOut",
                   })
-                  .to(item, {
+                    .set(itemImg, {
+                      duration: 0.3,
+                      scale: 1,
+                      ease: "Power2.easeInOut",
+                    })
+                    .to(item, {
+                      duration: 0.3,
+                      scale: 0.8,
+                      ease: "Power2.easeInOut",
+                      onStart: () => {
+                        gsap.to(itemImg, {
+                          duration: 0.3,
+                          scale: 1.6,
+                          ease: "Power2.easeInOut",
+                        });
+                      },
+                    });
+                }}
+                onTouchEnd={() => {
+                  document.querySelector("body").classList.remove("is-draggy");
+                  const item = document.querySelectorAll(
+                    ".swiper-slide .inner-img"
+                  );
+                  const itemImg = document.querySelectorAll(
+                    ".swiper-slide .inner-img img"
+                  );
+                  const tl = gsap.timeline();
+                  tl.set(item, {
                     duration: 0.3,
                     scale: 0.8,
                     ease: "Power2.easeInOut",
-                    onStart: () => {
-                      gsap.to(itemImg, {
-                        duration: 0.3,
-                        scale: 1.6,
-                        ease: "Power2.easeInOut",
-                      });
-                    },
-                  });
-              }}
-              onTouchEnd={() => {
-                document.querySelector("body").classList.remove("is-draggy");
-                const item = document.querySelectorAll(
-                  ".swiper-slide .inner-img"
-                );
-                const itemImg = document.querySelectorAll(
-                  ".swiper-slide .inner-img img"
-                );
-                const tl = gsap.timeline();
-                tl.set(item, {
-                  duration: 0.3,
-                  scale: 0.8,
-                  ease: "Power2.easeInOut",
-                })
-                  .set(itemImg, {
-                    duration: 0.3,
-                    scale: 1.6,
-                    ease: "Power2.easeInOut",
                   })
-                  .to(item, {
-                    duration: 0.3,
-                    scale: 1,
-                    ease: "Power2.easeInOut",
-                    onStart: () => {
-                      gsap.to(itemImg, {
-                        duration: 0.3,
-                        scale: 1,
-                        ease: "Power2.easeInOut",
-                      });
-                    },
-                  });
-              }}
-            >
-              {props.projet.imagePage.map((el, index) => {
-                return (
-                  <SwiperSlide key={index}>
-                    <div className="inner-img">
-                      <DragGallery imagePage={el.image} />
-                    </div>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
+                    .set(itemImg, {
+                      duration: 0.3,
+                      scale: 1.6,
+                      ease: "Power2.easeInOut",
+                    })
+                    .to(item, {
+                      duration: 0.3,
+                      scale: 1,
+                      ease: "Power2.easeInOut",
+                      onStart: () => {
+                        gsap.to(itemImg, {
+                          duration: 0.3,
+                          scale: 1,
+                          ease: "Power2.easeInOut",
+                        });
+                      },
+                    });
+                }}
+              >
+                {props.projet.imagePage.map((el, index) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <div className="inner-img">
+                        <DragGallery imagePage={el.image} />
+                      </div>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="project-section project-link" data-scroll-section>
           <div className="container">
-            <Link href={`https://${props.projet.siteWeb}`}>
+            {/* <Link href={`https://${props.projet.siteWeb}`}>
               <a
                 className="btn btn-primary"
                 target="_blank"
@@ -264,27 +303,102 @@ const CardDetails: (props: {
               >
                 Voir le site
               </a>
+            </Link> */}
+            <Link href={`https://${props.projet.siteWeb}`}>
+              <a className="wrap-cta" target="_blank" rel="noopener noreferrer">
+                <span className="link-underline link-dark">Voir le site</span>
+                <span className="link-arrow">
+                  <Image
+                    src="/images/link-arrow-dark.svg"
+                    layout="intrinsic"
+                    width={24}
+                    height={24}
+                    alt="Voir le site"
+                  />
+                </span>
+              </a>
             </Link>
           </div>
         </div>
-        <div className="project-section project-items" data-scroll-section>
-          <div className="container">
-            <div className="prev">
-              <Link href={`/projets/${getPrevpost().slug}`}>
-                <a className="">
-                  <span className="">Prev: </span>
-                  <span className="">{getPrevpost().titre}</span>
-                </a>
-              </Link>
-            </div>
-            <div className="next">
-              <Link href={`/projets/${getNextpost().slug}`}>
-                <a className="" rel="prev">
-                  <span className="">Next: </span>
-                  <span className="">{getNextpost().titre}</span>
-                </a>
-              </Link>
-            </div>
+        <div
+          className="project-rounded"
+          data-scroll-section
+          data-scroll
+          data-scroll-repeat
+          ref={refProjectNav}
+        >
+          <div className="rounded-top" ref={refRoundedProject}>
+            <div className="rounded"></div>
+          </div>
+        </div>
+        <div
+          className="project-section project-items bg-dark-grey"
+          data-scroll-section
+          data-scroll
+          data-scroll-repeat
+          ref={refWrapProject}
+        >
+          <div
+            className="inner-items"
+            data-scroll
+            data-scroll-speed="-4"
+            data-scroll-position="bottom"
+          >
+            {/* <div className="container">
+              <div className="prev">
+                <Link href={`/projets/${getPrevpost().slug}`}>
+                  <a className="link-nav-project">
+                    <span className="">Prev : </span>
+                    <span className="">{getPrevpost().titre}</span>
+                  </a>
+                </Link>
+              </div>
+              <div className="next">
+                <Link href={`/projets/${getNextpost().slug}`}>
+                  <a className="link-nav-project">
+                    <span className="">Next : </span>
+                    <span className="">{getNextpost().titre}</span>
+                  </a>
+                </Link>
+                <Image
+                  className=""
+                  src={getNextpost().imageSlider.url}
+                  layout="responsive"
+                  width={getNextpost().imageSlider.width}
+                  height={getNextpost().imageSlider.height}
+                  alt={getNextpost().imageSlider.alt}
+                />
+              </div>
+            </div> */}
+            <HoverReveal
+              image={getNextpost().imageSlider.url}
+              widthImage={"300"}
+              heightImage={"400"}
+            >
+              <div className="container">
+                <div className="wrap-next-project">
+                  <p className="title-next-project">
+                    Projet suivant
+                    <span className="link-arrow">
+                      <Image
+                        src="/images/link-arrow-grey-ultralight.svg"
+                        layout="intrinsic"
+                        width={24}
+                        height={24}
+                        alt="Voir le site"
+                      />
+                    </span>
+                  </p>
+                </div>
+                <Link href={`/projets/${getNextpost().slug}`}>
+                  <a className="link-nav-project">
+                    <span className="" data-cursor-label="Voir le projet">
+                      {getNextpost().titre}
+                    </span>
+                  </a>
+                </Link>
+              </div>
+            </HoverReveal>
           </div>
         </div>
       </div>

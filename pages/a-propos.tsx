@@ -61,25 +61,23 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
       const wrapCircleAnim = document.querySelector(".circle-txt-anim");
       if (scroll) {
         scroll.on("scroll", (instance: any) => {
-          if (wrapCircleAnim.classList.contains("is-inview")) {
-            const tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: wrapCircleAnim,
-                start: "0% 100%",
-                end: "100% 0%",
-                scrub: 0,
-              },
-            });
-            tl.set(textSvg, {
-              rotate: 0,
-            });
-            tl.to(textSvg, {
-              rotate: -180,
-              ease: "power1",
-              stagger: 0.015,
-              transformOrigin: "50%, 50%",
-            });
-          }
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: wrapCircleAnim,
+              start: "0% 100%",
+              end: "100% 0%",
+              scrub: 0,
+            },
+          });
+          tl.set(textSvg, {
+            rotate: 0,
+          });
+          tl.to(textSvg, {
+            rotate: -180,
+            ease: "power1",
+            stagger: 0.015,
+            transformOrigin: "50%, 50%",
+          });
         });
       }
     }, [scroll]);
