@@ -84,3 +84,13 @@
     transform: translate3d(0, 0, 0);
   }
 }
+
+.btn-around {
+  display: block;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  border: 1px solid $dark_grey;
+  i {
+    margin-right: 0.5rem;
+  }
+}

@@ -1,0 +1,29 @@
+.page-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100vh - 50px);
+  .error-infos {
+    margin-bottom: 2rem;
+    position: relative;
+    p {
+      font-family: $font_gallient;
+      text-transform: uppercase;
+      font-size: 2rem;
+    }
+  }
+  .link-home {
+    margin-top: 3rem;
+    .btn-effect {
+      &::before {
+        border-radius: 1.5rem;
+      }
+      &:hover {
+        span {
+          color: $dark_grey;
+        }
+      }
+    }
+  }
+}
