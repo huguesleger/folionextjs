@@ -9,9 +9,16 @@ import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { Context } from "../context/AppContext";
 
 const ProjetPage: NextPage = (props) => {
+  const { setNavBar } = useContext(Context);
+
+  useEffect(() => {
+    setNavBar(true);
+  });
+
   // @ts-ignore
   const projets: [GraphQLResponse.Projet] = props.projets;
   const totalProject = projets.length;

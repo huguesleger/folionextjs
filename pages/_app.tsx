@@ -1,7 +1,7 @@
 import Layout from "../components/Layout/Layout";
 import "../styles/scss/main.scss";
 import type { AppProps } from "next/app";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Cursor from "../components/Cursor";
 import { useRouter } from "next/router";
 import "locomotive-scroll/dist/locomotive-scroll.css";
@@ -21,14 +21,21 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   const { asPath } = useRouter();
   const containerRef = useRef(null);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [navBar, setNavBar] = useState(false);
 
   const handleDarkMode = (value: boolean) => {
     setIsDarkTheme(value);
   };
 
+  const handleNavBar = (value: boolean) => {
+    setNavBar(value);
+  };
+
   const appValue = {
     isDarkTheme,
+    navBar,
     setIsDarkTheme: handleDarkMode,
+    setNavBar: handleNavBar,
   };
 
   return (
@@ -92,18 +99,20 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                       });
                       const header = document.querySelector(".header");
                       const btnNav = document.querySelector(".wrap-btn-main");
-                      if (scroll) {
-                        scroll.on("scroll", () => {
-                          if (scroll.scroll.instance.scroll.y > 10) {
-                            header.classList.add("is-hide");
-                            btnNav.classList.remove("is-hide");
-                            btnNav.classList.add("is-show");
-                          } else {
-                            header.classList.remove("is-hide");
-                            btnNav.classList.remove("is-show");
-                            btnNav.classList.add("is-hide");
-                          }
-                        });
+                      if (header && btnNav) {
+                        if (scroll) {
+                          scroll.on("scroll", () => {
+                            if (scroll.scroll.instance.scroll.y > 10) {
+                              header.classList.add("is-hide");
+                              btnNav.classList.remove("is-hide");
+                              btnNav.classList.add("is-show");
+                            } else {
+                              header.classList.remove("is-hide");
+                              btnNav.classList.remove("is-show");
+                              btnNav.classList.add("is-hide");
+                            }
+                          });
+                        }
                       }
                     }}
                     location={asPath}

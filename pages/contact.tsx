@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { request } from "../lib/datocms/datocms";
@@ -7,9 +7,16 @@ import { GraphQLResponse } from "../lib/datocms/types";
 import SplittingWrapperWord from "../components/SplittingWrapperWord";
 import { clamp, getMousePos, lerp, map } from "../components/utils";
 import gsap from "gsap";
+import { Context } from "../context/AppContext";
 
 const Contact: (props: { contact: GraphQLResponse.Contact }) => JSX.Element =
   (props: { contact: GraphQLResponse.Contact }) => {
+    const { setNavBar } = useContext(Context);
+
+    useEffect(() => {
+      setNavBar(true);
+    });
+
     const refHover = useRef(null);
     const refTitle = useRef(null);
     const refInner = useRef(null);

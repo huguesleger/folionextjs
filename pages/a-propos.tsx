@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { gsap } from "gsap/dist/gsap";
 import SplittingWrapperWord from "../components/SplittingWrapperWord";
 import HoverItem from "../components/HoverItem";
@@ -11,11 +11,18 @@ import { request } from "../lib/datocms/datocms";
 import Query from "../lib/datocms/queries";
 import { GraphQLResponse } from "../lib/datocms/types";
 import { StructuredText } from "react-datocms";
+import { Context } from "../context/AppContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
   (props: { about: GraphQLResponse.About }) => {
+    const { setNavBar } = useContext(Context);
+
+    useEffect(() => {
+      setNavBar(true);
+    });
+
     const refCursus = useRef(null);
     const refSectionCursus = useRef(null);
     const refContact = useRef(null);

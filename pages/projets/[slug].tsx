@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { StructuredText } from "react-datocms";
 import HeaderProject from "../../components/Project/HeaderProject";
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import Parallax from "../../components/Project/ParallaxImg";
 import DragGallery from "../../components/Project/DraggableGallery";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,6 +14,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import HoverReveal from "../../components/HoverReveal";
+import { Context } from "../../context/AppContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,6 +32,12 @@ const CardDetails: (props: {
   const refWrapProject = useRef(null);
 
   const { scroll } = useLocomotiveScroll();
+
+  const { setNavBar } = useContext(Context);
+
+  useEffect(() => {
+    setNavBar(true);
+  });
 
   const getNextpost = () => {
     const index = projets.findIndex((el) => el.slug === props.projet.slug);

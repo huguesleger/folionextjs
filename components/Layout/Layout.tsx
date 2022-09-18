@@ -1,11 +1,18 @@
 import Navbar from "./Nav";
-import React from "react";
+import React, { ReactNode, useContext } from "react";
+import { Context } from "../../context/AppContext";
+import NavLogo from "./NavLogo";
 
-export default function Layout({ children }) {
+interface Props {
+  children: ReactNode;
+}
+
+export default function Layout({ children }: Props) {
+  const { navBar } = useContext(Context);
   return (
     <>
       <div id="app" className="app">
-        <Navbar />
+        {navBar === true ? <Navbar /> : <NavLogo />}
         {children}
       </div>
     </>
