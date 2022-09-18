@@ -30,7 +30,7 @@ const Error: () => JSX.Element = () => {
             </span>
           </span>
           <span className="wrap-keyword">
-            Cette page n'existe pas
+            Cette page n&apos;existe pas
             <span className="separate-keyword">
               <i className="fas fa-circle" aria-hidden></i>
             </span>
@@ -44,7 +44,7 @@ const Error: () => JSX.Element = () => {
             </span>
           </span>
           <span className="wrap-keyword">
-            Cette page n'existe pas
+            Cette page n&apos;existe pas
             <span className="separate-keyword">
               <i className="fas fa-circle" aria-hidden></i>
             </span>
@@ -57,7 +57,7 @@ const Error: () => JSX.Element = () => {
             <span>
               <span>
                 <i className="fas fa-home" aria-hidden></i>
-                Retour à l'accueil
+                Retour à l&apos;accueil
               </span>
             </span>
           </a>
