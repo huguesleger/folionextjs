@@ -11,13 +11,21 @@
     height: 100%;
     width: 100%;
     .loader-inner {
-      overflow: hidden;
+      // overflow: hidden;
       position: absolute;
       left: 50%;
       top: 50%;
+      width: 100%;
       transform: translate(-50%, -50%);
       .loader-number {
         display: block;
+      }
+      .change-word {
+        text-align: center;
+        .word {
+          right: 0;
+          width: 100%;
+        }
       }
     }
   }
