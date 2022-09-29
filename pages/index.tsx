@@ -13,7 +13,6 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
   home: GraphQLResponse.Home;
 }) => {
   const { setNavBar } = useContext(Context);
-
   useEffect(() => {
     setNavBar(true);
   });
@@ -48,9 +47,9 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
                 <path d="M278.88,220.08,168,331V0H134.4V331L23.52,220.08,0,244.16l151.2,151.2,151.2-151.2Z" />
               </svg>
             </div>
-            <div className="content-txt">
-              <Link href="/projets">
-                <a className="txt btn-enter">
+            <div className="content-txt" data-scroll>
+              <Link href="#wrapWorks">
+                <a href="#works" className="txt btn-enter" data-scroll-to>
                   <span className="hello">
                     {formatTxt(props.home.titreEntrer)}
                   </span>
@@ -75,7 +74,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
           </div>
         </div>
       </div>
-      <div className="section section-works" data-scroll-section>
+      <div className="section section-works" id="works" data-scroll-section>
         <div
           className="last-works"
           id="homeWorks"
