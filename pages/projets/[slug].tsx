@@ -364,15 +364,6 @@ const CardDetails: (props: {
 
         <div className="project-section project-link" data-scroll-section>
           <div className="container">
-            {/* <Link href={`https://${props.projet.siteWeb}`}>
-              <a
-                className="btn btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Voir le site
-              </a>
-            </Link> */}
             <Link href={`https://${props.projet.siteWeb}`}>
               <a className="wrap-cta" target="_blank" rel="noopener noreferrer">
                 <span className="link-underline link-dark">Voir le site</span>
@@ -413,32 +404,6 @@ const CardDetails: (props: {
             data-scroll-speed="-4"
             data-scroll-position="bottom"
           >
-            {/* <div className="container">
-              <div className="prev">
-                <Link href={`/projets/${getPrevpost().slug}`}>
-                  <a className="link-nav-project">
-                    <span className="">Prev : </span>
-                    <span className="">{getPrevpost().titre}</span>
-                  </a>
-                </Link>
-              </div>
-              <div className="next">
-                <Link href={`/projets/${getNextpost().slug}`}>
-                  <a className="link-nav-project">
-                    <span className="">Next : </span>
-                    <span className="">{getNextpost().titre}</span>
-                  </a>
-                </Link>
-                <Image
-                  className=""
-                  src={getNextpost().imageSlider.url}
-                  layout="responsive"
-                  width={getNextpost().imageSlider.width}
-                  height={getNextpost().imageSlider.height}
-                  alt={getNextpost().imageSlider.alt}
-                />
-              </div>
-            </div> */}
             <HoverReveal
               image={getNextpost().imageSlider.url}
               widthImage={"300"}

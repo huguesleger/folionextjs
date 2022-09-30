@@ -22,6 +22,7 @@ const ProjetPage: NextPage = (props) => {
   // @ts-ignore
   const projets: [GraphQLResponse.Projet] = props.projets;
   const totalProject = projets.length;
+  let numberEl = 1;
 
   return (
     <>
@@ -40,14 +41,44 @@ const ProjetPage: NextPage = (props) => {
               el: ".progress-bar",
               type: "progressbar",
             }}
+            onSwiper={(swiper) => {
+              const numberItem = [];
+              for (let i = 0; i < totalProject; i++) {
+                const number = totalProject[i];
+                numberItem.push(number);
+                console.log(numberItem.length, "ee");
+                const elDiv = document.querySelector(".number-item");
+                let span = document.createElement("span");
+                span.classList.add("number");
+                span.classList.add("number-" + numberItem.length);
+                span.append(numberItem.length.toString());
+                elDiv.append(span);
+                const numberActive = document.querySelector(".number-1");
+                numberActive.classList.add("active");
+              }
+            }}
             onSlideChangeTransitionStart={(swiper) => {
-              const numberEl = swiper.realIndex + 1;
-              const item = document.querySelector(".progress-item-first");
-              item.innerHTML = "0" + numberEl.toString();
+              const numberActive = document.querySelector(
+                ".number-" + numberEl
+              );
+              if (numberActive) {
+                numberActive.classList.remove("active");
+              }
+
+              numberEl = swiper.realIndex + 1;
+
+              const currentNumber = document.querySelector(
+                ".number-" + numberEl
+              );
+              if (currentNumber) {
+                currentNumber.classList.add("active");
+              }
             }}
           >
             <div className="slider-progress-bar">
-              <div className="progress-item-first">01</div>
+              <div className="progress-item-first">
+                0<span className="number-item"></span>
+              </div>
               <div className="progress-bar"></div>
               <div className="progress-item-last">{`0${totalProject}`}</div>
             </div>

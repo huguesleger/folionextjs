@@ -153,7 +153,19 @@
     .progress-item-first,
     .progress-item-last {
       padding: 0 1rem;
-      min-width: 53px;
+      width: 53px;
+      overflow: hidden;
+    }
+    .number-item {
+      position: relative;
+      .number {
+        position: absolute;
+        transform: translateY(100%);
+        transition: transform 0.3s ease-in-out;
+        &.active {
+          transform: translateY(0);
+        }
+      }
     }
   }
 }
