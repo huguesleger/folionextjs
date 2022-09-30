@@ -103,6 +103,18 @@ const CardDetails: (props: {
             annee={props.projet.annee}
           />
         </div>
+        <div
+          className="project-section project-description"
+          data-scroll-section
+        >
+          <div className="container">
+            <div className="wrap-description">
+              <div className="inner-txt">
+                <StructuredText data={props.projet.description} />
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="project-img-full" data-scroll-section>
           <div className="inner-img-full">
             <Image
@@ -117,65 +129,111 @@ const CardDetails: (props: {
             />
           </div>
         </div>
-        <div
-          className="project-section project-description"
-          data-scroll-section
-        >
-          <div className="container">
-            <div className="inner-txt">
-              <StructuredText data={props.projet.description} />
-            </div>
-          </div>
-        </div>
         <div className="project-section project-charte" data-scroll-section>
           <div className="container">
-            {props.projet.titreCharte && <h3>{props.projet.titreCharte}</h3>}
-            {props.projet.descriptionCharte && (
-              <p>{props.projet.descriptionCharte}</p>
+            {props.projet.titreCharte ? (
+              <div className="wrap-charte">
+                <div className="inner-txt">
+                  <div
+                    data-scroll
+                    data-scroll-sticky
+                    data-scroll-target="#imgCharte"
+                  >
+                    <h2>{props.projet.titreCharte}</h2>
+                    {props.projet.descriptionCharte && (
+                      <p>{props.projet.descriptionCharte}</p>
+                    )}
+                  </div>
+                </div>
+                <div className="wrap-img-charte" id="imgCharte">
+                  {props.projet.imageCharte.map((el, index) => {
+                    if (index % 2 == 0) {
+                      return (
+                        <div
+                          key={el.id}
+                          className="block-img"
+                          data-scroll
+                          data-scroll-speed="1"
+                        >
+                          <Image
+                            key={el.id}
+                            className=""
+                            src={el.image.url}
+                            layout="responsive"
+                            width={el.image.width}
+                            height={el.image.height}
+                            alt={el.image.alt}
+                          />
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div
+                          key={el.id}
+                          className="block-img"
+                          data-scroll
+                          data-scroll-speed="-1"
+                        >
+                          <Image
+                            key={el.id}
+                            className=""
+                            src={el.image.url}
+                            layout="responsive"
+                            width={el.image.width}
+                            height={el.image.height}
+                            alt={el.image.alt}
+                          />
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div className="wrap-img-charte">
+                {props.projet.imageCharte.map((el, index) => {
+                  if (index % 2 == 0) {
+                    return (
+                      <div
+                        key={el.id}
+                        className="block-img"
+                        data-scroll
+                        data-scroll-speed="1"
+                      >
+                        <Image
+                          key={el.id}
+                          className=""
+                          src={el.image.url}
+                          layout="responsive"
+                          width={el.image.width}
+                          height={el.image.height}
+                          alt={el.image.alt}
+                        />
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div
+                        key={el.id}
+                        className="block-img"
+                        data-scroll
+                        data-scroll-speed="-1"
+                      >
+                        <Image
+                          key={el.id}
+                          className=""
+                          src={el.image.url}
+                          layout="responsive"
+                          width={el.image.width}
+                          height={el.image.height}
+                          alt={el.image.alt}
+                        />
+                      </div>
+                    );
+                  }
+                })}
+              </div>
             )}
-            <div className="wrap-img-charte">
-              {props.projet.imageCharte.map((el, index) => {
-                if (index % 2 == 0) {
-                  return (
-                    <div
-                      key={el.id}
-                      className="block-img"
-                      data-scroll
-                      data-scroll-speed="1"
-                    >
-                      <Image
-                        key={el.id}
-                        className=""
-                        src={el.image.url}
-                        layout="responsive"
-                        width={el.image.width}
-                        height={el.image.height}
-                        alt={el.image.alt}
-                      />
-                    </div>
-                  );
-                } else {
-                  return (
-                    <div
-                      key={el.id}
-                      className="block-img"
-                      data-scroll
-                      data-scroll-speed="-1"
-                    >
-                      <Image
-                        key={el.id}
-                        className=""
-                        src={el.image.url}
-                        layout="responsive"
-                        width={el.image.width}
-                        height={el.image.height}
-                        alt={el.image.alt}
-                      />
-                    </div>
-                  );
-                }
-              })}
-            </div>
           </div>
         </div>
         <div
@@ -203,8 +261,12 @@ const CardDetails: (props: {
         {props.projet.descriptionProjet && (
           <div className="project-section project-text" data-scroll-section>
             <div className="container">
-              <h3>{props.projet.texteProjet}</h3>
-              <p>{props.projet.descriptionProjet}</p>
+              <div className="wrap-text">
+                <div className="inner-text">
+                  <h2>{props.projet.texteProjet}</h2>
+                  <p>{props.projet.descriptionProjet}</p>
+                </div>
+              </div>
             </div>
           </div>
         )}

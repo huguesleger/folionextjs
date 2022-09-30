@@ -58,10 +58,20 @@
     }
   }
   .project-description {
+    .wrap-description {
+      display: flex;
+      justify-content: flex-end;
+    }
     .inner-txt {
-      padding: 0 5rem;
+      padding: 5rem;
       font-size: 1.5rem;
       font-weight: 100;
+      max-width: 550px;
+      h2 {
+        padding-bottom: 2rem;
+        font-weight: 700;
+        font-size: 3rem;
+      }
       strong {
         font-weight: bold;
         font-family: $font_gallient;
@@ -73,6 +83,26 @@
     }
   }
   .project-charte {
+    .wrap-charte {
+      display: flex;
+      .inner-txt {
+        width: 35%;
+        padding-top: 3rem;
+        padding-right: 3rem;
+        h2 {
+          padding-bottom: 2rem;
+          font-weight: 700;
+          font-size: 3rem;
+        }
+        p {
+          font-size: 1.5rem;
+          font-weight: 100;
+        }
+      }
+      .wrap-img-charte {
+        width: 65%;
+      }
+    }
     .wrap-img-charte {
       display: flex;
       flex-wrap: wrap;
@@ -119,6 +149,25 @@
       }
     }
   }
+
+  .project-text {
+    .wrap-text {
+      display: flex;
+      justify-content: flex-start;
+      .inner-text {
+        padding: 0 5rem;
+        font-size: 1.5rem;
+        font-weight: 100;
+        max-width: 550px;
+        h2 {
+          padding-bottom: 2rem;
+          font-weight: 700;
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+
   .project-link {
     padding-bottom: 12rem;
     text-align: center;
