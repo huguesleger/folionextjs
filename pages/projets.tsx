@@ -77,7 +77,7 @@ const ProjetPage: NextPage = (props) => {
           >
             <div className="slider-progress-bar">
               <div className="progress-item-first">
-                0<span className="number-item"></span>
+                <span className="number-item">0</span>
               </div>
               <div className="progress-bar"></div>
               <div className="progress-item-last">{`0${totalProject}`}</div>

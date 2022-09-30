@@ -162,6 +162,8 @@
         position: absolute;
         transform: translateY(100%);
         transition: transform 0.3s ease-in-out;
+        width: 10px;
+        text-align: center;
         &.active {
           transform: translateY(0);
         }
