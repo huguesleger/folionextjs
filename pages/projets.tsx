@@ -30,8 +30,8 @@ const ProjetPage: NextPage = (props) => {
         <div className="wrap-slider">
           <Swiper
             modules={[Navigation, Pagination]}
-            spaceBetween={150}
-            slidesPerView={3}
+            spaceBetween={20}
+            slidesPerView={2}
             centeredSlides={true}
             loop={true}
             autoHeight={false}
@@ -40,6 +40,12 @@ const ProjetPage: NextPage = (props) => {
             pagination={{
               el: ".progress-bar",
               type: "progressbar",
+            }}
+            breakpoints={{
+              1024: {
+                spaceBetween: 150,
+                slidesPerView: 3,
+              },
             }}
             onSwiper={(swiper) => {
               const numberItem = [];

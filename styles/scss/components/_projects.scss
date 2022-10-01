@@ -49,7 +49,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 5vw;
+        font-size: 5rem;
         text-transform: uppercase;
         opacity: 0;
         white-space: nowrap;
@@ -79,7 +79,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 5vw;
+        font-size: 5rem;
         text-transform: uppercase;
         opacity: 0;
         white-space: nowrap;
@@ -171,6 +171,15 @@
           transform: translateY(0);
         }
       }
+    }
+  }
+}
+
+@include maxwidth(md) {
+  .wrap-slider .swiper .swiper-slide {
+    .outer-title,
+    .inner-title {
+      font-size: 1.75rem;
     }
   }
 }
