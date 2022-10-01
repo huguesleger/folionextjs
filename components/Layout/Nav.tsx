@@ -44,7 +44,7 @@ export default function Navbar(): JSX.Element {
     if (toggleBtn === true) {
       overflowHidden.classList.add("overflow-hidden");
       navMobile.current.classList.add("is-show");
-      navMobile.current.style.zIndex = "1";
+      navMobile.current.style.zIndex = "5";
       btnMobile.current.classList.add("is-open");
     } else if (navMobile.current.classList.contains("is-show")) {
       setTimeout(() => {
@@ -60,13 +60,17 @@ export default function Navbar(): JSX.Element {
     const link = document.querySelectorAll(".nav-mobile .item-link");
     const header = document.querySelector(".header");
     const btnNav = document.querySelector(".wrap-btn-main");
+    const windowWidth = window.innerWidth;
 
     link.forEach((el) => {
       el.addEventListener("click", function () {
         navMobile.current.classList.remove("is-show");
         btnMobile.current.classList.remove("is-open");
+        overflowHidden.classList.remove("overflow-hidden");
         header.classList.remove("is-hide");
-        btnNav.classList.add("is-hide");
+        if (windowWidth >= 1024) {
+          btnNav.classList.add("is-hide");
+        }
         btnNav.classList.remove("is-show");
         setToggleBtn(false);
         setTimeout(() => {
