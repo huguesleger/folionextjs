@@ -39,8 +39,10 @@ export default function Navbar(): JSX.Element {
 
   useEffect(() => {
     console.log(toggleBtn);
+    const overflowHidden = document.body;
 
     if (toggleBtn === true) {
+      overflowHidden.classList.add("overflow-hidden");
       navMobile.current.classList.add("is-show");
       navMobile.current.style.zIndex = "1";
       btnMobile.current.classList.add("is-open");
@@ -48,6 +50,7 @@ export default function Navbar(): JSX.Element {
       setTimeout(() => {
         navMobile.current.classList.remove("is-show");
         btnMobile.current.classList.remove("is-open");
+        overflowHidden.classList.remove("overflow-hidden");
       }, 500);
       setTimeout(() => {
         navMobile.current.style.zIndex = "0";
@@ -85,6 +88,7 @@ export default function Navbar(): JSX.Element {
 
     const innerContact = document.querySelector(".wrap-infos .inner-contact");
     const innerSocial = document.querySelector(".wrap-infos .inner-social");
+    const innerMode = document.querySelector(".wrap-infos .inner-mode");
 
     const tlSettings = {
       staggerVal: 0.015,
@@ -102,6 +106,10 @@ export default function Navbar(): JSX.Element {
           opacity: 0,
         })
         .set(innerSocial, {
+          yPercent: -100,
+          opacity: 0,
+        })
+        .set(innerMode, {
           yPercent: -100,
           opacity: 0,
         })
@@ -129,6 +137,13 @@ export default function Navbar(): JSX.Element {
           duration: tlSettings.charsDuration,
           stagger: tlSettings.staggerVal,
         })
+        .to(innerMode, {
+          yPercent: 0,
+          opacity: 1,
+          ease: "Power2.easeInOut",
+          duration: 0.5,
+          delay: -0.6,
+        })
         .to(innerContact, {
           yPercent: 0,
           opacity: 1,
@@ -151,6 +166,13 @@ export default function Navbar(): JSX.Element {
         duration: tlSettings.charsDuration,
         stagger: tlSettings.staggerVal,
       })
+        .to(innerMode, {
+          yPercent: -100,
+          opacity: 0,
+          ease: "Power2.easeInOut",
+          duration: 0.5,
+          delay: -1.2,
+        })
         .to(innerContact, {
           yPercent: -100,
           opacity: 0,
@@ -310,11 +332,27 @@ export default function Navbar(): JSX.Element {
                 />
               </div>
               <div className="wrap-infos">
+                <div className="inner-mode">
+                  <button onClick={handleToggle} className="btn-theme-mode">
+                    <div className="item-wrap">
+                      {isDarkTheme === true ? (
+                        <>
+                          <span className="item txt-theme-mode">
+                            mode lumière
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="item txt-theme-mode">
+                            mode sombre
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </button>
+                </div>
                 <div className="inner-contact">
                   <h3 className="title-contact">Entrer en contact</h3>
-                  {/* <Link href="mailto:contactme@hl-developerz.com">
-                  <a className="link-email">Envoyez-moi un e-mail</a>
-                </Link> */}
                   <Link href="mailto:contactme@hl-developerz.com">
                     <a className="wrap-cta">
                       <span className="link-arrow">

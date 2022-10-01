@@ -37,30 +37,33 @@ const Cursor = () => {
   };
 
   useEffect(() => {
-    if (cursor.current == null || cursor == null) return;
-    document.addEventListener("pointermove", (e) => {
-      if (cursor.current == null) return;
+    const windowWidth = window.innerWidth;
+    if (windowWidth >= 1100) {
+      if (cursor.current == null || cursor == null) return;
+      document.addEventListener("pointermove", (e) => {
+        if (cursor.current == null) return;
 
-      mouseMove(e);
+        mouseMove(e);
 
-      if ((e.target as HTMLElement).closest(cursorHoverElems)) {
-        mouseIsHover = true;
-        if ((e.target as HTMLElement).getAttribute("data-cursor-label")) {
-          cursor.current.classList.add("has-label");
-          label.current.innerHTML = (e.target as HTMLElement).getAttribute(
-            "data-cursor-label"
-          );
+        if ((e.target as HTMLElement).closest(cursorHoverElems)) {
+          mouseIsHover = true;
+          if ((e.target as HTMLElement).getAttribute("data-cursor-label")) {
+            cursor.current.classList.add("has-label");
+            label.current.innerHTML = (e.target as HTMLElement).getAttribute(
+              "data-cursor-label"
+            );
+          }
+          if ((e.target as HTMLElement).getAttribute("data-cursor-big")) {
+            cursor.current.classList.add("has-big");
+          }
+        } else {
+          mouseIsHover = false;
+          cursor.current.classList.remove("has-label");
+          cursor.current.classList.remove("has-big");
+          label.current.innerHTML = "";
         }
-        if ((e.target as HTMLElement).getAttribute("data-cursor-big")) {
-          cursor.current.classList.add("has-big");
-        }
-      } else {
-        mouseIsHover = false;
-        cursor.current.classList.remove("has-label");
-        cursor.current.classList.remove("has-big");
-        label.current.innerHTML = "";
-      }
-    });
+      });
+    }
   }, []);
 
   return (

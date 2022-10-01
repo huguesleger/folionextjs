@@ -147,6 +147,14 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
               </Link>
             </div>
           </div>
+          <div className="wrap-illu">
+            <Image
+              src="/images/illu-contact.png"
+              width={413}
+              height={464}
+              layout="responsive"
+            />
+          </div>
         </div>
       </div>
     </div>

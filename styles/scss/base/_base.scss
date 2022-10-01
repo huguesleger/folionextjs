@@ -24,3 +24,13 @@ body {
 .c-white {
   color: #fff;
 }
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+@include maxwidth(lg) {
+  #app {
+    position: relative;
+  }
+}

@@ -25,6 +25,7 @@ class MyDocument extends Document {
             async
             defer
           ></script>
+          <meta name="theme-color" content="#171717" />
         </Head>
         <body>
           <Main />

@@ -24,4 +24,23 @@
       margin-bottom: 0;
     }
   }
+  .wrap-illu {
+    display: none;
+  }
+}
+
+@include maxwidth(md) {
+  .section-contact {
+    height: calc(100vh - 82px);
+    padding-bottom: 0;
+    .link-mail {
+      font-size: 2rem;
+    }
+    .wrap-illu {
+      display: block;
+      max-width: 80%;
+      margin: 0 auto;
+      padding-top: 3rem;
+    }
+  }
 }

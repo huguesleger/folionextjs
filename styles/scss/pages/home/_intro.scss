@@ -148,3 +148,27 @@
     }
   }
 }
+
+@include maxwidth(md) {
+  .intro {
+    .title-inner .title {
+      font-size: 3rem;
+    }
+    .intro-name {
+      flex-wrap: wrap;
+      flex-direction: column-reverse;
+      .circle-city {
+        width: 25%;
+      }
+    }
+    .name-inner {
+      margin-bottom: 3rem;
+      .name {
+        font-size: 2.5rem;
+      }
+    }
+    .intro-enter {
+      display: none;
+    }
+  }
+}

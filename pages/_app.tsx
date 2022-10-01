@@ -99,19 +99,25 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                       });
                       const header = document.querySelector(".header");
                       const btnNav = document.querySelector(".wrap-btn-main");
-                      if (header && btnNav) {
-                        if (scroll) {
-                          scroll.on("scroll", () => {
-                            if (scroll.scroll.instance.scroll.y > 10) {
-                              header.classList.add("is-hide");
-                              btnNav.classList.remove("is-hide");
-                              btnNav.classList.add("is-show");
-                            } else {
-                              header.classList.remove("is-hide");
-                              btnNav.classList.remove("is-show");
-                              btnNav.classList.add("is-hide");
-                            }
-                          });
+                      const windowWidth = window.innerWidth;
+                      if (windowWidth <= 1023) {
+                        btnNav.classList.remove("is-hide");
+                      }
+                      if (windowWidth >= 1024) {
+                        if (header && btnNav) {
+                          if (scroll) {
+                            scroll.on("scroll", () => {
+                              if (scroll.scroll.instance.scroll.y > 10) {
+                                header.classList.add("is-hide");
+                                btnNav.classList.remove("is-hide");
+                                btnNav.classList.add("is-show");
+                              } else {
+                                header.classList.remove("is-hide");
+                                btnNav.classList.remove("is-show");
+                                btnNav.classList.add("is-hide");
+                              }
+                            });
+                          }
                         }
                       }
                     }}
