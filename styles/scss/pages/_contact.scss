@@ -43,7 +43,7 @@
     }
   }
   .section-email {
-    padding: 8rem 0 0;
+    padding: 5rem 0 0;
     .contact-email {
       font-size: 3rem;
       font-family: $font_gallient;
@@ -79,6 +79,46 @@
       padding-top: 3rem;
       .title {
         padding-bottom: 1rem;
+      }
+    }
+  }
+}
+
+@include maxwidth(lg) {
+  .contact {
+    height: auto;
+    .section-hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .title-contact {
+      padding-top: 0;
+      .title {
+        font-size: 6rem;
+        .wrapper-word {
+          &:nth-child(2) {
+            display: none;
+          }
+          &:nth-child(3) {
+            font-weight: 800;
+            font-family: $font_nunito;
+            font-size: 6rem;
+          }
+          &:last-child {
+            font-weight: 100;
+            font-family: $font_nunito;
+            font-size: 3rem;
+            padding-top: 1rem;
+          }
+        }
+      }
+    }
+    .section-email {
+      padding-top: 0;
+      padding-bottom: 2rem;
+      .contact-email {
+        font-size: 1.5rem;
       }
     }
   }
