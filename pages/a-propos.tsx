@@ -111,7 +111,6 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
     useEffect(() => {
       const windowWidth = window.innerWidth;
       let heightRound: any;
-      let easeRound: any;
       if (windowWidth >= 1200) {
         heightRound = 94;
       } else {

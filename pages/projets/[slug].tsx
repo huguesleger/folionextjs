@@ -59,18 +59,28 @@ const CardDetails: (props: {
   };
 
   useEffect(() => {
-    const dragEl = document.querySelector(".is-draggable");
-    if (dragEl) {
-      dragEl.addEventListener("mouseenter", (e) => {
-        document.querySelector(".cursor").classList.add("has-drag");
-      });
-      dragEl.addEventListener("mouseleave", (e) => {
-        document.querySelector(".cursor").classList.remove("has-drag");
-      });
+    const windowWidth = window.innerWidth;
+    if (windowWidth >= 1200) {
+      const dragEl = document.querySelector(".is-draggable");
+      if (dragEl) {
+        dragEl.addEventListener("mouseenter", (e) => {
+          document.querySelector(".cursor").classList.add("has-drag");
+        });
+        dragEl.addEventListener("mouseleave", (e) => {
+          document.querySelector(".cursor").classList.remove("has-drag");
+        });
+      }
     }
   });
 
   useEffect(() => {
+    const windowWidth = window.innerWidth;
+    let heightRound: any;
+    if (windowWidth >= 1200) {
+      heightRound = 94;
+    } else {
+      heightRound = 35;
+    }
     if (scroll) {
       scroll.on("scroll", (instance: any) => {
         let tl = gsap.timeline({
@@ -82,7 +92,7 @@ const CardDetails: (props: {
           },
         });
         tl.set(refRoundedProject.current, {
-          height: 94,
+          height: heightRound,
         });
         tl.to(refRoundedProject.current, {
           height: 0,
@@ -277,75 +287,89 @@ const CardDetails: (props: {
           >
             <div className="wrap-img-template-page is-draggable">
               <Swiper
-                spaceBetween={40}
-                slidesPerView={4}
+                spaceBetween={30}
+                slidesPerView={3}
                 centeredSlides={false}
                 loop={false}
                 grabCursor={false}
                 observer={true}
+                breakpoints={{
+                  1024: {
+                    spaceBetween: 40,
+                    slidesPerView: 4,
+                  },
+                }}
                 onTouchStart={() => {
-                  document.querySelector("body").classList.add("is-draggy");
-                  const item = document.querySelectorAll(
-                    ".swiper-slide .inner-img"
-                  );
-                  const itemImg = document.querySelectorAll(
-                    ".swiper-slide .inner-img img"
-                  );
-                  const tl = gsap.timeline();
-                  tl.set(item, {
-                    duration: 0.3,
-                    scale: 1,
-                    ease: "Power2.easeInOut",
-                  })
-                    .set(itemImg, {
+                  const windowWidth = window.innerWidth;
+                  if (windowWidth >= 1200) {
+                    document.querySelector("body").classList.add("is-draggy");
+                    const item = document.querySelectorAll(
+                      ".swiper-slide .inner-img"
+                    );
+                    const itemImg = document.querySelectorAll(
+                      ".swiper-slide .inner-img img"
+                    );
+                    const tl = gsap.timeline();
+                    tl.set(item, {
                       duration: 0.3,
                       scale: 1,
                       ease: "Power2.easeInOut",
                     })
-                    .to(item, {
+                      .set(itemImg, {
+                        duration: 0.3,
+                        scale: 1,
+                        ease: "Power2.easeInOut",
+                      })
+                      .to(item, {
+                        duration: 0.3,
+                        scale: 0.8,
+                        ease: "Power2.easeInOut",
+                        onStart: () => {
+                          gsap.to(itemImg, {
+                            duration: 0.3,
+                            scale: 1.6,
+                            ease: "Power2.easeInOut",
+                          });
+                        },
+                      });
+                  }
+                }}
+                onTouchEnd={() => {
+                  const windowWidth = window.innerWidth;
+                  if (windowWidth >= 1200) {
+                    document
+                      .querySelector("body")
+                      .classList.remove("is-draggy");
+                    const item = document.querySelectorAll(
+                      ".swiper-slide .inner-img"
+                    );
+                    const itemImg = document.querySelectorAll(
+                      ".swiper-slide .inner-img img"
+                    );
+                    const tl = gsap.timeline();
+                    tl.set(item, {
                       duration: 0.3,
                       scale: 0.8,
                       ease: "Power2.easeInOut",
-                      onStart: () => {
-                        gsap.to(itemImg, {
-                          duration: 0.3,
-                          scale: 1.6,
-                          ease: "Power2.easeInOut",
-                        });
-                      },
-                    });
-                }}
-                onTouchEnd={() => {
-                  document.querySelector("body").classList.remove("is-draggy");
-                  const item = document.querySelectorAll(
-                    ".swiper-slide .inner-img"
-                  );
-                  const itemImg = document.querySelectorAll(
-                    ".swiper-slide .inner-img img"
-                  );
-                  const tl = gsap.timeline();
-                  tl.set(item, {
-                    duration: 0.3,
-                    scale: 0.8,
-                    ease: "Power2.easeInOut",
-                  })
-                    .set(itemImg, {
-                      duration: 0.3,
-                      scale: 1.6,
-                      ease: "Power2.easeInOut",
                     })
-                    .to(item, {
-                      duration: 0.3,
-                      scale: 1,
-                      ease: "Power2.easeInOut",
-                      onStart: () => {
-                        gsap.to(itemImg, {
-                          duration: 0.3,
-                          scale: 1,
-                          ease: "Power2.easeInOut",
-                        });
-                      },
-                    });
+                      .set(itemImg, {
+                        duration: 0.3,
+                        scale: 1.6,
+                        ease: "Power2.easeInOut",
+                      })
+                      .to(item, {
+                        duration: 0.3,
+                        scale: 1,
+                        ease: "Power2.easeInOut",
+                        onStart: () => {
+                          gsap.to(itemImg, {
+                            duration: 0.3,
+                            scale: 1,
+                            ease: "Power2.easeInOut",
+                          });
+                        },
+                      });
+                  }
                 }}
               >
                 {props.projet.imagePage.map((el, index) => {
