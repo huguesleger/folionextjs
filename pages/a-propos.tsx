@@ -66,30 +66,57 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
     useEffect(() => {
       const textSvg = document.querySelectorAll(".circles-text");
       const wrapCircleAnim = document.querySelector(".circle-txt-anim");
-      if (scroll) {
-        scroll.on("scroll", (instance: any) => {
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: wrapCircleAnim,
-              start: "0% 100%",
-              end: "100% 0%",
-              scrub: 0,
-            },
+      const windowWidth = window.innerWidth;
+
+      if (windowWidth >= 1200) {
+        if (scroll) {
+          scroll.on("scroll", (instance: any) => {
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: wrapCircleAnim,
+                start: "0% 100%",
+                end: "100% 0%",
+                scrub: 0,
+              },
+            });
+            tl.set(textSvg, {
+              rotate: 0,
+            });
+            tl.to(textSvg, {
+              rotate: -180,
+              ease: "power1",
+              stagger: 0.015,
+              transformOrigin: "50%, 50%",
+            });
           });
-          tl.set(textSvg, {
-            rotate: 0,
+        }
+      } else {
+        if (scroll) {
+          scroll.on("scroll", (instance: any) => {
+            const tl = gsap.timeline();
+            tl.set(textSvg, {
+              rotate: 0,
+            });
+            tl.to(textSvg, {
+              rotate: scroll.scroll.instance.scroll.y,
+              ease: "power1",
+              stagger: 0.015,
+              transformOrigin: "50%, 50%",
+            });
           });
-          tl.to(textSvg, {
-            rotate: -180,
-            ease: "power1",
-            stagger: 0.015,
-            transformOrigin: "50%, 50%",
-          });
-        });
+        }
       }
     }, [scroll]);
 
     useEffect(() => {
+      const windowWidth = window.innerWidth;
+      let heightRound: any;
+      let easeRound: any;
+      if (windowWidth >= 1200) {
+        heightRound = 94;
+      } else {
+        heightRound = 35;
+      }
       if (scroll) {
         scroll.on("scroll", (instance: any) => {
           if (refContact.current.classList.contains("is-inview")) {
@@ -102,7 +129,7 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
               },
             });
             tl.set(refRoundedContact.current, {
-              height: 94,
+              height: heightRound,
             });
             tl.to(refRoundedContact.current, {
               height: 0,

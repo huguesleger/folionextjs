@@ -1,6 +1,7 @@
 .infinite-keywords {
   display: flex;
   align-items: center;
+  overflow: hidden;
   .keywords {
     display: flex;
     flex-shrink: 0;
@@ -21,6 +22,16 @@
     }
     .keyword-bold {
       font-weight: 700;
+    }
+  }
+}
+
+@include maxwidth(lg) {
+  .infinite-keywords .keywords {
+    font-size: 4rem;
+    .wrap-keyword .separate-keyword {
+      font-size: 1rem;
+      padding: 0 1rem;
     }
   }
 }
