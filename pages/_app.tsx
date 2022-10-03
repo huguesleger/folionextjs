@@ -17,7 +17,7 @@ const variants = {
   exit: { opacity: 0, x: 0, y: "-20vh" },
 };
 
-// const variants = {
+// const variants2 = {
 //   hidden: { opacity: 0, x: 0, y: 0 },
 //   enter: { opacity: 1, x: 0, y: 0 },
 //   exit: { opacity: 0, x: 0, y: 0 },
@@ -74,7 +74,11 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                   variants={variants}
                   transition={{ duration: 1, ease: [0.87, 0, 0.13, 1] }}
                   // transition={{ type: "linear" }}
-                  className="page-content"
+                  className={
+                    router.pathname == "/contact"
+                      ? "page-content bg-dark-grey"
+                      : "page-content"
+                  }
                 >
                   <Component {...pageProps} key={router.pathname} />
                   <Footer />
