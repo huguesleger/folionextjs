@@ -12,9 +12,29 @@ import gsap from "gsap";
 import Footer from "../components/Layout/Footer";
 
 const variants = {
-  hidden: { opacity: 0, x: 0, y: 0 },
-  enter: { opacity: 1, x: 0, y: 0 },
-  exit: { opacity: 0, x: 0, y: 0 },
+  hidden: { opacity: 0, x: 0, y: "0" },
+  enter: { opacity: 1, x: 0, y: "0" },
+  exit: { opacity: 0, x: 0, y: "-20vh" },
+};
+
+// const variants = {
+//   hidden: { opacity: 0, x: 0, y: 0 },
+//   enter: { opacity: 1, x: 0, y: 0 },
+//   exit: { opacity: 0, x: 0, y: 0 },
+// };
+
+const blackBox = {
+  initial: {
+    height: "100vh",
+    top: 0,
+  },
+  animate: {
+    height: 0,
+    transition: {
+      duration: 1.5,
+      ease: [0.87, 0, 0.13, 1],
+    },
+  },
 };
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
@@ -52,11 +72,24 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                   animate="enter"
                   exit="exit"
                   variants={variants}
-                  transition={{ type: "linear" }}
+                  transition={{ duration: 1, ease: [0.87, 0, 0.13, 1] }}
+                  // transition={{ type: "linear" }}
                   className="page-content"
                 >
                   <Component {...pageProps} key={router.pathname} />
                   <Footer />
+                  <motion.div
+                    // key={router.pathname}
+                    // initial="hidden"
+                    // animate="enter"
+                    // exit="exit"
+                    initial="initial"
+                    animate="animate"
+                    variants={blackBox}
+                    // variants={variantsTransition}
+                    // transition={{ type: "linear" }}
+                    className="transition-page"
+                  ></motion.div>
                 </motion.div>
               </AnimatePresence>
             </>
@@ -69,7 +102,8 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                   animate="enter"
                   exit="exit"
                   variants={variants}
-                  transition={{ type: "linear" }}
+                  transition={{ duration: 1, ease: [0.87, 0, 0.13, 1] }}
+                  // transition={{ type: "linear" }}
                   className="page-content"
                 >
                   <LocomotiveScrollProvider
@@ -135,6 +169,17 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                       <Footer />
                     </div>
                   </LocomotiveScrollProvider>
+                  <motion.div
+                    // key={router.pathname}
+                    // initial="hidden"
+                    // animate="enter"
+                    // exit="exit"
+                    // variants={variantsTransition}
+                    initial="initial"
+                    animate="animate"
+                    variants={blackBox}
+                    className="transition-page"
+                  ></motion.div>
                 </motion.div>
               </AnimatePresence>
             </>
