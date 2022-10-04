@@ -27,9 +27,11 @@ const blackBox = {
   initial: {
     height: "100vh",
     top: 0,
+    // y: "100vh",
   },
   animate: {
-    height: 0,
+    height: "0",
+    // y: "-100vh",
     transition: {
       duration: 1.5,
       ease: [0.87, 0, 0.13, 1],
