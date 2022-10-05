@@ -62,6 +62,10 @@ export default function Navbar(): JSX.Element {
     const btnNav = document.querySelector(".wrap-btn-main");
     const windowWidth = window.innerWidth;
 
+    if (windowWidth <= 1023) {
+      btnNav.classList.remove("is-hide");
+    }
+
     link.forEach((el) => {
       el.addEventListener("click", function () {
         navMobile.current.classList.remove("is-show");

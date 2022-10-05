@@ -91,6 +91,9 @@
       height: 100vh;
       display: flex;
       align-items: center;
+      .hover-reveal {
+        display: none;
+      }
     }
     .title-contact {
       padding-top: 0;
