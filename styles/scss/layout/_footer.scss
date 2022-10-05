@@ -35,10 +35,12 @@
 
 @include maxwidth(md) {
   .footer {
-    .inner-footer {
-      padding: 0 1rem;
-      .item-social {
-        margin-left: 1rem;
+    .bg-footer {
+      .inner-footer {
+        padding: 0 1rem;
+        .item-social {
+          margin-left: 1rem;
+        }
       }
     }
   }
