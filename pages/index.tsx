@@ -6,16 +6,46 @@ import Image from "next/image";
 import Link from "next/link";
 import formatTxt from "../lib/functions/formatTxt";
 import LastWork from "../components/Home/LastWork";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Context } from "../context/AppContext";
+import LastWorkV2 from "../components/Home/LastWorkV2";
+import dynamic from "next/dynamic";
+import { SharedLayoutDataContext } from "../context/MotionContext";
 
 const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
   home: GraphQLResponse.Home;
 }) => {
   const { setNavBar } = useContext(Context);
+  const { setCurrent, current, setValue } = useContext(SharedLayoutDataContext);
+
+  // const Pixi = dynamic(() => import("../components/Pixi"), {
+  //   ssr: false,
+  // });
+
+  const PixiV4 = dynamic(() => import("../components/PixiV4"), {
+    ssr: false,
+  });
+
   useEffect(() => {
     setNavBar(true);
   });
+
+  const handleClick = () => {
+    // const homePage = document.querySelector(".light-mode .homepage");
+    // homePage.classList.add("in-transition");
+    // refWrapCanvas.current.classList.add("is-full");
+    const refWrapCanvas = document.querySelector("canvas");
+    const rect = refWrapCanvas.getBoundingClientRect();
+    console.log(rect, "rect");
+    // setCurrent(`/projets/${slug}`);
+
+    setValue({
+      x: rect.x,
+      y: rect.y,
+      width: rect.width,
+      height: rect.height,
+    });
+  };
 
   return (
     <div className="homepage">
@@ -114,7 +144,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
             </h3>
           </div>
           <div className="container">
-            <div className="wrap-works" id="wrapWorks">
+            {/* <div className="wrap-works" id="wrapWorks">
               {props.home.lastWork.map((el, index) => {
                 index = index + 1;
                 return (
@@ -129,6 +159,60 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
                   </div>
                 );
               })}
+            </div> */}
+            <div className="wrap-works" id="wrapWorks">
+              {props.home.lastWork.map((el, index) => {
+                index = index + 1;
+                return (
+                  <div className="inner-work" id={`work${index}`} key={el.id}>
+                    <LastWorkV2
+                      key={el.id}
+                      titre={el.titre}
+                      slug={el.slug}
+                      image={el.image}
+                      typeProjet={el.typeProjet}
+                      target={el.target}
+                    />
+                    <Link href={`/projets/${el.slug}`}>
+                      <a className="link-work" onClick={handleClick}>
+                        <PixiV4 image={el.image} target={el.target}></PixiV4>
+                        <div className="wrap-title">
+                          <h3
+                            className={`title-work title-work${index}`}
+                            data-cursor-label="Voir le projet"
+                          >
+                            {el.titre}
+                          </h3>
+                        </div>
+                      </a>
+                    </Link>
+                  </div>
+                );
+              })}
+              {/* {props.home.lastWork.map((el, index) => {
+                index = index + 1;
+                return (
+                  <div className="wrap-canvas">
+                    <div className="content-work">
+                      <Link href={`/projets/${el.slug}`}>
+                        <a className="link-work">
+                          <PixiV4
+                            image={el.image}
+                            titre={el.titre}
+                            slug={el.slug}
+                            target={el.target}
+                          ></PixiV4>
+                          <div className="wrap-title">
+                            <h3 className={`title-work title-work${index}`}>
+                              {el.titre}
+                            </h3>
+                          </div>
+                        </a>
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })} */}
             </div>
           </div>
         </div>

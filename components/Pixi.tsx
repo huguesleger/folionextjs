@@ -61,7 +61,7 @@ function StageNoSSR() {
 
 const wrapped = () => {
   return (
-    <Stage width={420} height={250}>
+    <Stage width={420} height={500}>
       <StageNoSSR />
     </Stage>
   );

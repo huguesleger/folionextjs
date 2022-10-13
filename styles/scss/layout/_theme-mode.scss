@@ -13,6 +13,11 @@
         fill: #fff;
       }
     }
+    &.in-transition {
+      transition: background-color 0.5s ease-in-out;
+      transition-delay: 1.5s;
+      background-color: #fff !important;
+    }
   }
 }
 

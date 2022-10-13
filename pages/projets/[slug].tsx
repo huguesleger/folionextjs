@@ -15,6 +15,10 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import HoverReveal from "../../components/HoverReveal";
 import { Context } from "../../context/AppContext";
+import { motion } from "framer-motion";
+import { SharedLayoutDataContext } from "../../context/MotionContext";
+
+const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,8 +39,12 @@ const CardDetails: (props: {
 
   const { setNavBar } = useContext(Context);
 
+  const { contextValue } = useContext(SharedLayoutDataContext);
+  const { x, y, width, height } = contextValue;
+
   useEffect(() => {
     setNavBar(true);
+    // console.log(setY, "fffo");
   });
 
   const getNextpost = () => {
@@ -105,6 +113,59 @@ const CardDetails: (props: {
   return (
     <>
       <div className="project-content">
+        <div className="project-img-full" data-scroll-section>
+          <motion.div
+            initial={{
+              y: y,
+              x: x,
+              width: width,
+              height: height,
+              // scale: 0.9075,
+              // y: 132,
+              // width: 411,
+              // height: 668,
+            }}
+            animate={{
+              y: 0,
+              x: 0,
+              width: "100%",
+              height: "100%",
+              // scale: 1,
+              // y: 132,
+              // width: 411,
+              // height: 668,
+              transition: { delay: 0, ...transition },
+            }}
+            className="thumbnail-single"
+          >
+            <div className="inner-img-full">
+              <motion.div
+                initial={{ scale: 1 }}
+                // initial={{ scale: 1 }}
+                animate={{
+                  scale: 1,
+                  transition: { delay: 0, ...transition },
+                  // y: -1200,
+                }}
+                className="content-inner-img"
+              >
+                <Image
+                  className=""
+                  src={props.projet.imageFull.url}
+                  layout="fill"
+                  objectFit="cover"
+                  // placeholder="blur"
+                  // quality={50}
+                  // width={props.projet.imageFull.width}
+                  // height={props.projet.imageFull.height}
+                  // layout="responsive"
+                  alt={props.projet.imageFull.alt}
+                  priority
+                />
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
         <div className="project-header" data-scroll-section>
           <HeaderProject
             titre={props.projet.titre}
@@ -125,7 +186,7 @@ const CardDetails: (props: {
             </div>
           </div>
         </div>
-        <div className="project-img-full" data-scroll-section>
+        {/* <div className="project-img-full" data-scroll-section>
           <div className="inner-img-full">
             <Image
               className=""
@@ -138,7 +199,7 @@ const CardDetails: (props: {
               data-scroll-speed="-2"
             />
           </div>
-        </div>
+        </div> */}
         <div className="project-section project-charte" data-scroll-section>
           <div className="container">
             {props.projet.titreCharte ? (

@@ -1,5 +1,9 @@
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Context } from "../../context/AppContext";
+import { SharedLayoutDataContext } from "../../context/MotionContext";
 
 type LastWorkType = {
   titre: string;
@@ -15,6 +19,9 @@ type LastWorkType = {
   };
 };
 
+const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
+const transition2 = { duration: 0.3, ease: [0.6, 0.01, -0.05, 0.9] };
+
 const LastWork = ({
   titre,
   typeProjet,
@@ -22,9 +29,44 @@ const LastWork = ({
   image,
   target,
 }: LastWorkType): JSX.Element => {
+  const refImageLink = useRef(null);
+  const refInfos = useRef(null);
+  const refWrapImg = useRef(null);
+
+  // const { setWidth, setHeight, setX, y, setY } = useContext(Context);
+  // const [width, setWidth] = useState(0);
+  // const [height, setHeight] = useState(0);
+  // const [x, setX] = useState(0);
+  // const [y, setY] = useState(0);
+
+  const { setCurrent, current, setValue } = useContext(SharedLayoutDataContext);
+
+  const handleClick = () => {
+    const homePage = document.querySelector(".light-mode .homepage");
+    homePage.classList.add("in-transition");
+    refWrapImg.current.classList.add("is-full");
+    const rect = refWrapImg.current.getBoundingClientRect();
+    setCurrent(`/projets/${slug}`);
+
+    setValue({
+      x: rect.x,
+      y: rect.y,
+      width: rect.width,
+      height: rect.height,
+    });
+  };
+
   return (
     <>
-      <div className="col-work-infos">
+      <motion.div
+        className="col-work-infos"
+        ref={refInfos}
+        // exit={{
+        //   width: "0",
+        //   opacity: "0",
+        //   transition: { delay: 0, ...transition2 },
+        // }}
+      >
         <div
           className="wrap-infos"
           data-scroll
@@ -49,28 +91,50 @@ const LastWork = ({
             </a>
           </Link>
         </div>
-      </div>
-      <div className="col-work">
-        <div className="wrap-img">
+      </motion.div>
+      <motion.div
+        className="col-work"
+        // exit={{
+        //   width: "100%",
+        //   transition: { delay: 0, ...transition2 },
+        // }}
+      >
+        <div
+          className="wrap-img"
+          ref={refWrapImg}
+          // exit={{
+          //   width: 380,
+          //   height: 500,
+          //   scale: 0.9075,
+          //   transition: { delay: 0, ...transition2 },
+          // }}
+        >
           <div className="inner-img">
             <Link href={`/projets/${slug}`}>
-              <a className="link-img-work">
+              <a
+                className="link-img-work"
+                ref={refImageLink}
+                onClick={handleClick}
+              >
                 <Image
                   className="img-work"
                   src={image.url}
                   layout="responsive"
                   width={image.width}
                   height={image.height}
+                  // layout="fill"
+                  // objectFit="cover"
+                  // quality={100}
                   alt={image.alt}
                   data-cursor-label="Voir le projet"
-                  data-scroll
-                  data-scroll-speed="-3"
+                  // data-scroll
+                  // data-scroll-speed="-3"
                 />
               </a>
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

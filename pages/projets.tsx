@@ -11,6 +11,10 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import React, { useContext, useEffect } from "react";
 import { Context } from "../context/AppContext";
+import { motion } from "framer-motion";
+
+const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
+const transition2 = { duration: 0.3, ease: [0.6, 0.01, -0.05, 0.9] };
 
 const ProjetPage: NextPage = (props) => {
   const { setNavBar } = useContext(Context);
