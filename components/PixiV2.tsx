@@ -192,7 +192,6 @@ const wrapped = () => {
   const windonWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
   console.log(windowHeight, "height");
-  useEffect(() => {}, []);
 
   return (
     <Stage width={380} height={windowHeight * 3} {...pixiSet}>

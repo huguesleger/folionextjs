@@ -217,8 +217,6 @@ const wrapped = ({ image, titre, slug, target }: LastWorkType): JSX.Element => {
 
   const windowHeight = window.innerHeight;
   console.log(windowHeight, "height");
-  const reftitle = useRef(null);
-  useEffect(() => {}, []);
 
   return (
     <>
