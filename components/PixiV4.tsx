@@ -160,10 +160,10 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
   useTick(() => setX((x) => x + 6));
   useTick(() => setY((y) => y + 2));
 
-  useEffect(() => {
-    const SliderItem = document.querySelectorAll(".inner-work .img-work");
-    SliderItem.forEach((el) => el.remove());
-  }, []);
+  // useEffect(() => {
+  //   const SliderItem = document.querySelectorAll(".inner-work .img-work");
+  //   SliderItem.forEach((el) => el.remove());
+  // }, []);
 
   const container = document.querySelector("#wrapWorks");
   const windowWidth = container.clientWidth;
@@ -203,6 +203,7 @@ const wrapped = ({ image, target }: LastWorkType): JSX.Element => {
       antialias: true,
       roundPixels: true,
       resolution: window.devicePixelRatio || 1,
+      clearBeforeRender: false,
     },
   };
   const container = document.querySelector("#wrapWorks");
@@ -219,6 +220,7 @@ const wrapped = ({ image, target }: LastWorkType): JSX.Element => {
         height={570}
         {...pixiSet}
         data-cursor-label="Voir le projet"
+        // raf={false}
       >
         <Container>
           <StageNoSSR image={image} target={target} />

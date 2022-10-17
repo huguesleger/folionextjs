@@ -37,6 +37,10 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+        // display: none;
+        &.is-show {
+          display: block;
+        }
       }
       .link-work {
         display: flex;
@@ -53,6 +57,11 @@
             text-transform: uppercase;
             font-family: $font_gallient;
             font-size: 6rem;
+          }
+        }
+        .work-pixi {
+          &.is-hide {
+            display: none !important;
           }
         }
         canvas {

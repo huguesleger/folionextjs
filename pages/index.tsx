@@ -38,6 +38,14 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
     const rect = refWrapCanvas.getBoundingClientRect();
     console.log(rect, "rect");
     // setCurrent(`/projets/${slug}`);
+    // const allCanvas = document.querySelectorAll(".work-pixi");
+    // const allImgs = document.querySelectorAll(".img-work");
+    // allCanvas.forEach((el) => {
+    //   el.classList.add("is-hide");
+    // });
+    // allImgs.forEach((el) => {
+    //   el.classList.add("is-show");
+    // });
 
     setValue({
       x: rect.x,
@@ -175,7 +183,9 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
                     />
                     <Link href={`/projets/${el.slug}`}>
                       <a className="link-work" onClick={handleClick}>
-                        <PixiV4 image={el.image} target={el.target}></PixiV4>
+                        <div className="work-pixi">
+                          <PixiV4 image={el.image} target={el.target}></PixiV4>
+                        </div>
                         <div className="wrap-title">
                           <h3
                             className={`title-work title-work${index}`}
