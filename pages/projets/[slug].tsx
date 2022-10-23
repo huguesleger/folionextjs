@@ -117,7 +117,7 @@ const CardDetails: (props: {
           <motion.div
             initial={{
               y: y,
-              x: x,
+              x: 0,
               width: width,
               height: height,
               // scale: 0.9075,
@@ -140,7 +140,7 @@ const CardDetails: (props: {
           >
             <div className="inner-img-full">
               <motion.div
-                initial={{ scale: 1 }}
+                initial={{ scale: 1.2 }}
                 // initial={{ scale: 1 }}
                 animate={{
                   scale: 1,

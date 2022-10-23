@@ -1,16 +1,12 @@
 import {
   Container,
-  Graphics,
   Sprite,
   Stage,
-  Text,
-  useApp,
   useTick,
   withFilters,
-  withPixiApp,
 } from "@inlet/react-pixi";
 import { useEffect, useRef, useState } from "react";
-import { utils, filters, TextStyle } from "pixi.js";
+import { utils, filters } from "pixi.js";
 import * as PIXI from "pixi.js";
 import gsap from "gsap";
 import image from "next/image";
@@ -56,7 +52,11 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
       displacementSpriteRef.current.texture.baseTexture.wrapMode =
         PIXI.WRAP_MODES.REPEAT;
       setRenderFilter(true);
+      // animate();
     }
+    // return () => {
+    //   animate();
+    // };
   }, []);
 
   useEffect(() => {
@@ -67,31 +67,21 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
 
     linkWork1.addEventListener("mouseenter", function () {
       if (target === 1) {
-        tl.to(displacementSpriteRef.current.transform.scale, {
+        tl.to(displacementSpriteRef.current.scale, {
           x: 0,
           y: 0,
           ease: "Power2.easeInOut",
-          duration: 0.8,
-        }).to(refImg.current.scale, {
-          x: 0.31,
-          y: 0.31,
-          duration: 0.5,
-          delay: -0.5,
+          duration: 0.3,
         });
       }
     });
     linkWork1.addEventListener("mouseleave", function () {
       if (target === 1) {
-        tl.to(displacementSpriteRef.current.transform.scale, {
+        tl.to(displacementSpriteRef.current.scale, {
           x: 1,
           y: 1,
           ease: "Power2.easeInOut",
-          duration: 0.8,
-        }).to(refImg.current.scale, {
-          x: 0.296875,
-          y: 0.296875,
-          duration: 0.5,
-          delay: -0.5,
+          duration: 0.3,
         });
       }
     });
@@ -155,6 +145,14 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
         });
       }
     });
+
+    linkWork1.addEventListener("click", function (e) {
+      // Ticker.shared.remove(displacementSpriteRef.current);
+      // if (target === 1) {
+      // }
+      // e.preventDefault();
+      // setAnim(false);
+    });
   }, []);
 
   useTick(() => setX((x) => x + 6));
@@ -164,6 +162,14 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
   //   const SliderItem = document.querySelectorAll(".inner-work .img-work");
   //   SliderItem.forEach((el) => el.remove());
   // }, []);
+
+  // function animate() {
+  //   if (anim == true) {
+  //     setX((x) => x + 6);
+  //     setY((y) => y + 2);
+  //     requestAnimationFrame(animate);
+  //   }
+  // }
 
   const container = document.querySelector("#wrapWorks");
   const windowWidth = container.clientWidth;

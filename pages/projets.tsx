@@ -9,19 +9,32 @@ import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Context } from "../context/AppContext";
 import { motion } from "framer-motion";
+import { SharedLayoutDataContext } from "../context/MotionContext";
 
 const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 const transition2 = { duration: 0.3, ease: [0.6, 0.01, -0.05, 0.9] };
 
 const ProjetPage: NextPage = (props) => {
   const { setNavBar } = useContext(Context);
+  const { setCurrent, current, setValue } = useContext(SharedLayoutDataContext);
 
   useEffect(() => {
     setNavBar(true);
   });
+
+  const handleClick = () => {
+    const refImg = document.querySelector(".swiper-slide-active .inner-img");
+    const rect = refImg.getBoundingClientRect();
+    setValue({
+      x: 0,
+      y: rect.y,
+      width: rect.width,
+      height: rect.height,
+    });
+  };
 
   // @ts-ignore
   const projets: [GraphQLResponse.Projet] = props.projets;
@@ -96,7 +109,7 @@ const ProjetPage: NextPage = (props) => {
               return (
                 <SwiperSlide key={index}>
                   <Link href={"/projets/" + projet.slug}>
-                    <a>
+                    <a onClick={handleClick}>
                       <div className="inner-title title-white">
                         <span className="name">
                           <span>{projet.titre}</span>
