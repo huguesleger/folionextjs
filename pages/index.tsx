@@ -6,11 +6,15 @@ import Image from "next/image";
 import Link from "next/link";
 import formatTxt from "../lib/functions/formatTxt";
 import LastWork from "../components/Home/LastWork";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "../context/AppContext";
 import LastWorkV2 from "../components/Home/LastWorkV2";
 import dynamic from "next/dynamic";
 import { SharedLayoutDataContext } from "../context/MotionContext";
+
+const PixiV4 = dynamic(() => import("../components/PixiV4"), {
+  ssr: false,
+});
 
 const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
   home: GraphQLResponse.Home;
@@ -18,13 +22,9 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
   const { setNavBar } = useContext(Context);
   const { setCurrent, current, setValue } = useContext(SharedLayoutDataContext);
 
-  // const Pixi = dynamic(() => import("../components/Pixi"), {
+  // const PixiApp = dynamic(() => import("../components/PixiApp"), {
   //   ssr: false,
   // });
-
-  const PixiV4 = dynamic(() => import("../components/PixiV4"), {
-    ssr: false,
-  });
 
   useEffect(() => {
     setNavBar(true);

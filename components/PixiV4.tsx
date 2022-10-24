@@ -91,12 +91,7 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
           x: 0,
           y: 0,
           ease: "Power2.easeInOut",
-          duration: 0.8,
-        }).to(refImg.current.scale, {
-          x: 0.31,
-          y: 0.31,
-          duration: 0.5,
-          delay: -0.5,
+          duration: 0.3,
         });
       }
     });
@@ -106,12 +101,7 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
           x: 1,
           y: 1,
           ease: "Power2.easeInOut",
-          duration: 0.8,
-        }).to(refImg.current.scale, {
-          x: 0.296875,
-          y: 0.296875,
-          duration: 0.5,
-          delay: -0.5,
+          duration: 0.3,
         });
       }
     });
@@ -121,12 +111,7 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
           x: 0,
           y: 0,
           ease: "Power2.easeInOut",
-          duration: 0.8,
-        }).to(refImg.current.scale, {
-          x: 0.31,
-          y: 0.31,
-          duration: 0.5,
-          delay: -0.5,
+          duration: 0.3,
         });
       }
     });
@@ -136,12 +121,7 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
           x: 1,
           y: 1,
           ease: "Power2.easeInOut",
-          duration: 0.8,
-        }).to(refImg.current.scale, {
-          x: 0.296875,
-          y: 0.296875,
-          duration: 0.5,
-          delay: -0.5,
+          duration: 0.3,
         });
       }
     });
@@ -209,7 +189,8 @@ const wrapped = ({ image, target }: LastWorkType): JSX.Element => {
       antialias: true,
       roundPixels: true,
       resolution: window.devicePixelRatio || 1,
-      clearBeforeRender: false,
+      clearBeforeRender: true,
+      autoStart: true,
     },
   };
   const container = document.querySelector("#wrapWorks");
