@@ -53,7 +53,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
       backgroundColor: "#ffffff",
       ease: "Power2.easeInOut",
       delay: 0.5,
-      duration: 0.3,
+      duration: 0.5,
       onStart: () => {
         refHome.current.classList.remove("bg-dark");
       },
