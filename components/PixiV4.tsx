@@ -31,9 +31,6 @@ const Filters = withFilters(Container, {
   displacement: filters.DisplacementFilter,
 });
 
-const widthSprite = 380;
-const heightSprite = 570;
-
 const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
@@ -151,9 +148,6 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
   //   }
   // }
 
-  const container = document.querySelector("#wrapWorks");
-  const windowWidth = container.clientWidth;
-
   return (
     <>
       <Sprite x={x} y={y} image="smoke2.jpg" ref={displacementSpriteRef} />
@@ -193,12 +187,6 @@ const wrapped = ({ image, target }: LastWorkType): JSX.Element => {
       autoStart: true,
     },
   };
-  const container = document.querySelector("#wrapWorks");
-  const windowWidth = container.clientWidth;
-  console.log(windowWidth, "width");
-
-  const windowHeight = window.innerHeight;
-  console.log(windowHeight, "height");
 
   return (
     <>
