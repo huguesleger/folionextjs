@@ -11,6 +11,7 @@ import { Context } from "../context/AppContext";
 import LastWorkV2 from "../components/Home/LastWorkV2";
 import dynamic from "next/dynamic";
 import { SharedLayoutDataContext } from "../context/MotionContext";
+import gsap from "gsap";
 
 const PixiV4 = dynamic(() => import("../components/PixiV4"), {
   ssr: false,
@@ -21,6 +22,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
 }) => {
   const { setNavBar } = useContext(Context);
   const { setCurrent, current, setValue } = useContext(SharedLayoutDataContext);
+  const refHome = useRef(null);
 
   // const PixiApp = dynamic(() => import("../components/PixiApp"), {
   //   ssr: false,
@@ -46,6 +48,16 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
     // allImgs.forEach((el) => {
     //   el.classList.add("is-show");
     // });
+    const tl = gsap.timeline();
+    tl.to(refHome.current, {
+      backgroundColor: "#ffffff",
+      ease: "Power2.easeInOut",
+      delay: 1.2,
+      duration: 0.5,
+      onStart: () => {
+        refHome.current.classList.remove("bg-dark");
+      },
+    });
 
     setValue({
       x: rect.x,
@@ -56,7 +68,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
   };
 
   return (
-    <div className="homepage">
+    <div className="homepage" ref={refHome}>
       <Preloader />
       <div className="intro container" id="intro" data-scroll-section>
         <div className="intro-title">
