@@ -118,22 +118,24 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
       }
       if (scroll) {
         scroll.on("scroll", (instance: any) => {
-          if (refContact.current.classList.contains("is-inview")) {
-            let tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: refWrapContact.current,
-                start: "0% 100%",
-                end: "100% 100%",
-                scrub: 0,
-              },
-            });
-            tl.set(refRoundedContact.current, {
-              height: heightRound,
-            });
-            tl.to(refRoundedContact.current, {
-              height: 0,
-              ease: "none",
-            });
+          if (refContact.current) {
+            if (refContact.current.classList.contains("is-inview")) {
+              let tl = gsap.timeline({
+                scrollTrigger: {
+                  trigger: refWrapContact.current,
+                  start: "0% 100%",
+                  end: "100% 100%",
+                  scrub: 0,
+                },
+              });
+              tl.set(refRoundedContact.current, {
+                height: heightRound,
+              });
+              tl.to(refRoundedContact.current, {
+                height: 0,
+                ease: "none",
+              });
+            }
           }
         });
       }

@@ -12,27 +12,49 @@ import gsap from "gsap";
 import Footer from "../components/Layout/Footer";
 import SharedLayoutData from "../context/MotionContext";
 
-// const variants = {
-//   hidden: { opacity: 0, x: 0, y: "0" },
-//   enter: { opacity: 1, x: 0, y: "0" },
-//   exit: { opacity: 0, x: 0, y: "-20vh" },
-// };
-
 const variants = {
-  hidden: { opacity: 1, x: 0, y: 0 },
-  enter: { opacity: 1, x: 0, y: 0 },
-  exit: { opacity: 1, x: 0, y: 0 },
+  hidden: { opacity: 1, x: 0, y: "0" },
+  enter: { opacity: 1, x: 0, y: "0" },
+  exit: { opacity: 1, x: 0, y: "0" },
 };
 
+// const blackBox = {
+//   initial: {
+//     opacity: 1,
+//     height: "100vh",
+//     top: 0,
+//   },
+//   animate: {
+//     height: 0,
+//     transition: {
+//       duration: 1.5,
+//       ease: [0.87, 0, 0.13, 1],
+//     },
+//   },
+// };
+
 const blackBox = {
-  initial: {
+  hidden: {
     height: "100vh",
     top: 0,
-    // y: "100vh",
+    y: "100%",
+    transition: {
+      duration: 1.5,
+      ease: [0.87, 0, 0.13, 1],
+    },
   },
-  animate: {
-    height: "0",
-    // y: "-100vh",
+  enter: {
+    y: "-100%",
+    height: "100vh",
+    transition: {
+      duration: 1.5,
+      ease: [0.87, 0, 0.13, 1],
+    },
+  },
+  exit: {
+    y: "100%",
+    height: "100vh",
+    top: 0,
     transition: {
       duration: 1.5,
       ease: [0.87, 0, 0.13, 1],
@@ -40,15 +62,26 @@ const blackBox = {
   },
 };
 
+const rounded = {
+  initial: {
+    height: "10vh",
+  },
+  animate: {
+    height: 0,
+    transition: {
+      delay: 0.4,
+      duration: 1.5,
+      ease: [0.62, 0.2, 0.29, 1.01],
+    },
+  },
+};
+
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   const { asPath } = useRouter();
-  const regexprojectSlug = /(?:\/projets\/)/g;
   const containerRef = useRef(null);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [navBar, setNavBar] = useState(false);
-
-  // const [current, setCurrent] = useState("");
-  // const [contextValue, setState] = useState(initialState);
+  const regexprojectSlug = /(?:\/projets\/)/g;
 
   const handleDarkMode = (value: boolean) => {
     setIsDarkTheme(value);
@@ -71,17 +104,10 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
         <Cursor />
         <SharedLayoutData>
           <Layout>
-            {router.pathname == "/contact" ? (
+            {router.pathname == "/projets" || router.pathname == "/contact" ? (
               <>
                 <AnimatePresence initial={false} exitBeforeEnter>
-                  <motion.div
-                    key={router.pathname}
-                    initial="hidden"
-                    animate="enter"
-                    exit="exit"
-                    variants={variants}
-                    transition={{ duration: 60, ease: [0.87, 0, 0.13, 1] }}
-                    // transition={{ type: "linear" }}
+                  <div
                     className={
                       router.pathname == "/contact"
                         ? "page-content bg-dark-grey"
@@ -90,34 +116,32 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                   >
                     <Component {...pageProps} key={router.pathname} />
                     <Footer />
-                    <motion.div
-                      // key={router.pathname}
-                      // initial="hidden"
-                      // animate="enter"
-                      // exit="exit"
-                      initial="initial"
-                      animate="animate"
-                      variants={blackBox}
-                      // variants={variantsTransition}
-                      // transition={{ type: "linear" }}
-                      className="transition-page"
-                    ></motion.div>
-                  </motion.div>
+                    <div className="wrap-transition">
+                      <motion.div
+                        key={router.pathname}
+                        initial="hidden"
+                        animate="enter"
+                        exit="exit"
+                        variants={blackBox}
+                        className="transition-page"
+                      >
+                        <motion.div
+                          className="rounded-top"
+                          initial="initial"
+                          animate="animate"
+                          variants={rounded}
+                        >
+                          <div className="rounded"></div>
+                        </motion.div>
+                      </motion.div>
+                    </div>
+                  </div>
                 </AnimatePresence>
               </>
             ) : (
               <>
                 <AnimatePresence initial={false} exitBeforeEnter>
-                  <motion.div
-                    key={router.pathname}
-                    initial="hidden"
-                    animate="enter"
-                    exit="exit"
-                    variants={variants}
-                    transition={{ duration: 1, ease: [0.87, 0, 0.13, 1] }}
-                    // transition={{ type: "linear" }}
-                    className="page-content"
-                  >
+                  <div className="page-content">
                     <LocomotiveScrollProvider
                       options={{
                         smooth: true,
@@ -173,7 +197,6 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                           duration: 800,
                           disableLerp: true,
                         });
-                        console.log("update");
                       }}
                       containerRef={containerRef}
                     >
@@ -183,21 +206,29 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                       </div>
                     </LocomotiveScrollProvider>
                     {!router.pathname.match(regexprojectSlug) ? (
-                      <motion.div
-                        // key={router.pathname}
-                        // initial="hidden"
-                        // animate="enter"
-                        // exit="exit"
-                        // variants={variantsTransition}
-                        initial="initial"
-                        animate="animate"
-                        variants={blackBox}
-                        className="transition-page"
-                      ></motion.div>
+                      <div className="wrap-transition">
+                        <motion.div
+                          key={router.pathname}
+                          initial="hidden"
+                          animate="enter"
+                          exit="exit"
+                          variants={blackBox}
+                          className="transition-page"
+                        >
+                          <motion.div
+                            initial="initial"
+                            animate="animate"
+                            variants={rounded}
+                            className="rounded-top"
+                          >
+                            <div className="rounded"></div>
+                          </motion.div>
+                        </motion.div>
+                      </div>
                     ) : (
                       <></>
                     )}
-                  </motion.div>
+                  </div>
                 </AnimatePresence>
               </>
             )}

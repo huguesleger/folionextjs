@@ -19,21 +19,28 @@ const Preloader = () => {
     const tl = gsap.timeline();
 
     if (localStorage.getItem("preloader") != date.toString()) {
-      tl.to(refWords.current, {
-        yPercent: 100,
-        opacity: 0,
-        delay: 6,
+      tl.to(loaderWrapper, {
+        opacity: 1,
+        visibility: "visible",
         ease: "Power2.easeInOut",
-        duration: 0.7,
-      }).to(loaderWrapper, {
-        opacity: 0,
-        pointerEvents: "none",
-        ease: "Power2.easeInOut",
-        duration: 0.5,
-        onComplete: () => {
-          intro.classList.add("is-show");
-        },
-      });
+        duration: 0.3,
+      })
+        .to(refWords.current, {
+          yPercent: 100,
+          opacity: 0,
+          delay: 6,
+          ease: "Power2.easeInOut",
+          duration: 0.7,
+        })
+        .to(loaderWrapper, {
+          opacity: 0,
+          pointerEvents: "none",
+          ease: "Power2.easeInOut",
+          duration: 0.5,
+          onComplete: () => {
+            intro.classList.add("is-show");
+          },
+        });
       localStorage.setItem("preloader", date.toString());
     }
   }, []);
