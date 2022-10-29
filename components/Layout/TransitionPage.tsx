@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
 
 const blackBox = {
   hidden: {
@@ -20,15 +19,10 @@ const blackBox = {
       ease: [0.87, 0, 0.13, 1],
     },
   },
-  exit: {
-    y: "100%",
-    height: "100vh",
-    top: 0,
-    transition: {
-      duration: 1.5,
-      ease: [0.87, 0, 0.13, 1],
-    },
-  },
+};
+
+type TransitionPageType = {
+  key: string;
 };
 
 const rounded = {
@@ -45,14 +39,12 @@ const rounded = {
   },
 };
 
-const TransitionPage = (): JSX.Element => {
-  const router = useRouter();
+const TransitionPage = ({ key }: TransitionPageType): JSX.Element => {
   return (
     <motion.div
-      key={router.pathname}
+      key={key}
       initial="hidden"
       animate="enter"
-      exit="exit"
       variants={blackBox}
       className="transition-page"
     >

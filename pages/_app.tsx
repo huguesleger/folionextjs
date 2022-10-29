@@ -40,6 +40,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
               <>
                 <AnimatePresence initial={false} exitBeforeEnter>
                   <main
+                    key={router.pathname}
                     className={
                       router.pathname == "/contact"
                         ? "page-content bg-dark-grey"
@@ -49,7 +50,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                     <Component {...pageProps} key={router.pathname} />
                     <Footer />
                     <div className="wrap-transition">
-                      <TransitionPage />
+                      <TransitionPage key={router.pathname} />
                     </div>
                   </main>
                 </AnimatePresence>
@@ -57,7 +58,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
             ) : (
               <>
                 <AnimatePresence initial={false} exitBeforeEnter>
-                  <main className="page-content">
+                  <main key={router.pathname} className="page-content">
                     <ScrollLoco>
                       <Component {...pageProps} key={router.pathname} />
                       <Footer />
@@ -65,7 +66,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
 
                     {!router.pathname.match(regexprojectSlug) ? (
                       <div className="wrap-transition">
-                        <TransitionPage />
+                        <TransitionPage key={router.pathname} />
                       </div>
                     ) : (
                       <></>

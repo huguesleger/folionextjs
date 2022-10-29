@@ -21,7 +21,7 @@ export default function Footer(): JSX.Element {
         refFooter.current.classList.remove("footer-dark");
       }, 200);
     }
-  }, [router]);
+  }, []);
 
   return (
     <div ref={refFooter} className="footer" data-scroll-section data-scroll>
