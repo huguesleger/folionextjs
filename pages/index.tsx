@@ -34,6 +34,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
 
   useEffect(() => {
     const linkWorks = document.querySelectorAll(".link-work");
+    const tl = gsap.timeline();
     linkWorks.forEach((el) => {
       el.addEventListener("click", function () {
         const canvas = el.querySelector(".work-pixi");
@@ -44,21 +45,29 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
           width: canvasRec.width,
           height: canvasRec.height,
         });
+        tl.to(refHome.current, {
+          backgroundColor: "#ffffff",
+          ease: "Power2.easeInOut",
+          duration: 0.5,
+          onStart: () => {
+            refHome.current.classList.remove("bg-dark");
+          },
+        });
       });
     });
   }, []);
 
-  const handleClick = () => {
-    const tl = gsap.timeline();
-    tl.to(refHome.current, {
-      backgroundColor: "#ffffff",
-      ease: "Power2.easeInOut",
-      duration: 0.5,
-      onStart: () => {
-        refHome.current.classList.remove("bg-dark");
-      },
-    });
-  };
+  // const handleClick = () => {
+  //   const tl = gsap.timeline();
+  //   tl.to(refHome.current, {
+  //     backgroundColor: "#ffffff",
+  //     ease: "Power2.easeInOut",
+  //     duration: 0.5,
+  //     onStart: () => {
+  //       refHome.current.classList.remove("bg-dark");
+  //     },
+  //   });
+  // };
 
   return (
     <div className="homepage" ref={refHome}>
@@ -187,11 +196,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
                       target={el.target}
                     />
                     <Link href={`/projets/${el.slug}`}>
-                      <a
-                        className="link-work"
-                        key={index}
-                        onClick={handleClick}
-                      >
+                      <a className="link-work" key={index}>
                         <div className="work-pixi">
                           <PixiV4 image={el.image} target={el.target}></PixiV4>
                         </div>
