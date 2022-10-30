@@ -50,7 +50,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                     <Component {...pageProps} key={router.pathname} />
                     <Footer />
                     <div className="wrap-transition">
-                      <TransitionPage key={router.pathname} />
+                      <TransitionPage />
                     </div>
                   </main>
                 </AnimatePresence>
@@ -66,7 +66,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
 
                     {!router.pathname.match(regexprojectSlug) ? (
                       <div className="wrap-transition">
-                        <TransitionPage key={router.pathname} />
+                        <TransitionPage />
                       </div>
                     ) : (
                       <></>

@@ -11,6 +11,9 @@
       overflow: hidden;
       position: relative;
       z-index: 2;
+      .wrapper-word .char {
+        visibility: hidden;
+      }
     }
   }
   .section-hero {

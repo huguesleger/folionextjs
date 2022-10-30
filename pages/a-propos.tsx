@@ -46,6 +46,7 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
         yPercent: 100,
         opacity: 0,
       }).to(char, {
+        visibility: "visible",
         yPercent: 0,
         opacity: 1,
         delay: 1,

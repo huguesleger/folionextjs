@@ -142,6 +142,7 @@ const Contact: (props: { contact: GraphQLResponse.Contact }) => JSX.Element =
           opacity: 0,
         })
         .to(char, {
+          visibility: "visible",
           yPercent: 0,
           opacity: 1,
           delay: 1,
