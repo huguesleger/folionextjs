@@ -21,10 +21,6 @@ const blackBox = {
   },
 };
 
-type TransitionPageType = {
-  key: string;
-};
-
 const rounded = {
   initial: {
     height: "10vh",
@@ -39,10 +35,9 @@ const rounded = {
   },
 };
 
-const TransitionPage = ({ key }: TransitionPageType): JSX.Element => {
+const TransitionPage = (): JSX.Element => {
   return (
     <motion.div
-      key={key}
       initial="hidden"
       animate="enter"
       variants={blackBox}
