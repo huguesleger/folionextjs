@@ -120,20 +120,12 @@ const CardDetails: (props: {
               x: 0,
               width: width,
               height: height,
-              // scale: 0.9075,
-              // y: 132,
-              // width: 411,
-              // height: 668,
             }}
             animate={{
               y: 0,
               x: 0,
               width: "100%",
               height: "100%",
-              // scale: 1,
-              // y: 132,
-              // width: 411,
-              // height: 668,
               transition: { delay: 0, ...transition },
             }}
             className="thumbnail-single"

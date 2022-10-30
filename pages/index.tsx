@@ -32,22 +32,23 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
     setNavBar(true);
   });
 
+  useEffect(() => {
+    const linkWorks = document.querySelectorAll(".link-work");
+    linkWorks.forEach((el) => {
+      el.addEventListener("click", function () {
+        const canvas = el.querySelector(".work-pixi");
+        const canvasRec = canvas.getBoundingClientRect();
+        setValue({
+          x: canvasRec.x,
+          y: canvasRec.y,
+          width: canvasRec.width,
+          height: canvasRec.height,
+        });
+      });
+    });
+  }, []);
+
   const handleClick = () => {
-    // const homePage = document.querySelector(".light-mode .homepage");
-    // homePage.classList.add("in-transition");
-    // refWrapCanvas.current.classList.add("is-full");
-    const refWrapCanvas = document.querySelector("canvas");
-    const rect = refWrapCanvas.getBoundingClientRect();
-    console.log(rect, "rect");
-    // setCurrent(`/projets/${slug}`);
-    // const allCanvas = document.querySelectorAll(".work-pixi");
-    // const allImgs = document.querySelectorAll(".img-work");
-    // allCanvas.forEach((el) => {
-    //   el.classList.add("is-hide");
-    // });
-    // allImgs.forEach((el) => {
-    //   el.classList.add("is-show");
-    // });
     const tl = gsap.timeline();
     tl.to(refHome.current, {
       backgroundColor: "#ffffff",
@@ -57,13 +58,6 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
       onStart: () => {
         refHome.current.classList.remove("bg-dark");
       },
-    });
-
-    setValue({
-      x: rect.x,
-      y: rect.y,
-      width: rect.width,
-      height: rect.height,
     });
   };
 
@@ -194,7 +188,11 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
                       target={el.target}
                     />
                     <Link href={`/projets/${el.slug}`}>
-                      <a className="link-work" onClick={handleClick}>
+                      <a
+                        className="link-work"
+                        key={index}
+                        onClick={handleClick}
+                      >
                         <div className="work-pixi">
                           <PixiV4 image={el.image} target={el.target}></PixiV4>
                         </div>
