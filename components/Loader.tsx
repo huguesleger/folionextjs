@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import CountUp from "react-countup";
 import gsap from "gsap";
 import ChangeWord from "./ChangeWord";
 
@@ -7,7 +6,7 @@ const Preloader = () => {
   const refWords = useRef(null);
   useEffect(() => {
     const loaderWrapper = document.querySelector(".loader-wrapper");
-    const loaderNumber = document.querySelector(".loader-number");
+    const homepage = document.querySelector(".homepage");
     const intro = document.querySelector(".intro");
     let date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
 
@@ -17,14 +16,16 @@ const Preloader = () => {
     }
 
     const tl = gsap.timeline();
-
     if (localStorage.getItem("preloader") != date.toString()) {
-      tl.to(loaderWrapper, {
-        opacity: 1,
-        visibility: "visible",
-        ease: "Power2.easeInOut",
-        duration: 0.3,
+      tl.set(homepage, {
+        visibility: "hidden",
       })
+        .to(loaderWrapper, {
+          opacity: 1,
+          visibility: "visible",
+          ease: "Power2.easeInOut",
+          duration: 0.3,
+        })
         .to(refWords.current, {
           yPercent: 100,
           opacity: 0,
@@ -37,8 +38,12 @@ const Preloader = () => {
           pointerEvents: "none",
           ease: "Power2.easeInOut",
           duration: 0.5,
+          visibility: "hidden",
           onComplete: () => {
             intro.classList.add("is-show");
+            gsap.to(homepage, {
+              visibility: "visible",
+            });
           },
         });
       localStorage.setItem("preloader", date.toString());
@@ -49,12 +54,6 @@ const Preloader = () => {
     <div className="loader-wrapper">
       <div className="loader">
         <div className="loader-inner">
-          {/* <CountUp
-            className="loader-number"
-            duration={1}
-            end={100}
-            suffix="%"
-          /> */}
           <div className="wrap-words" ref={refWords}>
             <ChangeWord
               word1={"Hello"}

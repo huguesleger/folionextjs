@@ -1,11 +1,9 @@
 import { request } from "../lib/datocms/datocms";
 import Query from "../lib/datocms/queries";
 import { GraphQLResponse } from "../lib/datocms/types";
-import Preloader from "../components/Loader";
 import Image from "next/image";
 import Link from "next/link";
 import formatTxt from "../lib/functions/formatTxt";
-import LastWork from "../components/Home/LastWork";
 import { useContext, useEffect, useRef } from "react";
 import { Context } from "../context/AppContext";
 import LastWorkV2 from "../components/Home/LastWorkV2";
@@ -20,7 +18,7 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
   home: GraphQLResponse.Home;
 }) => {
   const { setNavBar } = useContext(Context);
-  const { setCurrent, current, setValue } = useContext(SharedLayoutDataContext);
+  const { setCurrent, setValue } = useContext(SharedLayoutDataContext);
   const refHome = useRef(null);
 
   useEffect(() => {
@@ -46,7 +44,6 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
 
   return (
     <div className="homepage" ref={refHome}>
-      <Preloader />
       <div className="intro container" id="intro" data-scroll-section>
         <div className="intro-title">
           <div className="title-inner">

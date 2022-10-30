@@ -212,12 +212,19 @@ export default function Navbar(): JSX.Element {
     }
   }, [isDarkTheme]);
 
+  const handleClick = () => {
+    setTimeout(() => {
+      const intro = document.querySelector(".intro");
+      intro.classList.add("is-show");
+    }, 1500);
+  };
+
   return (
     <AnimateSharedLayout>
       <header className="header">
         <div className="header-logo">
           <Link href="/">
-            <a className="logo">
+            <a className="logo" onClick={handleClick}>
               <Image
                 src="/logo-hl.svg"
                 layout="intrinsic"
