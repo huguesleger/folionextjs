@@ -34,6 +34,7 @@ const ProjetPage: NextPage = (props) => {
       width: rect.width,
       height: rect.height,
     });
+    setCurrent("");
   };
 
   // @ts-ignore

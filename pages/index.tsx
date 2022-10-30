@@ -6,12 +6,11 @@ import Image from "next/image";
 import Link from "next/link";
 import formatTxt from "../lib/functions/formatTxt";
 import LastWork from "../components/Home/LastWork";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Context } from "../context/AppContext";
 import LastWorkV2 from "../components/Home/LastWorkV2";
 import dynamic from "next/dynamic";
 import { SharedLayoutDataContext } from "../context/MotionContext";
-import gsap from "gsap";
 
 const PixiV4 = dynamic(() => import("../components/PixiV4"), {
   ssr: false,
@@ -23,10 +22,6 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
   const { setNavBar } = useContext(Context);
   const { setCurrent, current, setValue } = useContext(SharedLayoutDataContext);
   const refHome = useRef(null);
-
-  // const PixiApp = dynamic(() => import("../components/PixiApp"), {
-  //   ssr: false,
-  // });
 
   useEffect(() => {
     setNavBar(true);
@@ -44,30 +39,10 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
           width: canvasRec.width,
           height: canvasRec.height,
         });
-        const tl = gsap.timeline();
-        tl.to(refHome.current, {
-          backgroundColor: "#ffffff",
-          ease: "Power2.easeInOut",
-          duration: 0.2,
-          onStart: () => {
-            refHome.current.classList.remove("bg-dark");
-          },
-        });
+        setCurrent("homepage");
       });
     });
   }, []);
-
-  // const handleClick = () => {
-  //   const tl = gsap.timeline();
-  //   tl.to(refHome.current, {
-  //     backgroundColor: "#ffffff",
-  //     ease: "Power2.easeInOut",
-  //     duration: 0.5,
-  //     onStart: () => {
-  //       refHome.current.classList.remove("bg-dark");
-  //     },
-  //   });
-  // };
 
   return (
     <div className="homepage" ref={refHome}>

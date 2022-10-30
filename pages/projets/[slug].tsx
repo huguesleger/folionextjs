@@ -42,10 +42,27 @@ const CardDetails: (props: {
   const { contextValue } = useContext(SharedLayoutDataContext);
   const { x, y, width, height } = contextValue;
 
+  const { current } = useContext(SharedLayoutDataContext);
+
+  const refImgFull = useRef(null);
+
+  console.log(current, "currentPage");
+
   useEffect(() => {
     setNavBar(true);
-    // console.log(setY, "fffo");
   });
+
+  useEffect(() => {
+    if (current === "homepage") {
+      const tl = gsap.timeline();
+      tl.to(refImgFull.current, {
+        delay: 0.2,
+        backgroundColor: "#ffffff",
+        ease: "Power2.easeInOut",
+        duration: 0.5,
+      });
+    }
+  }, []);
 
   const getNextpost = () => {
     const index = projets.findIndex((el) => el.slug === props.projet.slug);
@@ -113,7 +130,14 @@ const CardDetails: (props: {
   return (
     <>
       <div className="project-content">
-        <div className="project-img-full" data-scroll-section>
+        {/* <div className="project-img-full" ref={refImgFull} data-scroll-section> */}
+        <div
+          className={`project-img-full ${
+            current === "homepage" && `bg-dark-grey`
+          }`}
+          ref={refImgFull}
+          data-scroll-section
+        >
           <motion.div
             initial={{
               y: y,
