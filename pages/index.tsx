@@ -34,7 +34,6 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
 
   useEffect(() => {
     const linkWorks = document.querySelectorAll(".link-work");
-    const tl = gsap.timeline();
     linkWorks.forEach((el) => {
       el.addEventListener("click", function () {
         const canvas = el.querySelector(".work-pixi");
@@ -45,10 +44,11 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
           width: canvasRec.width,
           height: canvasRec.height,
         });
+        const tl = gsap.timeline();
         tl.to(refHome.current, {
           backgroundColor: "#ffffff",
           ease: "Power2.easeInOut",
-          duration: 0.5,
+          duration: 0.2,
           onStart: () => {
             refHome.current.classList.remove("bg-dark");
           },
