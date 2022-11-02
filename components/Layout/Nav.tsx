@@ -314,6 +314,7 @@ export default function Navbar(): JSX.Element {
             <nav className="nav-mobile">
               <div className="wrap-items">
                 <HoverItem
+                  onClick={handleClick}
                   titre={"accueil"}
                   itemNumber={"01"}
                   slug={""}
