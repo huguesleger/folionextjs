@@ -3,7 +3,7 @@ import "../styles/scss/main.scss";
 import type { AppProps } from "next/app";
 import React, { useState } from "react";
 import Cursor from "../components/Cursor";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Context } from "../context/AppContext";
 import Footer from "../components/Layout/Footer";
 import SharedLayoutData from "../context/MotionContext";
@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
             {router.pathname == "/projets" || router.pathname == "/contact" ? (
               <>
                 <AnimatePresence initial={false} exitBeforeEnter>
-                  <main
+                  <motion.main
                     key={router.pathname}
                     className={
                       router.pathname == "/contact"
@@ -52,13 +52,13 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                     <div className="wrap-transition">
                       <TransitionPage />
                     </div>
-                  </main>
+                  </motion.main>
                 </AnimatePresence>
               </>
             ) : (
               <>
                 <AnimatePresence initial={false} exitBeforeEnter>
-                  <main key={router.pathname} className="page-content">
+                  <motion.main key={router.pathname} className="page-content">
                     <ScrollLoco>
                       <Component {...pageProps} key={router.pathname} />
                       <Footer />
@@ -71,7 +71,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                     ) : (
                       <></>
                     )}
-                  </main>
+                  </motion.main>
                 </AnimatePresence>
               </>
             )}
