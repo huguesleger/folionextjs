@@ -12,7 +12,6 @@ type HoverItemType = {
   annee?: string;
   slug?: string;
   itemNumber?: string;
-  onClick?: () => void;
 };
 
 const HoverItem = ({
@@ -22,7 +21,6 @@ const HoverItem = ({
   annee,
   slug,
   itemNumber,
-  onClick,
 }: HoverItemType): JSX.Element => {
   const refHover = useRef(null);
   const refListItem = useRef(null);
@@ -143,7 +141,6 @@ const HoverItem = ({
         <>
           <Link href={`/${slug}`}>
             <a
-              onClick={onClick}
               className={
                 router.pathname === (`/${slug}` as string)
                   ? "item-link item-active"

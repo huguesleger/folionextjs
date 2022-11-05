@@ -36,45 +36,29 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
         <Cursor />
         <SharedLayoutData>
           <Layout>
-            {router.pathname == "/projets" || router.pathname == "/contact" ? (
-              <>
-                <AnimatePresence initial={false} exitBeforeEnter>
-                  <motion.main
-                    key={router.pathname}
-                    className={
-                      router.pathname == "/contact"
-                        ? "page-content bg-dark-grey"
-                        : "page-content"
-                    }
-                  >
-                    <Component {...pageProps} key={router.pathname} />
-                    <Footer />
-                    <div className="wrap-transition">
-                      <TransitionPage />
-                    </div>
-                  </motion.main>
-                </AnimatePresence>
-              </>
-            ) : (
-              <>
-                <AnimatePresence initial={false} exitBeforeEnter>
-                  <motion.main key={router.pathname} className="page-content">
-                    <ScrollLoco>
-                      <Component {...pageProps} key={router.pathname} />
-                      <Footer />
-                    </ScrollLoco>
+            <AnimatePresence initial={false} exitBeforeEnter>
+              <main
+                key={router.pathname}
+                className={
+                  router.pathname == "/contact"
+                    ? "page-content bg-dark-grey"
+                    : "page-content"
+                }
+              >
+                <ScrollLoco>
+                  <Component {...pageProps} key={router.pathname} />
+                  <Footer />
+                </ScrollLoco>
 
-                    {!router.pathname.match(regexprojectSlug) ? (
-                      <div className="wrap-transition">
-                        <TransitionPage />
-                      </div>
-                    ) : (
-                      <></>
-                    )}
-                  </motion.main>
-                </AnimatePresence>
-              </>
-            )}
+                {!router.pathname.match(regexprojectSlug) ? (
+                  <div className="wrap-transition">
+                    <TransitionPage />
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </main>
+            </AnimatePresence>
           </Layout>
         </SharedLayoutData>
       </Context.Provider>

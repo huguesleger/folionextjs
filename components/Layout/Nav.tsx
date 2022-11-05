@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { AnimateSharedLayout } from "framer-motion";
 import { useRouter } from "next/router";
 import gsap from "gsap";
 import HoverItem from "../HoverItem";
@@ -68,18 +67,18 @@ export default function Navbar(): JSX.Element {
 
     link.forEach((el) => {
       el.addEventListener("click", function () {
-        navMobile.current.classList.remove("is-show");
-        btnMobile.current.classList.remove("is-open");
-        overflowHidden.classList.remove("overflow-hidden");
-        header.classList.remove("is-hide");
+        // navMobile.current.classList.remove("is-show");
+        // btnMobile.current.classList.remove("is-open");
+        // overflowHidden.classList.remove("overflow-hidden");
+        // header.classList.remove("is-hide");
         if (windowWidth >= 1024) {
           btnNav.classList.add("is-hide");
         }
-        btnNav.classList.remove("is-show");
+        // btnNav.classList.remove("is-show");
         setToggleBtn(false);
-        setTimeout(() => {
-          navMobile.current.style.zIndex = "0";
-        }, 950);
+        // setTimeout(() => {
+        //   navMobile.current.style.zIndex = "0";
+        // }, 950);
       });
     });
 
@@ -212,19 +211,12 @@ export default function Navbar(): JSX.Element {
     }
   }, [isDarkTheme]);
 
-  const handleClick = () => {
-    setTimeout(() => {
-      const intro = document.querySelector(".intro");
-      intro.classList.add("is-show");
-    }, 1500);
-  };
-
   return (
-    <AnimateSharedLayout>
+    <>
       <header className="header">
         <div className="header-logo">
           <Link href="/">
-            <a className="logo" onClick={handleClick}>
+            <a className="logo">
               <Image
                 src="/logo-hl.svg"
                 layout="intrinsic"
@@ -314,7 +306,6 @@ export default function Navbar(): JSX.Element {
             <nav className="nav-mobile">
               <div className="wrap-items">
                 <HoverItem
-                  onClick={handleClick}
                   titre={"accueil"}
                   itemNumber={"01"}
                   slug={""}
@@ -425,6 +416,6 @@ export default function Navbar(): JSX.Element {
           </div>
         </div>
       </div>
-    </AnimateSharedLayout>
+    </>
   );
 }

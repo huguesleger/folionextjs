@@ -50,11 +50,6 @@ const CardDetails: (props: {
 
   useEffect(() => {
     setNavBar(true);
-    const header = document.querySelector(".header");
-    const btnNav = document.querySelector(".wrap-btn-main");
-    header.classList.remove("is-hide");
-    btnNav.classList.remove("is-show");
-    btnNav.classList.add("is-hide");
   });
 
   useEffect(() => {

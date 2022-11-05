@@ -12,11 +12,11 @@ const Preloader = () => {
 
     if (localStorage.getItem("preloader") == date.toString()) {
       loaderWrapper.remove();
-      if (!intro) {
-        return null;
-      } else {
-        intro.classList.add("is-show");
-      }
+      // if (!intro) {
+      //   return null;
+      // } else {
+      //   intro.classList.add("is-show");
+      // }
     }
 
     const tl = gsap.timeline();

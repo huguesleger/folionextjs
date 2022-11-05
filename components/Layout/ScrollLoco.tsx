@@ -60,6 +60,15 @@ const ScrollLoco = ({ children }: ScrollType): JSX.Element => {
             }
           }
         }
+        header.classList.remove("is-hide");
+        btnNav.classList.remove("is-show");
+        btnNav.classList.add("is-hide");
+        const intro = document.querySelector(".intro");
+        if (intro) {
+          setTimeout(() => {
+            intro.classList.add("is-show");
+          }, 1500);
+        }
       }}
       location={asPath}
       onLocationChange={(scroll: any) => {
