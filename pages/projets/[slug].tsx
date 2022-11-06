@@ -467,7 +467,13 @@ const CardDetails: (props: {
           <div className="container">
             <Link href={`https://${props.projet.siteWeb}`}>
               <a className="wrap-cta" target="_blank" rel="noopener noreferrer">
-                <span className="link-underline link-dark">Voir le site</span>
+                <span
+                  className="link-underline link-dark"
+                  data-cursor-label="click"
+                  data-cursor-dark
+                >
+                  Voir le site
+                </span>
                 <span className="link-arrow">
                   <Image
                     src="/images/link-arrow-dark.svg"

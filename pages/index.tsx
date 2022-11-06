@@ -73,8 +73,18 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
             </div>
             <div className="content-txt" data-scroll>
               <Link href="#wrapWorks">
-                <a href="#works" className="txt btn-enter" data-scroll-to>
-                  <span className="hello">
+                <a
+                  href="#works"
+                  className="txt btn-enter"
+                  data-scroll-to
+                  data-cursor-label="click"
+                  data-cursor-dark
+                >
+                  <span
+                    className="hello"
+                    data-cursor-label="click"
+                    data-cursor-dark
+                  >
                     {formatTxt(props.home.titreEntrer)}
                   </span>
                   {formatTxt(props.home.texteEntrer)}
@@ -223,7 +233,9 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
           <div className="wrap-mail">
             <div className="link-mail" data-scroll data-scroll-speed="6">
               <Link href="mailto:contactme@hl-developerz.com">
-                <a data-cursor-big>{props.home.email}</a>
+                <a data-cursor-label="click" data-cursor-dark>
+                  {props.home.email}
+                </a>
               </Link>
             </div>
           </div>

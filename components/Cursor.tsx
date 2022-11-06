@@ -8,7 +8,7 @@ const Cursor = () => {
   const cursorWraper = useRef(null);
   const label = useRef(null);
   const cursorHoverElems =
-    "a, button, .btn-main, [data-cursor-label], [data-cursor-big]";
+    "a, button, .btn-main, [data-cursor-label], [data-cursor-big], [data-cursor-dark]";
 
   let mouseIsHover = false;
   let mousepos = { x: 0, y: 0 };
@@ -56,10 +56,14 @@ const Cursor = () => {
           if ((e.target as HTMLElement).getAttribute("data-cursor-big")) {
             cursor.current.classList.add("has-big");
           }
+          if ((e.target as HTMLElement).getAttribute("data-cursor-dark")) {
+            cursor.current.classList.add("has-dark");
+          }
         } else {
           mouseIsHover = false;
           cursor.current.classList.remove("has-label");
           cursor.current.classList.remove("has-big");
+          cursor.current.classList.remove("has-dark");
           label.current.innerHTML = "";
         }
       });

@@ -234,6 +234,9 @@
     padding: 6rem 3rem;
     .wrap-items {
       width: 70%;
+      .inner-items {
+        margin-right: 12rem;
+      }
     }
     .list-item {
       display: flex;
@@ -274,8 +277,13 @@
       font-weight: 300;
       text-transform: uppercase;
       overflow: hidden;
+      transition: padding 0.3s ease-in-out;
+      &:hover {
+        padding-left: 1rem;
+      }
       &.item-active {
         color: $light_grey;
+        pointer-events: none;
         .item .char {
           text-decoration: line-through;
         }

@@ -111,7 +111,11 @@ const ProjetPage: NextPage = (props) => {
                 <SwiperSlide key={index}>
                   <Link href={"/projets/" + projet.slug}>
                     <a onClick={handleClick}>
-                      <div className="inner-title title-white">
+                      <div
+                        className="inner-title title-white"
+                        data-cursor-label="voir le projet"
+                        data-cursor-dark
+                      >
                         <span className="name">
                           <span>{projet.titre}</span>
                         </span>
@@ -125,9 +129,18 @@ const ProjetPage: NextPage = (props) => {
                           alt="montpellier"
                         />
                       </div>
-                      <div className="outer-title">
+                      <div
+                        className="outer-title"
+                        data-cursor-label="voir le projet"
+                        data-cursor-dark
+                      >
                         <div className="name">
-                          <span>{projet.titre}</span>
+                          <span
+                            data-cursor-label="voir le projet"
+                            data-cursor-dark
+                          >
+                            {projet.titre}
+                          </span>
                         </div>
                       </div>
                     </a>
