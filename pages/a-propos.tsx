@@ -353,7 +353,7 @@ const APropos: (props: { about: GraphQLResponse.About }) => JSX.Element =
               <div className="wrap-mail">
                 <div className="link-mail">
                   <Link href={`mailto:${props.about.emailContact}`}>
-                    <a data-cursor-big>{props.about.emailContact}</a>
+                    <a data-cursor-label="click">{props.about.emailContact}</a>
                   </Link>
                 </div>
               </div>
