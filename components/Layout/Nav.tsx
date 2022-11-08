@@ -37,7 +37,6 @@ export default function Navbar(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    console.log(toggleBtn);
     const overflowHidden = document.body;
 
     if (toggleBtn === true) {
@@ -309,7 +308,7 @@ export default function Navbar(): JSX.Element {
                   <HoverItem
                     titre={"accueil"}
                     itemNumber={"01"}
-                    slug={""}
+                    slug={"/"}
                     school={""}
                     annee={""}
                     image={"/images/img-intro.jpg"}
@@ -317,7 +316,7 @@ export default function Navbar(): JSX.Element {
                   <HoverItem
                     titre={"projets"}
                     itemNumber={"02"}
-                    slug={"projets"}
+                    slug={"/projets"}
                     school={""}
                     annee={""}
                     image={"/images/img-intro.jpg"}
@@ -325,7 +324,7 @@ export default function Navbar(): JSX.Element {
                   <HoverItem
                     titre={"a propos"}
                     itemNumber={"03"}
-                    slug={"a-propos"}
+                    slug={"/a-propos"}
                     school={""}
                     annee={""}
                     image={"/images/post-home.jpg"}
@@ -333,7 +332,7 @@ export default function Navbar(): JSX.Element {
                   <HoverItem
                     titre={"contact"}
                     itemNumber={"04"}
-                    slug={"contact"}
+                    slug={"/contact"}
                     school={""}
                     annee={""}
                     image={"/images/img-intro.jpg"}

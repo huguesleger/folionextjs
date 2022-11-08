@@ -4,6 +4,11 @@ import { clamp, getMousePos, lerp, map } from "./utils";
 import SplittingWrapperWord from "./SplittingWrapperWord";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+
+const PixiV4 = dynamic(() => import("../components/PixiV4"), {
+  ssr: false,
+});
 
 type HoverItemType = {
   titre: string;
@@ -12,6 +17,7 @@ type HoverItemType = {
   annee?: string;
   slug?: string;
   itemNumber?: string;
+  target?: number;
 };
 
 const HoverItem = ({
@@ -21,10 +27,12 @@ const HoverItem = ({
   annee,
   slug,
   itemNumber,
+  target,
 }: HoverItemType): JSX.Element => {
   const refHover = useRef(null);
   const refListItem = useRef(null);
   const refInner = useRef(null);
+  const refLink = useRef(null);
 
   const router = useRouter();
 
@@ -37,8 +45,12 @@ const HoverItem = ({
   };
 
   const mouseMove = (ev: any) => {
-    const boundsItem = refListItem.current.getBoundingClientRect();
-    const boundsReveal = refHover.current.getBoundingClientRect();
+    let boundsReveal: any;
+    let boundsItem: any;
+    if (router.pathname != (slug as string)) {
+      boundsItem = refListItem.current.getBoundingClientRect();
+      boundsReveal = refHover.current.getBoundingClientRect();
+    }
 
     const mouseDistanceX = clamp(
       Math.abs(mousePosCache.x - mousepos.x),
@@ -83,16 +95,18 @@ const HoverItem = ({
           });
         },
       });
-      gsap.set(refHover.current, {
-        x: Math.abs(mousepos.x - boundsItem.left) - boundsReveal.width / 2,
-        y: Math.abs(mousepos.y - boundsItem.top) - boundsReveal.height / 2,
-      });
-      tl.to(refHover.current, {
-        duration: 0.2,
-        x: Math.abs(mousepos.x - boundsItem.left) - boundsReveal.width / 2,
-        y: Math.abs(mousepos.y - boundsItem.top) - boundsReveal.height / 2,
-        rotation: animatableProperties.rotation.previous,
-      });
+      if (router.pathname != (slug as string)) {
+        gsap.set(refHover.current, {
+          x: Math.abs(mousepos.x - boundsItem.left) - boundsReveal.width / 2,
+          y: Math.abs(mousepos.y - boundsItem.top) - boundsReveal.height / 2,
+        });
+        tl.to(refHover.current, {
+          duration: 0.2,
+          x: Math.abs(mousepos.x - boundsItem.left) - boundsReveal.width / 2,
+          y: Math.abs(mousepos.y - boundsItem.top) - boundsReveal.height / 2,
+          rotation: animatableProperties.rotation.previous,
+        });
+      }
     }
   };
 
@@ -139,10 +153,11 @@ const HoverItem = ({
     >
       {slug != null ? (
         <>
-          <Link href={`/${slug}`}>
+          <Link href={slug}>
             <a
+              ref={refLink}
               className={
-                router.pathname === (`/${slug}` as string)
+                router.pathname === (slug as string)
                   ? "item-link item-active"
                   : "item-link"
               }
@@ -155,14 +170,20 @@ const HoverItem = ({
               </span>
             </a>
           </Link>
-          <div className="hover-reveal" ref={refHover}>
-            <div className="hover-reveal-inner" ref={refInner}>
-              <div
-                className="hover-reveal-img"
-                style={{ backgroundImage: `url(${image})` }}
-              ></div>
+          {router.pathname != (slug as string) && (
+            <div className="hover-reveal" ref={refHover}>
+              <div className="hover-reveal-inner" ref={refInner}>
+                <div className="hover-reveal-img">
+                  <PixiV4
+                    image={image}
+                    target={target}
+                    width={150}
+                    height={200}
+                  ></PixiV4>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </>
       ) : (
         <>
@@ -175,10 +196,14 @@ const HoverItem = ({
           </div>
           <div className="hover-reveal" ref={refHover}>
             <div className="hover-reveal-inner" ref={refInner}>
-              <div
-                className="hover-reveal-img"
-                style={{ backgroundImage: `url(${image})` }}
-              ></div>
+              <div className="hover-reveal-img">
+                <PixiV4
+                  image={image}
+                  target={target}
+                  width={150}
+                  height={200}
+                ></PixiV4>
+              </div>
             </div>
           </div>
         </>

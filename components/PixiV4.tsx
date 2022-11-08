@@ -9,34 +9,32 @@ import { useEffect, useRef, useState } from "react";
 import { utils, filters } from "pixi.js";
 import * as PIXI from "pixi.js";
 import gsap from "gsap";
-import image from "next/image";
 import PixiPlugin from "gsap/PixiPlugin";
-import Link from "next/link";
 
 gsap.registerPlugin(PixiPlugin);
 PixiPlugin.registerPIXI(PIXI);
 
 type LastWorkType = {
   target: number;
-  image: {
-    id: string;
-    alt: string;
-    url: string;
-    width: string;
-    height: string;
-  };
+  image: string;
+  width: number;
+  height: number;
 };
 
 const Filters = withFilters(Container, {
   displacement: filters.DisplacementFilter,
 });
 
-const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
+const StageNoSSR = ({
+  image,
+  target,
+  width,
+  height,
+}: LastWorkType): JSX.Element => {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const displacementSpriteRef = useRef(null);
   const [renderFilter, setRenderFilter] = useState(false);
-  const mask = useRef(null);
   const refImg = useRef(null);
 
   useEffect(() => {
@@ -49,11 +47,7 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
       displacementSpriteRef.current.texture.baseTexture.wrapMode =
         PIXI.WRAP_MODES.REPEAT;
       setRenderFilter(true);
-      // animate();
     }
-    // return () => {
-    //   animate();
-    // };
   }, []);
 
   useEffect(() => {
@@ -61,75 +55,68 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
     const linkWork2 = document.querySelector("#work2 .link-work");
     const linkWork3 = document.querySelector("#work3 .link-work");
     const tl = gsap.timeline();
-
-    linkWork1.addEventListener("mouseenter", function () {
-      if (target === 1) {
-        tl.to(displacementSpriteRef.current.scale, {
-          x: 0,
-          y: 0,
-          ease: "Power2.easeInOut",
-          duration: 0.3,
-        });
-      }
-    });
-    linkWork1.addEventListener("mouseleave", function () {
-      if (target === 1) {
-        tl.to(displacementSpriteRef.current.scale, {
-          x: 1,
-          y: 1,
-          ease: "Power2.easeInOut",
-          duration: 0.3,
-        });
-      }
-    });
-    linkWork2.addEventListener("mouseenter", function () {
-      if (target === 2) {
-        tl.to(displacementSpriteRef.current.transform.scale, {
-          x: 0,
-          y: 0,
-          ease: "Power2.easeInOut",
-          duration: 0.3,
-        });
-      }
-    });
-    linkWork2.addEventListener("mouseleave", function () {
-      if (target === 2) {
-        tl.to(displacementSpriteRef.current.transform.scale, {
-          x: 1,
-          y: 1,
-          ease: "Power2.easeInOut",
-          duration: 0.3,
-        });
-      }
-    });
-    linkWork3.addEventListener("mouseenter", function () {
-      if (target === 3) {
-        tl.to(displacementSpriteRef.current.transform.scale, {
-          x: 0,
-          y: 0,
-          ease: "Power2.easeInOut",
-          duration: 0.3,
-        });
-      }
-    });
-    linkWork3.addEventListener("mouseleave", function () {
-      if (target === 3) {
-        tl.to(displacementSpriteRef.current.transform.scale, {
-          x: 1,
-          y: 1,
-          ease: "Power2.easeInOut",
-          duration: 0.3,
-        });
-      }
-    });
-
-    linkWork1.addEventListener("click", function (e) {
-      // Ticker.shared.remove(displacementSpriteRef.current);
-      // if (target === 1) {
-      // }
-      // e.preventDefault();
-      // setAnim(false);
-    });
+    if (linkWork1 || linkWork2 || linkWork3) {
+      linkWork1.addEventListener("mouseenter", function () {
+        if (target === 1) {
+          tl.to(displacementSpriteRef.current.scale, {
+            x: 0,
+            y: 0,
+            ease: "Power2.easeInOut",
+            duration: 0.3,
+          });
+        }
+      });
+      linkWork1.addEventListener("mouseleave", function () {
+        if (target === 1) {
+          tl.to(displacementSpriteRef.current.scale, {
+            x: 1,
+            y: 1,
+            ease: "Power2.easeInOut",
+            duration: 0.3,
+          });
+        }
+      });
+      linkWork2.addEventListener("mouseenter", function () {
+        if (target === 2) {
+          tl.to(displacementSpriteRef.current.transform.scale, {
+            x: 0,
+            y: 0,
+            ease: "Power2.easeInOut",
+            duration: 0.3,
+          });
+        }
+      });
+      linkWork2.addEventListener("mouseleave", function () {
+        if (target === 2) {
+          tl.to(displacementSpriteRef.current.transform.scale, {
+            x: 1,
+            y: 1,
+            ease: "Power2.easeInOut",
+            duration: 0.3,
+          });
+        }
+      });
+      linkWork3.addEventListener("mouseenter", function () {
+        if (target === 3) {
+          tl.to(displacementSpriteRef.current.transform.scale, {
+            x: 0,
+            y: 0,
+            ease: "Power2.easeInOut",
+            duration: 0.3,
+          });
+        }
+      });
+      linkWork3.addEventListener("mouseleave", function () {
+        if (target === 3) {
+          tl.to(displacementSpriteRef.current.transform.scale, {
+            x: 1,
+            y: 1,
+            ease: "Power2.easeInOut",
+            duration: 0.3,
+          });
+        }
+      });
+    }
   }, []);
 
   useTick(() => setX((x) => x + 6));
@@ -139,14 +126,6 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
   //   const SliderItem = document.querySelectorAll(".inner-work .img-work");
   //   SliderItem.forEach((el) => el.remove());
   // }, []);
-
-  // function animate() {
-  //   if (anim == true) {
-  //     setX((x) => x + 6);
-  //     setY((y) => y + 2);
-  //     requestAnimationFrame(animate);
-  //   }
-  // }
 
   return (
     <>
@@ -161,9 +140,9 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
           >
             <Sprite
               ref={refImg}
-              width={380}
-              height={570}
-              image={image.url}
+              width={width}
+              height={height}
+              image={image}
               interactive={true}
               name={"sprite" + target}
             ></Sprite>
@@ -174,7 +153,12 @@ const StageNoSSR = ({ image, target }: LastWorkType): JSX.Element => {
   );
 };
 
-const wrapped = ({ image, target }: LastWorkType): JSX.Element => {
+const wrapped = ({
+  image,
+  target,
+  width,
+  height,
+}: LastWorkType): JSX.Element => {
   const pixiSet = {
     options: {
       backgroundColor: 0x171717,
@@ -191,14 +175,19 @@ const wrapped = ({ image, target }: LastWorkType): JSX.Element => {
   return (
     <>
       <Stage
-        width={380}
-        height={570}
+        width={width}
+        height={height}
         {...pixiSet}
         data-cursor-label="Voir le projet"
         // raf={false}
       >
         <Container>
-          <StageNoSSR image={image} target={target} />
+          <StageNoSSR
+            image={image}
+            target={target}
+            width={width}
+            height={height}
+          />
         </Container>
       </Stage>
     </>

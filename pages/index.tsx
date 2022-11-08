@@ -180,7 +180,12 @@ const Home: (props: { home: GraphQLResponse.Home }) => JSX.Element = (props: {
                     <Link href={`/projets/${el.slug}`}>
                       <a className="link-work" key={index}>
                         <div className="work-pixi">
-                          <PixiV4 image={el.image} target={el.target}></PixiV4>
+                          <PixiV4
+                            image={el.image.url}
+                            target={el.target}
+                            width={380}
+                            height={570}
+                          ></PixiV4>
                         </div>
                         <div className="wrap-title">
                           <h3
